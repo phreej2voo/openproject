@@ -1,0 +1,21 @@
+mn:
+  label_job_status_plural: "Ажлын төлвүүд"
+  plugin_openproject_job_status:
+    name: "OpenProject Job status"
+    description: "Listing and status of background jobs."
+  job_status_dialog:
+    download_starts: 'Татаж авах ажиллагаа автоматаар эхлэх ёстой.'
+    link_to_download: 'Эсвэл, татаж авах бол %{link}.'
+    click_here: 'энд дарна уу'
+    title: 'Суурь ажлын төлөв'
+    redirect: 'Таныг дахин чиглүүлж байна.'
+    redirect_link: 'Үргэлжлүүлэхийн тулд энд дарна уу.'
+    redirect_errors: 'Эдгээр алдааны улмаас таныг автоматаар дахин чиглүүлэхгүй.'
+    errors: 'Ямар нэг алдаа гарлаа'
+    generic_messages:
+      not_found: 'Энэ ажил олдсонгүй.'
+      in_queue: 'Ажлыг дараалалд оруулсан бөгөөд удахгүй боловсруулагдах болно.'
+      in_process: 'Одоогоор уг ажлыг боловсруулж байна.'
+      error: 'Ажлыг дуусгаж чадсангүй.'
+      cancelled: 'Алдаа гарсны улмаас ажил цуцлагдлаа.'
+      success: 'Ажил амжилттай дууссан.'

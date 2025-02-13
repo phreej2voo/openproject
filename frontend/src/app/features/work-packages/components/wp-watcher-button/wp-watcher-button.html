@@ -1,0 +1,21 @@
+<button *ngIf="displayWatchButton"
+        (click)="toggleWatch()"
+        [attr.title]="buttonTitle"
+        [disabled]="disabled"
+        [ngClass]="buttonClass"
+        class="button toolbar-icon"
+        [id]="buttonId">
+
+  <svg
+    *ngIf="watched"
+    eye-icon
+    class="button--icon"
+    size="small"
+  ></svg>
+  <svg
+    *ngIf="!watched"
+    eye-closed-icon
+    class="button--icon"
+    size="small"
+  ></svg>
+</button>

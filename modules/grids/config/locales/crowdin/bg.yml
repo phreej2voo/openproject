@@ -1,0 +1,16 @@
+bg:
+  grids:
+    label_widget_in_grid: "Приспособление, съдържащо се в мрежата %{grid_name}"
+  activerecord:
+    attributes:
+      grids/grid:
+        page: "Страница"
+        row_count: "Брой редове"
+        column_count: "Брой колони"
+        widgets: "Джаджи"
+    errors:
+      models:
+        grids/grid:
+          overlaps: 'припокриване.'
+          outside: 'е извън мрежата.'
+          end_before_start: 'крайната стойност трябва да е по-голяма от началната.'

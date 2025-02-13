@@ -1,0 +1,384 @@
+#-- copyright
+#OpenProject is an open source project management software.
+#Copyright (C) the OpenProject GmbH
+#This program is free software; you can redistribute it and/or
+#modify it under the terms of the GNU General Public License version 3.
+#OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+#Copyright (C) 2006-2013 Jean-Philippe Lang
+#Copyright (C) 2010-2013 the ChiliProject Team
+#This program is free software; you can redistribute it and/or
+#modify it under the terms of the GNU General Public License
+#as published by the Free Software Foundation; either version 2
+#of the License, or (at your option) any later version.
+#This program is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+#You should have received a copy of the GNU General Public License
+#along with this program; if not, write to the Free Software
+#Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#See COPYRIGHT and LICENSE files for more details.
+#++
+#English strings go here for Rails i18n
+nl:
+  plugin_openproject_meeting:
+    name: "OpenProject Vergadering"
+    description: >-
+      This module adds functions to support project meetings to OpenProject. Meetings can be scheduled selecting invitees from the same project to take part in the meeting. An agenda can be created and sent to the invitees. After the meeting, attendees can be selected and minutes can be created based on the agenda. Finally, the minutes can be sent to all attendees and invitees.
+  activerecord:
+    attributes:
+      meeting:
+        type: "Soort vergadering"
+        location: "Locatie"
+        duration: "Duur"
+        notes: "Notities"
+        participants: "Deelnemers"
+        participant:
+          one: "1 Deelnemer"
+          other: "%{count} Deelnemers"
+        participants_attended: "Aanwezigen"
+        participants_invited: "Genodigden"
+        project: "Project"
+        start_date: "Datum"
+        start_time: "Starttijd"
+        start_time_hour: "Starttijd"
+      meeting_agenda_item:
+        title: "Titel"
+        author: "Auteur"
+        duration_in_minutes: "min"
+        description: "Notities"
+        presenter: "Presentator"
+      meeting_section:
+        title: "Titel"
+      recurring_meeting:
+        frequency: "Frequentie"
+        interval: "Interval"
+        start_date: "Begint op"
+        end_after: "Vergaderreeks eindigt"
+        iterations: "Gebeurtenissen"
+    errors:
+      messages:
+        invalid_time_format: "is geen geldige tijd. Vereist formaat: UH:MM"
+    models:
+      recurring_meeting: "Terugkerende vergadering"
+      structured_meeting: "Eenmalige vergadering"
+      meeting_agenda_item: "Agendapunt"
+      meeting_agenda: "Agenda"
+      meeting_minutes: "Minuten"
+      meeting_section: "Sectie"
+  activity:
+    filter:
+      meeting: "Vergaderingen"
+    item:
+      meeting_agenda_item:
+        duration:
+          added: "ingesteld op %{value}"
+          added_html: "ingesteld op <i>%{value}</i>"
+          removed: "verwijderd"
+          updated: "veranderd van %{old_value} naar %{value}"
+          updated_html: "gewijzigd van <i>%{old_value}</i> naar <i>%{value}</i>"
+        position:
+          updated: "herschikken"
+        work_package:
+          updated: "veranderd van %{old_value} naar %{value}"
+          updated_html: "gewijzigd van <i>%{old_value}</i> naar <i>%{value}</i>"
+  description_attended: "bijgewoond"
+  description_invite: "uitgenodigd"
+  events:
+    meeting: Vergadering bewerkt
+    meeting_agenda: Vergaderagenda bewerkt
+    meeting_agenda_closed: Vergaderagenda gesloten
+    meeting_agenda_opened: Vergaderagenda geopend
+    meeting_minutes: Notulen van de vergadering bewerkt
+    meeting_minutes_created: Notulen gemaakt
+  error_notification_with_errors: "Notificatie verzenden mislukt. De volgende geadresseerden konden niet worden gemeld: %{recipients}"
+  label_meeting: "Vergadering"
+  label_meeting_plural: "Vergaderingen"
+  label_meeting_new: "Nieuwe vergadering"
+  label_meeting_new_dynamic: "Nieuwe eenmalige vergadering"
+  label_meeting_new_recurring: "Nieuwe terugkerende vergadering"
+  label_meeting_create: "Creëer vergadering"
+  label_meeting_copy: "Kopie vergadering"
+  label_meeting_edit: "Vergadering bewerken"
+  label_meeting_agenda: "Agenda"
+  label_meeting_minutes: "Notulen"
+  label_meeting_close: "Sluiten"
+  label_meeting_open: "Open"
+  label_meeting_index_delete: "Verwijderen"
+  label_meeting_open_this_meeting: "Open deze vergadering"
+  label_meeting_agenda_close: "Sluit de agenda om de notulen te beginnen"
+  label_meeting_date_time: "Datum/Tijd"
+  label_meeting_date_and_time: "Datum en tijd"
+  label_meeting_diff: "Diff"
+  label_recurring_meeting: "Terugkerende vergadering"
+  label_recurring_meeting_part_of: "Deel van een vergaderreeks"
+  label_recurring_meeting_new: "Nieuwe terugkerende vergadering"
+  label_recurring_meeting_plural: "Terugkerende vergaderingen"
+  label_template: "Sjabloon"
+  label_recurring_meeting_view: "Bekijk vergaderreeksen"
+  label_recurring_meeting_create: "Open"
+  label_recurring_meeting_copy: "Eenmalig kopiëren"
+  label_recurring_meeting_cancel: "Deze gebeurtenis annuleren"
+  label_recurring_meeting_delete: "Gebeurtenis verwijderen"
+  label_recurring_meeting_restore: "Herstel deze gebeurtenis"
+  label_recurring_meeting_schedule: "Planning"
+  label_recurring_meeting_next_occurrence: "Volgende gebeurtenis"
+  label_recurring_meeting_more: "Er zijn nog %{count} geplande vergaderingen (%{schedule})."
+  label_recurring_meeting_no_end_date: "Er zijn meer geplande vergaderingen (%{schedule})."
+  label_recurring_meeting_more_singular: "Er zijn nog %{count} geplande vergaderingen (%{schedule})."
+  label_recurring_meeting_more_past: "Er zijn %{count} meer eerdere vergaderingen."
+  label_recurring_meeting_more_past_singular: "Er zijn %{count} meer eerdere vergaderingen."
+  label_recurring_meeting_show_more: "Toon meer"
+  label_recurring_meeting_series_create: "Maak vergader reeks"
+  label_recurring_meeting_series_edit: "Vergaderreeks bewerken"
+  label_recurring_meeting_series_delete: "Verwijder serie van vergaderingen"
+  label_recurring_meeting_series_end: "Vergaderreeks beëindigen"
+  label_recurring_meeting_series_end_now: "Serie nu beëindigen"
+  label_meeting_more:
+    one: "Er is nog één vergadering."
+    other: "Er zijn nog %{count} vergaderingen."
+  label_my_meetings: "Mijn vergaderingen"
+  label_all_meetings: "Alle vergaderingen"
+  label_upcoming_meetings: "Geplande vergaderingen"
+  label_past_meetings: "Eerdere vergaderingen"
+  label_upcoming_meetings_short: "Aankomende"
+  label_past_meetings_short: "Vorige"
+  label_involvement: "Betrokkenheid"
+  label_invitations: "Uitnodigingen"
+  label_invited_user: "Uitgenodigde gebruiker"
+  label_past_invitations: "Vorige uitnodigingen"
+  label_attended: "Deelgenomen"
+  label_attended_user: "Aanwezige gebruiker"
+  label_created_by_me: "Gemaakt door mij"
+  label_notify: "Verzenden voor revisie"
+  label_icalendar: "Verstuur iCalendar"
+  label_icalendar_download: "Download iCalendar event"
+  label_view_meeting_series: "Bekijk vergaderreeksen"
+  label_meeting_series: "Vergaderreeksen"
+  label_version: "Versie"
+  label_time_zone: "Tijdzone"
+  label_start_date: "Startdatum"
+  meeting:
+    participants:
+      template: "Deze deelnemers worden automatisch uitgenodigd voor alle toekomstige vergaderingen wanneer deze worden aangemaakt."
+    attachments:
+      template: "Deze bijgevoegde bestanden zullen in alle toekomstige vergaderingen in de serie worden opgenomen."
+      text: "Bijgevoegde bestanden zijn beschikbaar voor alle deelnemers aan de vergadering. U kunt deze ook naar agendapunt notities slepen."
+    copy:
+      title: "Kopieer vergadering: %{title}"
+      attachments: "Bijlagen kopiëren"
+      attachments_text: "Kopieer alle bijgevoegde bestanden naar de nieuwe vergadering"
+      agenda: "Agenda kopiëren"
+      agenda_items: "Agendapunten kopiëren"
+      agenda_text: "Kopieer de agenda van de oude vergadering"
+      participants: "Kopieer lijst van deelnemers"
+    email:
+      send_emails: "Email participants"
+      send_invitation_emails: >
+        Stuur onmiddellijk een e-mailuitnodiging naar de hierboven geselecteerde deelnemers. U kunt dit ook later op elk gewenst moment handmatig doen.
+      send_invitation_emails_structured: "Stuur onmiddellijk een e-mailuitnodiging naar de hierboven geselecteerde deelnemers. U kunt dit ook later op elk gewenst moment handmatig doen."
+      open_meeting_link: "Open vergadering"
+      series:
+        title: "[%{project_name}] vergaderreeksen %{title}"
+        summary: "%{actor} heeft een nieuwe reeks vergaderreeks opgezet %{title}"
+      invited:
+        summary: "%{actor} heeft je een uitnodiging gestuurd voor de meeting %{title}"
+      rescheduled:
+        header: "Vergadering %{title} is verplaatst"
+        summary: "Vergadering %{title} is verplaatst door %{actor}"
+        body: "De vergadering %{title} is opnieuw gepland door %{actor}."
+        old_date_time: "Oude datum/tijd"
+        new_date_time: "Nieuwe datum/tijd"
+    label_mail_all_participants: "E-mail verzenden naar alle deelnemers"
+    types:
+      classic: "Klassiek"
+      classic_text: "Organiseer uw vergadering met een opmaakbare tekstagenda en protocol."
+      structured: "Gestructureerd"
+      one_time: "Eenmalig"
+      recurring: "Terugkerend"
+      recurring_text: "Maak vergaderreeksen met dynamische sjablonen voor elke gebeurtenis."
+      structured_text: "Organiseer uw vergadering als een dynamische lijst met agendapunten, optioneel gekoppeld aan een werkpakket."
+      structured_text_copy: "Een vergadering kopiëren zal momenteel niet de bijbehorende agendapunten kopiëren, alleen de details"
+    copied: "Gekopieerd van vergadering #%{id}"
+    delete_dialog:
+      one_time:
+        title: "Verwijder vergadering"
+        heading: "Verwijder deze vergadering?"
+        confirmation_message_html: >
+          Deze actie is niet omkeerbaar. Ga voorzichtig te werk.
+      occurrence:
+        title: "Verwijder vergadering gebeurtenis"
+        heading: "Verwijder deze vergadering gebeurtenis?"
+        confirmation_message_html: >
+          Deze bijeenkomst maakt deel uit van een serie genaamd <strong>%{title}</strong>. Hiermee wordt alleen deze specifieke gebeurtenis verwijderd en niet de hele serie. Wilt u doorgaan?
+    blankslate:
+      title: "Geen vergaderingen om weer te geven"
+      desc: "Er zijn geen vergaderingen die voldoen aan de actieve filtercriteria."
+  meeting_section:
+    untitled_title: "Naamloze sectie"
+    delete_confirmation: "Deleting the section will also delete all of its agenda items. Are you sure you want to do this?"
+    placeholder_title: "Nieuwe Sectie"
+    empty_text: "Sleep items hierheen of maak een nieuwe"
+  recurring_meeting:
+    ended_blankslate:
+      title: "Vergaderreeks geëindigd"
+      message: "Deze serie vergaderingen zijn afgelopen. Er zijn geen aanstaande vergaderingen. "
+      action: "U kunt nog steeds eerdere gebeurtenissen bekijken of de vergaderreeks bewerken om deze uit te breiden."
+    occurrence:
+      infoline: "Deze vergadering is onderdeel van een herhalende vergaderreeks."
+      error_no_next: "Er is geen volgende gebeurtenis voor deze vergadering."
+      first_already_exists: "De eerste gebeurtenis van deze vergaderreeks is al geïnitieerd."
+      first_created: >
+        De eerste vergadering is succesvol aangemaakt vanuit het sjabloon. Alle toekomstige vergaderingen worden automatisch aangemaakt op het moment van de vorige vergadering.
+    template:
+      button_finalize: "Sjabloon voltooien"
+      blank_title: "Uw vergaderreeks sjabloon is leeg"
+      description: >
+        Dit sjabloon wordt gebruikt wanneer nieuwe vergaderingen in de serie worden aangemaakt. U kunt agendapunten, deelnemers en bijlagen aan het sjabloon toevoegen.
+      blankslate_finalize: >
+        Wanneer u klaar bent met het voorbereiden van het sjabloon, klikt u op de knop '%{button_title}' hierboven om het instellen te voltooien en de eerste vergadering van de serie te plannen.
+      label_view_template: "Sjabloon bekijken"
+      label_edit_template: "Bewerkt sjabloon"
+      banner_html: >
+        U bewerkt momenteel een sjabloon van een vergaderingsreeks: %{link}. Elke nieuwe vergadering in de serie zal dit sjabloon gebruiken. Wijzigingen hebben geen invloed op al gemaakte vergaderingen.
+    frequency:
+      every_weekday: "Elke %{day_of_the_week}"
+      daily: "Dagelijks"
+      working_days: "Elke werkdag"
+      weekly: "Wekelijks"
+    end_after:
+      never: "nooit"
+      specific_date: "na een specifieke datum"
+      iterations: "na een aantal gebeurtenissen"
+    starts: "Begint"
+    in_words:
+      daily_interval: "Elke %{interval} dagen"
+      working_days: "Elke werkdag"
+      weekly: "Elke week op %{weekday}"
+      weekly_interval: "Elke %{interval} weken op %{weekday}"
+      frequency: "%{base} op %{time}"
+      full: "%{base} op %{time}, eindigt op %{end_date}"
+      full_past: "%{base} at %{time}, ended on %{end_date}"
+      never_ending: "%{base} op %{time}"
+    open:
+      title: "Open"
+      subtitle: >
+        Open vergaderingen hebben agenda's die bewerkt kunnen worden en verschijnen in het gedeelte "Mijn vergaderingen" van individuele gebruikers. Wijzigingen aan het sjabloon voor reeksen vergaderingen hebben geen invloed op al geopende vergaderingen.
+      blankslate:
+        title: "Momenteel geen open vergaderingen"
+        desc: "You can manually open a planned meeting by clicking on the 'Open' button below"
+    planned:
+      title: "Gepland"
+      subtitle: >
+        De volgende vergaderingen zijn gepland in het terugkerende vergaderschema, maar zijn nog niet geopend. Telkens wanneer een geplande vergadering begint, wordt de volgende automatisch voor u geopend. U kunt geplande vergaderingen ook handmatig openen om de sjabloon te importeren en te beginnen met het bewerken van de agenda.
+      blankslate:
+        title: "No more planned meetings"
+        desc: >
+          There are no additional meetings planned in this series. To schedule additional meetings or extend the series, go to the template and edit meeting details to change the end date, frequency or interval.
+    delete_dialog:
+      title: "Delete meeting series"
+      heading: "Permanently delete this meeting series?"
+      confirmation_message_html:
+        zero: >
+          Deleting <strong>%{title}</strong> will delete any meetings in this series. This action is not reversible. Please proceed with caution.
+        one: >
+          Deleting <strong>%{title}</strong> will also delete one meeting in this series. This action is not reversible. Please proceed with caution.
+        other: >
+          Deleting <strong>%{title}</strong> will delete all %{count} meetings in this series. This action is not reversible. Please proceed with caution.
+    scheduled_delete_dialog:
+      title: "Cancel meeting occurrence"
+      heading: "Cancel this meeting occurrence?"
+      confirmation_message_html: >
+        Any meeting information not in the template will be lost. Do you want to continue?
+      confirm_button: "Cancel occurrence"
+    end_series_dialog:
+      title: "End meeting series"
+  notice_successful_notification: "Notificatie succesvol verzonden"
+  notice_timezone_missing: Geen tijdzone is ingesteld en %{zone} is aangenomen. Om uw tijdzone te kiezen, klik dan hier.
+  notice_meeting_updated: "Deze pagina is door iemand anders bijgewerkt. Herlaad om wijzigingen te bekijken."
+  permission_create_meetings: "Creëer vergaderingen"
+  permission_edit_meetings: "Vergaderingen bewerken"
+  permission_delete_meetings: "Verwijder vergaderingen"
+  permission_view_meetings: "Bekijk vergaderingen"
+  permission_create_meeting_agendas: "Maak vergaderagenda's"
+  permission_create_meeting_agendas_explanation: "Staat het bewerken van de inhoud van de Klassieke vergadering op de agenda toe."
+  permission_manage_agendas: "Agenda's beheren"
+  permission_manage_agendas_explanation: "Staat het bewerken van de inhoud van de Dynamische vergadering op de agenda toe."
+  permission_close_meeting_agendas: "Sluit agenda's"
+  permission_send_meeting_agendas_notification: "Stuur review notificatie voor agenda's"
+  permission_create_meeting_minutes: "Minuten beheren"
+  permission_send_meeting_minutes_notification: "Stuur een review notificatie voor minuten"
+  permission_meetings_send_invite: "Gebruikers uitnodigen voor vergaderingen"
+  permission_send_meeting_agendas_icalendar: "Afspraak als agenda-item verzenden"
+  project_module_meetings: "Vergaderingen"
+  text_duration_in_hours: "Duur in uren"
+  text_in_hours: "in uren"
+  text_meeting_agenda_for_meeting: 'agenda voor de vergadering "%{meeting}"'
+  text_meeting_series_end_early_heading: "Toekomstige gebeurtenissen verwijderen?"
+  text_meeting_series_end_early: "Als u de serie beëindigt, worden alle toekomstige open of geplande vergaderingen verwijderd"
+  text_meeting_closing_are_you_sure: "Weet je zeker dat je de vergaderagenda wilt sluiten?"
+  text_meeting_agenda_open_are_you_sure: "Dit overschrijft alle wijzigingen in de aantekeningen! Wilt u doorgaan?"
+  text_meeting_minutes_for_meeting: 'minuten voor de vergadering "%{meeting}"'
+  text_notificiation_invited: "Deze mail bevat een ics item voor de vergadering hieronder:"
+  text_meeting_empty_heading: "Je vergadering is leeg"
+  text_meeting_empty_description_1: "Begin met het toevoegen van agendapunten hieronder. Elk item kan zo eenvoudig zijn als alleen een titel, maar u kunt ook extra gegevens toevoegen, zoals duur en aantekeningen."
+  text_meeting_empty_description_2: 'Je kunt ook verwijzingen naar bestaande werkpakketten toevoegen. Wanneer je dit doet, zullen gerelateerde notities automatisch zichtbaar zijn in het tabblad "Vergaderingen" van het werkpakket.'
+  label_meeting_empty_action: "Agendapunt toevoegen"
+  label_meeting_actions: "Vergadering acties"
+  label_meeting_edit_title: "Bewerk vergadertitel"
+  label_meeting_delete: "Verwijder vergadering"
+  label_meeting_created_by: "Gemaakt door"
+  label_meeting_last_updated: "Laatst bijgewerkt"
+  label_meeting_reload: "Herladen"
+  label_meeting_index_today: "Today"
+  label_meeting_index_tomorrow: "Tomorrow"
+  label_meeting_index_this_week: "Later this week"
+  label_meeting_index_later: "Next week and later"
+  label_agenda_items: "Agendapunten"
+  label_agenda_items_reordered: "herschikken"
+  label_agenda_item_remove: "Van de agenda schrappen"
+  label_agenda_item_undisclosed_wp: "Werkpakket #%{id} niet zichtbaar"
+  label_agenda_item_deleted_wp: "Verwijderde verwijzing naar het werkpakket"
+  label_agenda_item_actions: "Agenda items acties"
+  label_agenda_item_move_to_top: "Verplaats naar top"
+  label_agenda_item_move_to_bottom: "Verplaats naar einde"
+  label_agenda_item_move_up: "Verplaats naar boven"
+  label_agenda_item_move_down: "Naar beneden verplaatsen"
+  label_agenda_item_add_notes: "Notities toevoegen"
+  label_agenda_item_work_package: "Agendapunt werkpakket"
+  text_agenda_item_title: 'Agendapunt "%{title}"'
+  text_agenda_work_package_deleted: 'Agendapunt voor geschrapt werkpakket'
+  text_deleted_agenda_item: 'Geschrapt agendapunt'
+  label_initial_meeting_details: "Vergadering"
+  label_meeting_details: "Vergaderdetails"
+  label_meeting_series_details: "Details vergaderreeks"
+  label_meeting_details_edit: "Bewerk vergader details"
+  label_meeting_state: "Vergaderstatus"
+  label_meeting_state_open: "Openen"
+  label_meeting_state_open_html: "<i>Open</i>"
+  label_meeting_state_closed: "Gesloten"
+  label_meeting_state_closed_html: "<i>Gesloten</i>"
+  label_meeting_state_agenda_created: "Agenda aangemaakt"
+  label_meeting_state_planned: "Planned"
+  label_meeting_state_cancelled: "Geannuleerd"
+  label_meeting_state_skipped: "Overgeslagen"
+  label_meeting_reopen_action: "Heropen vergadering"
+  label_meeting_close_action: "Vergadering sluiten"
+  text_meeting_open_description: "Deze vergadering is open. Je kunt agenda-items toevoegen/verwijderen en bewerken naar eigen goeddunken. Na afloop van de vergadering kun je deze sluiten, om te vergrendelen."
+  text_meeting_closed_description: "Deze vergadering is gesloten. U kunt geen agendapunten meer toevoegen/verwijderen."
+  label_meeting_manage_participants: "Deelnemers beheren"
+  label_meeting_no_participants: "Geen deelnemers"
+  label_meeting_show_hide_participants: "Toon/verberg %{count} meer"
+  label_meeting_show_all_participants: "Toon alle"
+  label_meeting_add_participants: "Voeg deelnemers toe"
+  text_meeting_not_editable_anymore: "Deze vergadering kan niet meer bewerkt worden."
+  text_meeting_not_present_anymore: "Deze vergadering is verwijderd. Selecteer een andere vergadering."
+  label_add_work_package_to_meeting_dialog_title: "Werkpakket aan vergadering toevoegen"
+  label_add_work_package_to_meeting_dialog_button: "Toevoegen aan vergadering"
+  label_meeting_selection_caption: "It's only possible to add this work package to upcoming or ongoing open meetings."
+  text_add_work_package_to_meeting_description: "Een werkpakket kan worden toegevoegd aan één of meerdere vergaderingen voor bespreking. Eventuele notities zijn hier ook zichtbaar."
+  text_agenda_item_no_notes: "Geen aantekeningen voorzien"
+  text_agenda_item_not_editable_anymore: "Dit agendapunt kan niet meer bewerkt worden."
+  text_work_package_has_no_upcoming_meeting_agenda_items: "Dit werkpakket staat nog niet op de agenda van een komende vergadering."
+  text_work_package_add_to_meeting_hint: 'Gebruik de knop "Aan vergadering toevoegen" om dit werkpakket aan een komende vergadering toe te voegen.'
+  text_work_package_has_no_past_meeting_agenda_items: "Dit werkpakket werd tijdens een vorige vergadering niet genoemd."

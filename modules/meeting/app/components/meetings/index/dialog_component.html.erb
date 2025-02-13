@@ -1,0 +1,41 @@
+<%=
+  render(Primer::Alpha::Dialog.new(
+    id: "new-meeting-dialog",
+    title:,
+    size: :medium_portrait,
+    data: { 'keep-open-on-submit': true }
+  )) do |dialog|
+    dialog.with_header(variant: :large)
+    dialog.with_body do
+      render(Meetings::Index::FormComponent.new(meeting: @meeting,
+                                                project: @project,
+                                                copy_from: @copy_from))
+    end
+
+    dialog.with_footer do
+      component_collection do |modal_footer|
+        modal_footer.with_component(
+          Primer::ButtonComponent.new(
+            data: { 'close-dialog-id': "new-meeting-dialog" }
+          )) do
+          I18n.t(:button_cancel)
+        end
+
+        modal_footer.with_component(
+          Primer::ButtonComponent.new(
+            scheme: :primary,
+            form: 'meeting-form',
+            type: :submit
+          )) do
+          if @meeting.persisted?
+            I18n.t(:button_save)
+          elsif @meeting.is_a?(RecurringMeeting)
+            I18n.t(:label_recurring_meeting_series_create)
+          else
+            I18n.t(:label_meeting_create)
+          end
+        end
+      end
+    end
+  end
+%>

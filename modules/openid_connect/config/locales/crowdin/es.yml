@@ -1,0 +1,124 @@
+es:
+  plugin_openproject_openid_connect:
+    name: "OpenProject OpenID Connect"
+    description: "Añade proveedores de estrategia OmniAuth OpenID Connect a OpenProject."
+  logout_warning: >
+    Se ha cerrado la sesión. Puede que se haya perdido el contenido de cualquier formulario que haya enviado. [Inicie la sesión].
+  activemodel:
+    attributes:
+      openid_connect/provider:
+        name: Nombre
+        slug: Identificador único
+        display_name: Nombre para mostrar
+        client_id: ID de cliente
+        client_secret: Secreto del cliente
+        secret: Secreto
+        scope: Ámbito
+        grant_types_supported: Tipos de concesiones admitidos
+        limit_self_registration: Limitar autorregistro
+        authorization_endpoint: Terminal de autorización
+        userinfo_endpoint: Terminal de información de usuario
+        token_endpoint: Terminal de token
+        end_session_endpoint: Terminal de finalización de sesión
+        post_logout_redirect_uri: URI de redirección tras el cierre de sesión
+        jwks_uri: URI de JWKS
+        issuer: Emisor
+        tenant: Tenant
+        metadata_url: URL de metadatos
+        icon: Icono personalizado
+        claims: Reclamaciones
+        acr_values: Valores ACR
+        redirect_url: URL de redirección
+  activerecord:
+    errors:
+      models:
+        openid_connect/provider:
+          attributes:
+            metadata_url:
+              format: "La URL del terminal de descubrimiento %{message}"
+              response_is_not_successful: " responde con %{status}."
+              response_is_not_json: " no devuelve el cuerpo JSON."
+              response_misses_required_attributes: " no devuelve los atributos requeridos. Los atributos que faltan son: %{missing_attributes}."
+  provider:
+    delete_warning:
+      input_delete_confirmation: Escriba el nombre del proveedor %{name} para confirmar la eliminación.
+      irreversible_notice: La eliminación de un proveedor SSO es una acción irreversible.
+      provider: '¿Seguro que quiere eliminar el proveedor SSO %{name}? Para confirmar esta acción, introduzca el nombre del proveedor en el campo de abajo, esto hará lo siguiente:'
+      delete_result_1: Elimine al proveedor de la lista de proveedores disponibles.
+      delete_result_user_count:
+        zero: Ningún usuario utiliza actualmente este proveedor. No se requiere ninguna acción adicional.
+        one: "Actualmente, un usuario sigue utilizando este proveedor. Deberá ser invitado de nuevo o iniciar sesión con otro proveedor."
+        other: "%{count} usuarios siguen utilizando actualmente este proveedor. Deberán ser invitados de nuevo o iniciar sesión con otro proveedor."
+      delete_result_direct: Este proveedor está marcado como proveedor de inicio de sesión directo. La configuración se eliminará y ya no se redirigirá a los usuarios al proveedor para iniciar sesión.
+  openid_connect:
+    menu_title: Proveedores de OpenID
+    delete_title: "Eliminar el proveedor OpenID Connect"
+    instructions:
+      redirect_url: Esta es la URL de redirección que el proveedor de OpenID Connect debe utilizar para redirigir de nuevo a OpenProject después de un inicio de sesión exitoso.
+      endpoint_url: La URL del terminal que le ha proporcionado el proveedor de OpenID Connect
+      metadata_none: No dispongo de esta información
+      metadata_url: Tengo una URL del terminal de descubrimiento
+      client_id: Este es el ID de cliente que le ha proporcionado su proveedor de OpenID Connect
+      client_secret: Este es el secreto de cliente que le ha proporcionado su proveedor de OpenID Connect
+      limit_self_registration: Si está activada, los usuarios solo podrán registrarse utilizando este proveedor si la configuración del proveedor lo permite.
+      display_name: El nombre del proveedor. Aparecerá como botón de inicio de sesión y en la lista de proveedores.
+      tenant: 'Sustituya el inquilino predeterminado por el suyo si procede. Consulte <a href=" https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols-oidc#find-your-apps-openid-configuration-document-uri">esto</a>.'
+      scope: Si desea solicitar ámbitos personalizados, puede añadir aquí uno o varios valores de ámbito separados por espacios. Para más información, consulte la [documentación de OpenID Connect](docs_url).
+      post_logout_redirect_uri: La URL a la que debe redirigir el proveedor de OpenID Connect tras una solicitud de cierre de sesión.
+      claims: >
+        Puede solicitar reclamaciones adicionales para los terminales userinfo e id token. Consulte [nuestra documentación sobre OpenID connect](docs_url) para obtener más información.
+      acr_values: >
+        Solicite reclamaciones no esenciales en un formato más sencillo. Consulte [nuestra documentación sobre acr_values](docs_url) para obtener más información.
+      mapping_login: >
+        Proporcione una asignación personalizada en la respuesta userinfo que se utilizará para el atributo login.
+      mapping_email: >
+        Proporcione una asignación personalizada en la respuesta userinfo que se utilizará para el atributo email.
+      mapping_first_name: >
+        Proporcione una asignación personalizada en la respuesta userinfo que se utilizará para el atributo nombre.
+      mapping_last_name: >
+        Proporcione una asignación personalizada en la respuesta userinfo que se utilizará para el atributo apellidos.
+      mapping_admin: >
+        Proporciona una asignación personalizada en la respuesta userinfo que se utilizará para el estado administrador. Espera que se devuelva un atributo booleano.
+    settings:
+      metadata_none: No dispongo de esta información
+      metadata_url: Tengo una URL del terminal de descubrimiento
+      endpoint_url: URL del terminal
+    providers:
+      label_providers: "Proveedores"
+      seeded_from_env: "Este proveedor fue sembrado desde la configuración del entorno. No puede editarse."
+      google:
+        name: Google
+      microsoft_entra:
+        name: Microsoft Entra
+      custom:
+        name: Personalizado
+      upsale:
+        description: Conectar OpenProject a un proveedor de identidad OpenID Connect
+      label_add_new: Agregar nuevo proveedor de OpenID
+      label_edit: Editar el proveedor de OpenID %{name}
+      label_empty_title: Aún no hay proveedores OpenID configurados.
+      label_empty_description: Añada un proveedor para verlo aquí.
+      label_metadata: Terminal de descubrimiento de OpenID Connect
+      label_automatic_configuration: Configuración automática
+      label_optional_configuration: Configuración opcional
+      label_advanced_configuration: Configuración avanzada
+      label_configuration_details: Metadatos
+      label_client_details: Detalles del cliente
+      label_attribute_mapping: Asignación de atributos
+      client_details_description: Detalles de configuración de OpenProject como cliente OIDC
+      no_results_table: Aún no se han definido proveedores.
+      plural: Proveedores de OpenID
+      singular: Proveedor de OpenID
+      section_texts:
+        metadata: Configuración de prellenado usando una URL del terminal de descubrimiento de OpenID Connect
+        metadata_form_banner: La edición del terminal de descubrimiento puede reemplazar los valores de metadatos prerellenados existentes.
+        metadata_form_title: Terminal de descubrimiento de OpenID Connect
+        metadata_form_description: Si su proveedor de identidad tiene una URL de terminal de descubrimiento. Utilícela a continuación para prerellenar la configuración.
+        configuration_metadata: La información se ha prerellenado utilizando el terminal de descubrimiento suministrado. En la mayoría de los casos, no requieren edición.
+        configuration: Detalles de configuración del proveedor de OpenID Connect
+        display_name: El nombre visible para los usuarios.
+        attribute_mapping: Configurar la asignación de atributos entre OpenProject y el proveedor OpenID Connect.
+        claims: Solicitar reclamaciones adicionales para la respuesta ID token o userinfo.
+    setting_instructions:
+      limit_self_registration: >
+        Si está habilitado, los usuarios solo pueden registrarse usando este proveedor si la configuración de autorregistro lo permite.

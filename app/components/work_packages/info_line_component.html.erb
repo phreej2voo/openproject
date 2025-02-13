@@ -1,0 +1,19 @@
+<%=
+  flex_layout do |flex|
+    flex.with_column(mr: 2) do
+      render(WorkPackages::HighlightedTypeComponent.new(work_package: @work_package, font_size: :small))
+    end
+    flex.with_column(mr: 2)  do
+      render(Primer::Beta::Link.new(
+        href: url_for(controller: "/work_packages", action: "show", id: @work_package),
+        title: @work_package.subject,
+        target: :_blank,
+        font_size: @font_size,
+        color: :muted
+      )) { "##{@work_package.id}" }
+    end
+    flex.with_column do
+      render WorkPackages::StatusBadgeComponent.new(status: @work_package.status)
+    end
+  end
+%>

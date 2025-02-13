@@ -1,0 +1,32 @@
+<%=
+  render(Primer::Alpha::Dialog.new(title: t("label_life_cycle_step_plural"),
+                                   size: :medium_portrait,
+                                   id: DIALOG_ID)) do |d|
+    d.with_header(variant: :large)
+    d.with_body do
+      render(::ProjectLifeCycles::Sections::EditComponent.new(model))
+    end
+    d.with_footer do
+      component_collection do |footer_collection|
+        footer_collection.with_component(Primer::ButtonComponent.new(
+          data: {
+            "close-dialog-id": DIALOG_ID
+          }
+        )) do
+          t("button_cancel")
+        end
+        footer_collection.with_component(Primer::ButtonComponent.new(
+          scheme: :primary,
+          type: :submit,
+          form: "project-life-cycles-edit-form",
+          data: {
+            test_selector: 'save-project-life-cycles-button',
+            turbo: true
+          }
+        )) do
+          t("button_save")
+        end
+      end
+    end
+  end
+%>

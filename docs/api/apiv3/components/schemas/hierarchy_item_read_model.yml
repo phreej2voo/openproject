@@ -1,0 +1,46 @@
+# Schema: HierarchyItemReadModel
+---
+type: object
+properties:
+  _type:
+    type: string
+    enum:
+      - HierarchyItem
+  id:
+    type: integer
+    description: Hierarchy item identifier
+  label:
+    type: string
+    description: The label of the hierarchy item
+  short:
+    type: string
+    description: The short name of the hierarchy item
+  depth:
+    type: integer
+    description: The hierarchy depth. The root item has a depth of 0.
+  _links:
+    type: object
+    properties:
+      self:
+        allOf:
+          - $ref: './link.yml'
+          - description: |-
+              This hierarchy item
+
+              **Resource**: HierarchyItem
+      parent:
+        allOf:
+          - $ref: './link.yml'
+          - description: |-
+              The hierarchy item that is the parent of the current hierarchy item
+
+              **Resource**: HierarchyItem
+      children:
+        type: array
+        items:
+          allOf:
+            - $ref: './link.yml'
+            - description: |-
+                A hierarchy item that is a child of the current hierarchy item
+                
+                **Resource**: HierarchyItem

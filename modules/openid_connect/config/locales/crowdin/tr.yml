@@ -1,0 +1,124 @@
+tr:
+  plugin_openproject_openid_connect:
+    name: "OpenProject OpenID Connect"
+    description: "OmniAuth OpenID Bağlantı strateji sağlayıcılarını OpenProject'e ekler."
+  logout_warning: >
+    Çıkış yaptınız. Gönderdiğiniz herhangi bir formun içeriği kaybolabilir. Lütfen giriş yapın].
+  activemodel:
+    attributes:
+      openid_connect/provider:
+        name: İsim
+        slug: Unique identifier
+        display_name: Ekran adı
+        client_id: İstemci ID
+        client_secret: İstemci gizliliği
+        secret: Gizli
+        scope: kapsam
+        grant_types_supported: Supported grant types
+        limit_self_registration: Limit self registration
+        authorization_endpoint: Yetkilendirme bitiş noktası
+        userinfo_endpoint: Kullanıcı bilgisi bitiş noktası
+        token_endpoint: Gösterge bitiş noktası
+        end_session_endpoint: Oturum bitiş noktasını sonlandır
+        post_logout_redirect_uri: Oturum kapatma sonrası yönlendirme URI'si
+        jwks_uri: JWKS URI
+        issuer: Sağlayıcı
+        tenant: Müşteri
+        metadata_url: Metaveri URL'si
+        icon: Özel simge
+        claims: Bilgiler
+        acr_values: ACR değerleri
+        redirect_url: Redirect URL
+  activerecord:
+    errors:
+      models:
+        openid_connect/provider:
+          attributes:
+            metadata_url:
+              format: "Keşif uç noktası URL'si %{message}"
+              response_is_not_successful: " %{status} ile yanıt verir."
+              response_is_not_json: " JSON gövdesini cevap olarak vermez."
+              response_misses_required_attributes: " gerekli öznitelikleri döndürmez. Eksik öznitelikler: %{missing_attributes}."
+  provider:
+    delete_warning:
+      input_delete_confirmation: Silme işlemini onaylamak için sağlayıcı %{name} ismini girin.
+      irreversible_notice: SSO sağlayıcısını silme geri alınamaz bir işlemdir.
+      provider: 'SSO sağlayıcısı %{name} silmek istediğinize emin misiniz? İşlemi onaylamak için lütfen sağlayıcının adını aşağıdaki alana giriniz:'
+      delete_result_1: Sağlayıcının adını mevcut sağlayıcılardan kaldır.
+      delete_result_user_count:
+        zero: Bu sağlayıcıyı hiçbir kullanıcı kullanmıyor. Ek bir işleme gerek yok.
+        one: "Bir kullanıcı bu sağlayıcıyı kullanıyor. Tekrar davet edilmesi ya da başka bir kullanıcı ile giriş yapması gerekecek."
+        other: "%{count} kullanıcı bu sağlayıcıyı kullanıyor. Tekrar davet edilmeleri ya da başka bir kullanıcı ile giriş yapmaları gerekecek."
+      delete_result_direct: Bu sağlayıcı doğrudan oturum açma sağlayıcısı olarak işaretlenmiştir. Ayar kaldırılacak ve kullanıcılar artık oturum açmak için sağlayıcıya yönlendirilmeyecektir.
+  openid_connect:
+    menu_title: OpenID sağlayıcıları
+    delete_title: "OpenID Connect sağlayıcısını sil"
+    instructions:
+      redirect_url: This is the redirect URL that the OpenID Connect provider should use to redirect back to OpenProject after a successful login.
+      endpoint_url: OpenID Connect sağlayıcısı tarafından size verilen uç nokta URL'si
+      metadata_none: Bu bilgiye sahip değilim
+      metadata_url: Bir keşif uç noktası URL'im var
+      client_id: OpenID Connect sağlayıcısı tarafından size verilen istemci URL'si
+      client_secret: OpenID Connect sağlayıcısı tarafından size verilen gizlilik URL'si
+      limit_self_registration: If enabled, users can only register using this provider if configuration on the provider's end allows it.
+      display_name: The name of the provider. This will be displayed as the login button and in the list of providers.
+      tenant: 'Lütfen öntanımlı müşteriyi kendinizinkiyle değiştirin, mümkünse. Bu <a href=" https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols-oidc#find-your-apps-openid-configuration-document-uri"> belgeye bakın</a>.'
+      scope: If you want to request custom scopes, you can add one or multiple scope values separated by spaces here. For more information, see the [OpenID Connect documentation](docs_url).
+      post_logout_redirect_uri: OpenID Connect sağlayıcısının bir oturum kapatma isteğinden sonra yeniden yönlendirmesi gereken URL.
+      claims: >
+        Kullanıcı bilgisi ve id göstergesi uç noktaları için ek bilgi talebinde bulunabilirsiniz. Daha fazla bilgi için lütfen [OpenID bağlantı belgelerimize] (docs_url) bakın.
+      acr_values: >
+        Zorunlu olmayan bilgileri daha kolay bir biçimde talep edin. Daha fazla bilgi için [acr_values hakkındaki belgelerimize] (docs_url) bakın.
+      mapping_login: >
+        Oturum açma özniteliği için kullanılmak üzere userinfo yanıtında özel bir eşleme sağlayın.
+      mapping_email: >
+        Provide a custom mapping in the userinfo response to be used for the email attribute.
+      mapping_first_name: >
+        Provide a custom mapping in the userinfo response to be used for the first name.
+      mapping_last_name: >
+        Provide a custom mapping in the userinfo response to be used for the last name.
+      mapping_admin: >
+        Provide a custom mapping in the userinfo response to be used for the admin status. It expects a boolean attribute to be returned.
+    settings:
+      metadata_none: Bu bilgiye sahip değilim
+      metadata_url: I have a discovery endpoint URL
+      endpoint_url: Endpoint URL
+    providers:
+      label_providers: "Sağlayıcılar"
+      seeded_from_env: "This provider was seeded from the environment configuration. It cannot be edited."
+      google:
+        name: Google
+      microsoft_entra:
+        name: Microsoft Entra
+      custom:
+        name: Özel
+      upsale:
+        description: Connect OpenProject to an OpenID connect identity provider
+      label_add_new: Yeni bir OpenID sağlayıcı ekle
+      label_edit: OpenID sağlayıcıyı düzenle %{name}
+      label_empty_title: No OpenID providers configured yet.
+      label_empty_description: Add a provider to see them here.
+      label_metadata: OpenID Connect Discovery Endpoint
+      label_automatic_configuration: Otomatik yapılandırma
+      label_optional_configuration: İsteğe bağlı yapılandırma
+      label_advanced_configuration: Gelişmiş yapılandırma
+      label_configuration_details: Metadata
+      label_client_details: Client details
+      label_attribute_mapping: Attribute mapping
+      client_details_description: Configuration details of OpenProject as an OIDC client
+      no_results_table: Henüz bir sağlayıcı tanımlanmadı.
+      plural: OpenID sağlayıcıları
+      singular: OpenID sağlayıcı
+      section_texts:
+        metadata: Pre-fill configuration using an OpenID Connect discovery endpoint URL
+        metadata_form_banner: Editing the discovery endpoint may override existing pre-filled metadata values.
+        metadata_form_title: OpenID Connect Discovery endpoint
+        metadata_form_description: If your identity provider has a discovery endpoint URL. Use it below to pre-fill configuration.
+        configuration_metadata: The information has been pre-filled using the supplied discovery endpoint. In most cases, they do not require editing.
+        configuration: Configuration details of the OpenID Connect provider
+        display_name: The display name visible to users.
+        attribute_mapping: Configure the mapping of attributes between OpenProject and the OpenID Connect provider.
+        claims: Request additional claims for the ID token or userinfo response.
+    setting_instructions:
+      limit_self_registration: >
+        If enabled users can only register using this provider if the self registration setting allows for it.

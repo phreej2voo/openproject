@@ -1,0 +1,8 @@
+<%= flex_layout(align_items: :center) do |type_container|
+  type_container.with_column(mr: 1, classes: icon_color_class) do
+    render Primer::Beta::Octicon.new(icon: icon)
+  end
+  type_container.with_column do
+    render(Primer::Beta::Text.new(**text_options)) { text }
+  end
+end %>

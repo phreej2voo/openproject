@@ -1,0 +1,30 @@
+<div class="work-packages--details-toolbar">
+  <wp-watcher-button [workPackage]="workPackage">
+  </wp-watcher-button>
+
+  <op-work-package-mark-notification-button
+    *ngIf="displayNotificationsButton"
+    [workPackage]="workPackage"
+    data-test-selector="mark-notification-read-button"
+  ></op-work-package-mark-notification-button>
+
+  <wp-share-button [workPackage]="workPackage"
+                   *ngIf="displayShareButton$ | async">
+  </wp-share-button>
+
+  <wp-reminder-button [workPackage]="workPackage"
+                      *ngIf="displayReminderButton$ | async">
+  </wp-reminder-button>
+
+  <button class="button dropdown-relative"
+          [attr.accesskey]="7"
+          [title]="text.button_more"
+          wpSingleContextMenu
+          [wpSingleContextMenu-workPackage]="workPackage">
+    <svg
+      op-kebab-vertical-icon
+      class="button--icon"
+      size="small"
+    ></svg>
+  </button>
+</div>

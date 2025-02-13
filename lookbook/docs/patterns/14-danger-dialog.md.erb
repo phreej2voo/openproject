@@ -1,0 +1,75 @@
+The DangerDialog is used to get a second layer of confirmation from the user before they execute a potentially breaking, non-reversible action such as deletion.
+
+The dial will inform the user that the action is not reversible and require one additional interaction before the user can confirm the deletion.
+
+The DangerDialog is a sub-component of FeedbackDialog.
+
+### Overview
+
+<%= embed Patterns::DangerDialogPreview, :default, panels: %i[source] %>
+
+### Anatomy
+
+The FeedbackDialog is a variation of FeedbackDialog. It consists of:
+
+- A red warning icon
+- A heading with a confirmation question such as "Permanently delete?"
+- A message explaining the consequences
+- An additional content slot
+- A confirmation checkbox with text: "I understand that this deletion cannot be reversed"
+- Footer actions: "Cancel" and "Delete permanently" (danger red)
+
+The "Delete permanently" button is disabled until the user checks the confirmation checkbox.
+
+The additional content area can be replaced with other options, such as different text, a list of work packages or additional interaction.
+
+### Options
+
+Some elements can be customised:
+
+- The heading text
+- The contents of the content slot
+- The text of the confirmation checkbox
+- The texts of the footer action buttons
+
+If you need a variant with a different structure, please contact the UX and Front-end Primer teams.
+
+### Best practices
+
+#### Do:
+
+- Do give the user relevant detail possible. For example, when bulk deleting, list the work packages that will be deleted.
+- Do use the simplest variant that will do the job, usually the default with customised text tailored to the specific context. Only choose variations or add additional elements if absolutely required.
+
+#### Don't:
+
+- Don't overload the content slot with too much information or additional interactions; we want the user to read and understand the consequences of this action. If the context that is needed is particularly complicated, consult the Design team for help on how to proceed.
+- Don't use it to provide feedback. Use the FeedbackDialog instead.
+- Don't add additional margins or spacing.
+- Don't change the danger icon
+
+### Used in
+
+The DangerDialog will replace the traditional Rails danger zone area in at least these places:
+
+- work_packages: bulk/destroyusers: deletion
+- repositories: destroy
+- projects: change identifier
+- placeholder_users: deletion
+- projects: destroy
+- storages: destroy
+- openid_connect: destroy
+- ldap_groups/synchronized_filters: destroy
+- ldap_groups/synchronized_groups: destroy
+- saml/providers: destroy
+
+The confirmation dialog should also be used where we are currently using browser dialogs or a non-Primer modal for high-risk operations, such as:
+
+- Bulk deleting work packages
+- Deleting a custom field
+
+### Technical notes
+
+* In order to actually delete some object, you will most likely need a form which the "delete" button then submits. We have two ways to achieve that:
+  * ([`With form_arguments`](../../inspect/primer/open_project/danger_dialog/with_form))
+  * ([`With a form builder`](../../inspect/primer/open_project/danger_dialog/with_form_builder_form))

@@ -1,0 +1,85 @@
+#English strings go here
+vi:
+  js:
+    storages:
+      link_files_in_storage: "Liên kết tệp trong %{storageType}"
+      link_existing_files: "Liên kết các tệp hiện có"
+      upload_files: "Tải lên tệp"
+      drop_files: "Kéo thả tệp vào đây để tải lên %{name}."
+      drop_or_click_files: "Kéo thả tệp vào đây hoặc nhấp để tải lên %{name}."
+      login: "Đăng nhập vào %{storageType}"
+      login_to: "Đăng nhập vào %{storageType}"
+      no_connection: "Không có kết nối %{storageType}"
+      open_storage: "Mở %{storageType}"
+      select_location: "Chọn vị trí"
+      choose_location: "Chọn vị trí"
+      new_folder: "New folder"
+      types:
+        nextcloud: "Nextcloud"
+        one_drive: "OneDrive/SharePoint"
+        default: "Lưu trữ"
+      information:
+        connection_error: >
+          Một số cài đặt %{storageType} không hoạt động. Vui lòng liên hệ với quản trị viên %{storageType} của bạn.
+        live_data_error: "Lỗi khi lấy thông tin tệp"
+        live_data_error_description: >
+          Một số dữ liệu %{storageType} không thể được lấy. Vui lòng thử tải lại trang này hoặc liên hệ với quản trị viên %{storageType} của bạn.
+        no_file_links: "Để liên kết các tệp với gói công việc này, vui lòng thực hiện qua %{storageType}."
+        not_logged_in: >
+          Để thêm liên kết, xem hoặc tải lên các tệp liên quan đến gói công việc này, vui lòng đăng nhập vào %{storageType}.
+      files:
+        already_existing_header: "Tệp này đã tồn tại"
+        already_existing_body: >
+          Một tệp với tên "%{fileName}" đã tồn tại ở vị trí bạn đang cố gắng tải tệp này lên. Bạn muốn làm gì?
+        directory_not_writeable: "Bạn không có quyền thêm tệp vào thư mục này."
+        dragging_many_files: "Tải lên %{storageType} chỉ hỗ trợ một tệp mỗi lần."
+        dragging_folder: "Tải lên %{storageType} không hỗ trợ thư mục."
+        empty_folder: "Thư mục này trống."
+        empty_folder_location_hint: "Nhấp vào nút dưới đây để tải tệp lên vị trí này."
+        file_not_selectable_location: "Việc chọn tệp không khả thi trong quá trình chọn vị trí."
+        project_folder_no_access: >
+          Bạn không có quyền truy cập vào thư mục dự án. Vui lòng liên hệ với quản trị viên của bạn để được cấp quyền hoặc tải tệp lên vị trí khác.
+        managed_project_folder_not_available: >
+          Thư mục dự án được quản lý tự động chưa được tìm thấy. Vui lòng đợi một chút, tải lại trang để lấy dữ liệu mới nhất, và thử lại.
+        managed_project_folder_no_access: >
+          Bạn chưa có quyền truy cập vào thư mục dự án được quản lý. Vui lòng đợi một chút và thử lại.
+        cannot_create_folder: Failed to create folder. Avoid using special characters and symbols and make sure the folder does not exist already.
+        upload_keep_both: "Giữ cả hai"
+        upload_replace: "Thay thế"
+      file_links:
+        empty: >
+          Hiện tại không có tệp liên kết nào với gói công việc này. Bắt đầu liên kết các tệp với hành động bên dưới hoặc từ %{storageType}.
+        download: "Tải xuống %{fileName}"
+        open: "Mở tệp trên lưu trữ"
+        open_location: "Mở tệp tại vị trí"
+        remove: "Xóa liên kết tệp"
+        remove_confirmation: >
+          Bạn có chắc chắn muốn gỡ liên kết tệp khỏi gói công việc này không? Việc gỡ liên kết không ảnh hưởng đến tệp gốc và chỉ loại bỏ kết nối với gói công việc này.
+        remove_short: "Xóa liên kết"
+        select: "Chọn tệp"
+        select_all: "Chọn tất cả"
+        selection:
+          zero: "Chọn các tệp để liên kết"
+          other: "Liên kết %{count} tệp"
+        success_create:
+          other: "Đã tạo thành công %{count} liên kết tệp."
+        upload_error:
+          default: >
+            Tệp của bạn (%{fileName}) không thể được tải lên.
+          403: >
+            Tệp của bạn (%{fileName}) không thể được tải lên do hạn chế của hệ thống. Vui lòng liên hệ với quản trị viên của bạn để biết thêm thông tin.
+          413: >
+            Tệp của bạn (%{fileName}) lớn hơn mức tối đa mà OpenProject có thể tải lên đến %{storageType}. Bạn có thể tải lên trực tiếp vào %{storageType} trước và sau đó liên kết tệp.
+          507: >
+            Tệp của bạn (%{fileName}) lớn hơn hạn ngạch lưu trữ cho phép. Liên hệ với quản trị viên của bạn để thay đổi hạn ngạch này.
+          detail:
+            nextcloud: >
+              Vui lòng kiểm tra rằng phiên bản mới nhất của ứng dụng Nextcloud "Tích hợp OpenProject" đã được cài đặt và liên hệ với quản trị viên của bạn để biết thêm thông tin.
+        link_uploaded_file_error: >
+          Đã xảy ra lỗi khi liên kết tệp vừa tải lên '%{fileName}' với gói công việc %{workPackageId}.
+        tooltip:
+          not_logged_in: "Vui lòng đăng nhập vào lưu trữ để truy cập tệp này."
+          view_not_allowed: "Bạn không có quyền xem tệp này."
+          not_found: "Không thể tìm thấy tệp này."
+        already_linked_file: "Tệp này đã được liên kết với gói công việc này."
+        already_linked_directory: "Thư mục này đã được liên kết với gói công việc này."

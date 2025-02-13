@@ -1,0 +1,22 @@
+<%= render(Primer::OpenProject::SubHeader.new(data: {
+  controller: "filter--filters-form",
+  "application-target": "dynamic",
+  "filter--filters-form-output-format-value": "json",
+})) do |subheader|
+  subheader.with_filter_component do
+    render(Primer::Alpha::SegmentedControl.new("aria-label": I18n.t(:label_filter_plural))) do |control|
+      control.with_item(tag: :a,
+                        icon: :"arrow-right",
+                        href: recurring_meeting_path(@meeting),
+                        label: t(:label_upcoming_meetings_short),
+                        title: t(:label_upcoming_meetings),
+                        selected: @params[:direction] != "past")
+      control.with_item(tag: :a,
+                        icon: :history,
+                        href: recurring_meeting_path(@meeting, direction: :past),
+                        label: t(:label_past_meetings_short),
+                        title: t(:label_past_meetings),
+                        selected: @params[:direction] == "past")
+    end
+  end
+end %>

@@ -1,0 +1,53 @@
+#-- copyright
+#OpenProject is an open source project management software.
+#Copyright (C) 2023 Ben Tey
+#This program is free software; you can redistribute it and/or
+#modify it under the terms of the GNU General Public License version 3.
+#OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+#Copyright (C) 2006-2013 Jean-Philippe Lang
+#Copyright (C) 2010-2013 the ChiliProject Team
+#Copyright (C) the OpenProject GmbH
+#This program is free software; you can redistribute it and/or
+#modify it under the terms of the GNU General Public License
+#as published by the Free Software Foundation; either version 2
+#of the License, or (at your option) any later version.
+#This program is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+#You should have received a copy of the GNU General Public License
+#along with this program; if not, write to the Free Software
+#Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#See docs/COPYRIGHT.rdoc for more details.
+#++
+vi:
+  js:
+    gitlab_integration:
+      work_packages:
+        tab_name: "GitLab"
+      tab_header_issue:
+        title: "Vấn đề"
+      tab_header_mr:
+        title: "Yêu cầu kéo"
+        create_mr:
+          label: Tạo MR
+          description: Tạo một Yêu cầu Kéo
+        copy_menu:
+          label: Đoạn mã Git
+          description: Sao chép đoạn mã Git vào bảng tạm
+        git_actions:
+          branch_name: Tên nhánh
+          commit_message: Thông điệp commit
+          cmd: Tạo nhánh với commit trống
+          title: Đoạn mã nhanh cho Git
+          copy_success: '✅ Đã sao chép!'
+          copy_error: '❌ Sao chép thất bại!'
+      tab_issue:
+        empty: 'Chưa có vấn đề nào được liên kết. Liên kết một vấn đề hiện có bằng cách sử dụng mã <code>OP#%{wp_id}</code> (hoặc <code>PP#%{wp_id}</code> cho liên kết riêng) trong tiêu đề/mô tả vấn đề hoặc tạo một vấn đề mới.'
+      tab_mrs:
+        empty: 'Chưa có yêu cầu kéo nào được liên kết. Liên kết một MR hiện có bằng cách sử dụng mã <code>OP#%{wp_id}</code> (hoặc <code>PP#%{wp_id}</code> cho liên kết riêng) trong tiêu đề/mô tả MR hoặc tạo một MR mới.'
+      gitlab_pipelines: Pipelines
+      updated_on: Được cập nhật vào
+    work_packages:
+      tabs:
+        gitlab: "GitLab"

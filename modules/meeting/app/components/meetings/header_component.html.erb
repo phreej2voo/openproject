@@ -1,0 +1,108 @@
+<%=
+  helpers.content_controller "poll-for-changes keep-scroll-position",
+                     poll_for_changes_url_value: check_for_updates_meeting_path(@meeting),
+                     poll_for_changes_interval_value: check_for_updates_interval,
+                     keep_scroll_position_url_value: meeting_path(@meeting)
+
+  component_wrapper do
+    render(Primer::OpenProject::PageHeader.new(
+      test_selector: "meeting-page-header",
+      state: @state,
+      data: {
+        poll_for_changes_target: "reference",
+        reference_value: @meeting.changed_hash
+      }
+    )) do |header|
+      header.with_title do |title|
+        title.with_editable_form(model: @meeting,
+                                 update_path: update_title_meeting_path(@meeting),
+                                 cancel_path: cancel_edit_meeting_path(@meeting),
+                                 label: Meeting.human_attribute_name(:title),
+                                 placeholder: Meeting.human_attribute_name(:title),)
+        if @meeting.template?
+          "#{@meeting.title} (#{I18n.t(:label_template)})"
+        elsif @series.present?
+          concat render(Primer::Beta::Text.new) { @meeting.title }
+          concat render(Primer::Beta::Text.new(color: :subtle)) { " (#{format_date(@meeting.start_time)})" }
+        else
+          @meeting.title
+        end
+      end
+      header.with_breadcrumbs(breadcrumb_items)
+      header.with_description { render(Meetings::HeaderInfolineComponent.new(@meeting)) }
+      if finish_setup_enabled?
+        header.with_action_button(
+          tag: :a,
+          scheme: :primary,
+          mobile_label: I18n.t("recurring_meeting.template.button_finalize"),
+          mobile_icon: :check,
+          size: :medium,
+          data: { "turbo-method": :post },
+          href: template_completed_recurring_meeting_path(@meeting.recurring_meeting),
+        ) do |button|
+          button.with_leading_visual_icon(icon: :check)
+          I18n.t("recurring_meeting.template.button_finalize")
+        end
+      end
+
+      header.with_action_menu(menu_arguments: {},
+                              button_arguments: { icon: "kebab-horizontal",
+                                                  "aria-label": t("label_meeting_actions"),
+                                                  classes: "hide-when-print",
+                                                  test_selector: 'op-meetings-header-action-trigger'}) do |menu|
+        menu.with_item(label: t("label_meeting_edit_title"),
+                       href: edit_meeting_path(@meeting),
+                       content_arguments: {
+                         data: { 'turbo-stream': true }
+                       }) do |item|
+          item.with_leading_visual_icon(icon: :pencil)
+        end if @meeting.editable? && !@series
+
+        unless @meeting.template?
+            menu.with_item(label: copy_label,
+                           href: copy_meeting_path(@meeting),
+                           content_arguments: {
+                             data: { turbo_stream: true }
+                           }) do |item|
+              item.with_leading_visual_icon(icon: :copy)
+            end
+
+            menu.with_item(label: t(:label_icalendar_download),
+                           href: ics_download_path) do |item|
+              item.with_leading_visual_icon(icon: :download)
+            end
+
+            if @meeting.open? &&User.current.allowed_in_project?(:send_meeting_agendas_notification, @meeting.project
+            )
+              menu.with_item(label: t('meeting.label_mail_all_participants'),
+                             href: notify_meeting_path(@meeting),
+                             form_arguments: { method: :post, data: { turbo: 'false' } }) do |item|
+                item.with_leading_visual_icon(icon: :mail)
+              end
+            end
+          end
+
+        menu.with_item(label: t(:label_history),
+                       tag: :a,
+                       href: history_meeting_path(@meeting),
+                       content_arguments: {
+                         "data-controller": "async-dialog",
+                       },
+                       value: ""
+        ) do |item|
+          item.with_leading_visual_icon(icon: :clock) # or :check TBD
+        end
+
+        menu.with_item(label: delete_label,
+                       scheme: :danger,
+                       href: polymorphic_path([:delete_dialog, @project, @meeting.becomes(Meeting)]),
+                       tag: :a,
+                       content_arguments: {
+                         data: { controller: "async-dialog" }
+                       }) do |item|
+          item.with_leading_visual_icon(icon: :trash)
+        end if delete_enabled?
+      end
+    end
+  end
+%>

@@ -1,0 +1,24 @@
+<%=
+  render(Primer::OpenProject::SidePanel::Section.new) do |section|
+    section.with_title { I18n.t("saml.providers.label_openproject_information") }
+    section.with_description { I18n.t("openid_connect.instructions.redirect_url") }
+
+    component_collection do |collection|
+      collection.with_component(Primer::Beta::Heading.new(tag: :h5, mb: 1)) do
+        I18n.t("activemodel.attributes.openid_connect/provider.slug")
+      end
+
+      collection.with_component(
+        OpPrimer::CopyToClipboardComponent.new(provider.slug, scheme: :input)
+      )
+
+      collection.with_component(Primer::Beta::Heading.new(tag: :h5, mt: 4, mb: 1)) do
+        I18n.t("activemodel.attributes.openid_connect/provider.redirect_url")
+      end
+
+      collection.with_component(
+        OpPrimer::CopyToClipboardComponent.new(provider.callback_url, scheme: :input)
+      )
+    end
+  end
+%>

@@ -1,0 +1,24 @@
+<%=
+  flex_layout do |flex|
+    flex.with_column do
+      render(Meetings::MeetingFilterButtonComponent.new(query: @query, project: @project))
+    end
+
+    flex.with_column(ml: 1) do
+      render(Primer::Alpha::SegmentedControl.new("aria-label": I18n.t(:label_meeting_date_time))) do |control|
+        control.with_item(tag: :a,
+                          icon: :"arrow-right",
+                          href: dynamic_path,
+                          label: t(:label_upcoming_meetings_short),
+                          title: t(:label_upcoming_meetings),
+                          selected: upcoming_query?)
+        control.with_item(tag: :a,
+                          icon: :history,
+                          href: dynamic_path(upcoming: false),
+                          label: t(:label_past_meetings_short),
+                          title: t(:label_past_meetings),
+                          selected: !upcoming_query?)
+      end
+    end
+  end
+%>

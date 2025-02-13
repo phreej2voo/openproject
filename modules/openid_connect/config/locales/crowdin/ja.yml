@@ -1,0 +1,124 @@
+ja:
+  plugin_openproject_openid_connect:
+    name: "OpenProject OpenID 連携"
+    description: "OmniAuth OpenID Connect ストラテジープロバイダを OpenProject に追加します。"
+  logout_warning: >
+    ログアウトしています。送信したフォームの内容は失われる可能性があります。 [ログイン] してください。
+  activemodel:
+    attributes:
+      openid_connect/provider:
+        name: 名称
+        slug: 一意な識別子
+        display_name: 表示名
+        client_id: クライアントID
+        client_secret: クライアントシークレット
+        secret: シークレット
+        scope: スコープ
+        grant_types_supported: サポートされている権限タイプ
+        limit_self_registration: 自己登録を制限
+        authorization_endpoint: 認証エンドポイント
+        userinfo_endpoint: ユーザー情報エンドポイント
+        token_endpoint: トークンエンドポイント
+        end_session_endpoint: エンドセッションエンドポイント
+        post_logout_redirect_uri: ログアウト後のリダイレクトURI
+        jwks_uri: JWKS URI
+        issuer: 発行者
+        tenant: テナント
+        metadata_url: メタデータURL
+        icon: カスタム アイコン
+        claims: クレーム
+        acr_values: ACR値
+        redirect_url: リダイレクトURL
+  activerecord:
+    errors:
+      models:
+        openid_connect/provider:
+          attributes:
+            metadata_url:
+              format: "ディスカバリー・エンドポイントURL %{message}"
+              response_is_not_successful: " 応答は %{status} です。"
+              response_is_not_json: " はJSONのBodyを返しません。"
+              response_misses_required_attributes: " は必須属性を返しません。欠けている属性は次のとおりです: %{missing_attributes}."
+  provider:
+    delete_warning:
+      input_delete_confirmation: 確認のため、削;除するフィルタ名 %{name} を入力します。
+      irreversible_notice: ワークパッケージの削除は復元できない操作です。
+      provider: 'SSO プロバイダー %{name}を削除してもよろしいですか？ このアクションを確認するには、以下のフィールドにプロバイダの名前を入力してください。'
+      delete_result_1: 利用可能なプロバイダのリストからプロバイダを削除します。
+      delete_result_user_count:
+        zero: 現在、このプロバイダを使用しているユーザーはいません。これ以上の操作は必要ありません。
+        one: "1人のユーザーが現在このプロバイダーを使用しています。再招待または別のプロバイダーでログインする必要があります。"
+        other: "%{count} users are currently still using this provider. They will need to be re-invited or logging in with another provider."
+      delete_result_direct: This provider is marked as a direct login provider. The setting will be removed and users will no longer be redirected to the provider for login.
+  openid_connect:
+    menu_title: OpenID プロバイダー
+    delete_title: "Delete OpenID Connect provider"
+    instructions:
+      redirect_url: これは、OpenID Connectプロバイダがログイン成功後にOpenProjectにリダイレクトするために使用するリダイレクトURLです。
+      endpoint_url: The endpoint URL given to you by the OpenID Connect provider
+      metadata_none: I don't have this information
+      metadata_url: I have a discovery endpoint URL
+      client_id: This is the client ID given to you by your OpenID Connect provider
+      client_secret: This is the client secret given to you by your OpenID Connect provider
+      limit_self_registration: 有効にした場合、ユーザーはプロバイダーのエンドに設定が許可されている場合にのみ、このプロバイダーを使用して登録できます。
+      display_name: プロバイダーの名前。これはログインボタンとプロバイダーリストに表示されます。
+      tenant: 'Please replace the default tenant with your own if applicable. See <a href=" https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols-oidc#find-your-apps-openid-configuration-document-uri">this</a>.'
+      scope: カスタムスコープをリクエストしたい場合は、スペースで区切られた1つまたは複数のスコープ値を追加できます。 詳細については、[OpenID Connect documentation](docs_url)を参照してください。
+      post_logout_redirect_uri: The URL the OpenID Connect provider should redirect to after a logout request.
+      claims: >
+        You can request additional claims for the userinfo and id token endpoints. Please see [our OpenID connect documentation](docs_url) for more information.
+      acr_values: >
+        Request non-essential claims in an easier format. See [our documentation on acr_values](docs_url) for more information.
+      mapping_login: >
+        Provide a custom mapping in the userinfo response to be used for the login attribute.
+      mapping_email: >
+        Provide a custom mapping in the userinfo response to be used for the email attribute.
+      mapping_first_name: >
+        Provide a custom mapping in the userinfo response to be used for the first name.
+      mapping_last_name: >
+        Provide a custom mapping in the userinfo response to be used for the last name.
+      mapping_admin: >
+        Provide a custom mapping in the userinfo response to be used for the admin status. It expects a boolean attribute to be returned.
+    settings:
+      metadata_none: I don't have this information
+      metadata_url: I have a discovery endpoint URL
+      endpoint_url: Endpoint URL
+    providers:
+      label_providers: "Providers"
+      seeded_from_env: "This provider was seeded from the environment configuration. It cannot be edited."
+      google:
+        name: Google
+      microsoft_entra:
+        name: Microsoft Entra
+      custom:
+        name: Custom
+      upsale:
+        description: Connect OpenProject to an OpenID connect identity provider
+      label_add_new: 新しい OpenID プロバイダーを追加
+      label_edit: OpenID プロバイダー %{name} を編集
+      label_empty_title: No OpenID providers configured yet.
+      label_empty_description: Add a provider to see them here.
+      label_metadata: OpenID Connect Discovery Endpoint
+      label_automatic_configuration: Automatic configuration
+      label_optional_configuration: Optional configuration
+      label_advanced_configuration: Advanced configuration
+      label_configuration_details: Metadata
+      label_client_details: Client details
+      label_attribute_mapping: Attribute mapping
+      client_details_description: Configuration details of OpenProject as an OIDC client
+      no_results_table: プロバイダーが定義されていません。
+      plural: OpenID プロバイダー
+      singular: OpenID プロバイダー
+      section_texts:
+        metadata: Pre-fill configuration using an OpenID Connect discovery endpoint URL
+        metadata_form_banner: Editing the discovery endpoint may override existing pre-filled metadata values.
+        metadata_form_title: OpenID Connect Discovery endpoint
+        metadata_form_description: If your identity provider has a discovery endpoint URL. Use it below to pre-fill configuration.
+        configuration_metadata: The information has been pre-filled using the supplied discovery endpoint. In most cases, they do not require editing.
+        configuration: Configuration details of the OpenID Connect provider
+        display_name: The display name visible to users.
+        attribute_mapping: Configure the mapping of attributes between OpenProject and the OpenID Connect provider.
+        claims: Request additional claims for the ID token or userinfo response.
+    setting_instructions:
+      limit_self_registration: >
+        有効にした場合、ユーザーは自己登録設定が許可されている場合にのみ、このプロバイダを使用して登録することができます。

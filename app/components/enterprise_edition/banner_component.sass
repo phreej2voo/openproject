@@ -1,0 +1,68 @@
+/*!
+ / -- copyright
+ / OpenProject is an open source project management software.
+ / Copyright (C) 2024 the OpenProject GmbH
+ /
+ / This program is free software; you can redistribute it and/or
+ / modify it under the terms of the GNU General Public License version 3.
+ /
+ / OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+ / Copyright (C) 2006-2013 Jean-Philippe Lang
+ / Copyright (C) 2010-2013 the ChiliProject Team
+ /
+ / This program is free software; you can redistribute it and/or
+ / modify it under the terms of the GNU General Public License
+ / as published by the Free Software Foundation; either version 2
+ / of the License, or (at your option) any later version.
+ /
+ / This program is distributed in the hope that it will be useful,
+ / but WITHOUT ANY WARRANTY; without even the implied warranty of
+ / MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ / GNU General Public License for more details.
+ /
+ / You should have received a copy of the GNU General Public License
+ / along with this program; if not, write to the Free Software
+ / Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ /
+ / See COPYRIGHT and LICENSE files for more details.
+ / ++
+ /
+
+$op-ee-banner--shield-width: 32px
+
+// This is not named op-enterprise-banner because as of now, there is still a legacy angular component that uses that block name.
+.op-ee-banner
+  display: grid
+  grid-template-columns: $op-ee-banner--shield-width auto auto
+  grid-template-areas: "icon-container title-container" "icon-container description-container" "icon-container link-container"
+  grid-column-gap: 0.5rem
+  justify-content: left
+  @media screen and (min-width: $breakpoint-md)
+    grid-template-areas: "icon-container title-container title-container" "icon-container description-container link-container"
+
+  &--icon-container
+    @extend .upsale-colored
+    align-self: start
+    justify-self: center
+
+  &--shield
+    @extend .upsale-border-colored
+    width: $op-ee-banner--shield-width
+    height: 42px
+    border-width: 10px 5px 10px 5px
+    border-radius: 0 0 10px 10px
+    border-style: solid
+    display: flex
+    align-items: center
+    justify-content: center
+
+  &--icon
+    width: $op-ee-banner--shield-width
+    height: $op-ee-banner--shield-width
+
+  &--title-container
+    @extend .upsale-colored
+    font-weight: bold
+
+  &--link-container
+    align-self: end

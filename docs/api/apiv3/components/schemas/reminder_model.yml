@@ -1,0 +1,28 @@
+# Schema: ReminderModel
+---
+type: object
+properties:
+  id:
+    type: integer
+    description: Reminder id
+    readOnly: true
+    minimum: 1
+  note:
+    type: string
+    description: The note of the reminder
+  remindAt:
+    type: string
+    format: date-time
+    description: The date and time when the reminder is due
+  _links:
+    required:
+      - creator
+    type: object
+    properties:
+      creator:
+        allOf:
+          - $ref: "./link.yml"
+          - description: |-
+              The person that created the reminder
+
+              **Resource**: User

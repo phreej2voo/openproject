@@ -1,0 +1,117 @@
+//-- copyright
+// OpenProject is an open source project management software.
+// Copyright (C) the OpenProject GmbH
+//
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of the GNU General Public License version 3.
+//
+// OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+// Copyright (C) 2006-2013 Jean-Philippe Lang
+// Copyright (C) 2010-2013 the ChiliProject Team
+//
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of the GNU General Public License
+// as published by the Free Software Foundation; either version 2
+// of the License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+//
+// See COPYRIGHT and LICENSE files for more details.
+//++
+
+// Re-apply the primer styles with higher specificity
+// as the OpenProject form styles override them.
+.FormControl
+  input
+    border-radius: var(--borderRadius-medium)
+
+  // Currently we cannot morph the angular datepicker input field, and we have no way to set the
+  // validation error border on the input. However we can morph the input's wrapper element, thus
+  // adding this parent wrapper rule we can display the red border on the input.
+  &-input-wrap[invalid='true'] input:not(:focus)
+    border-color: var(--control-borderColor-danger)
+
+.UnderlineNav
+  @include no-visible-scroll-bar
+  margin-bottom: 12px
+
+  @media screen and (min-width: $breakpoint-sm)
+    scroll-behavior: smooth
+
+/* Remove margin-left: 2rem from Breadcrumbs */
+#breadcrumb,
+page-header,
+sub-header,
+.op-work-package-details-tab-component,
+.tabnav,
+.Box-header,
+action-menu anchored-position
+  ol, ul
+    margin-left: 0
+
+ul.SegmentedControl,
+.Box > ul:not(.op-uc-list)
+  margin-left: 0
+
+#breadcrumb
+  .breadcrumb-item.breadcrumb-item-selected
+    a
+      pointer-events: none
+
+.op-primer-adjustments__toggle-switch--hidden-loading-indicator
+  .ToggleSwitch-statusIcon
+    display: none
+
+.Overlay
+  &-body_autocomplete_height
+    min-height: 300px
+
+// For some specific cases like progress form in small screens,
+// we need to change the direction of elements to column,
+// therefore elements are placed below each other
+.FormControl-horizontalGroup--sm-vertical
+  @media screen and (max-width: $breakpoint-sm)
+    .FormControl-horizontalGroup
+      flex-direction: column
+      row-gap: 1rem
+
+.Button.op-app-header--primer-button,
+.Button.op-app-header--primer-button .Button-visual
+  color: var(--header-item-font-color)
+  width: auto
+
+  &:hover
+    background: var(--header-item-bg-hover-color)
+    color: var(--header-item-font-hover-color)
+
+// Prototypical CKEditor adjustments to better match Primer styles
+.ck-editor-primer-adjusted
+  .ck-toolbar
+    border-radius: var(--borderRadius-medium) var(--borderRadius-medium) 0px 0px!important
+  .document-editor__editable-container
+    background: var(--bgColor-default)
+    border-radius: 0px 0px var(--borderRadius-medium) var(--borderRadius-medium)
+  .ck-content
+    background: var(--bgColor-default)
+    overflow-y: auto
+    border-radius: var(--borderRadius-medium)!important
+    margin: 5px
+  .CodeMirror
+    border-radius: 0px 0px var(--borderRadius-medium) var(--borderRadius-medium)
+  .ck-editor__preview
+    border-radius: 0px 0px var(--borderRadius-medium) var(--borderRadius-medium)
+  .op-ckeditor--wrapper
+    margin-bottom: 0px
+
+// When our generic table uses the quick action menu, column headers are cut off and no longer fully readable.
+// This fix ensures that column headers are always displayed. An example for such a table is the project list.
+.generic-table
+  .generic-table--action-menu-button
+    min-width: max-content !important

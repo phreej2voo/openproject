@@ -1,0 +1,124 @@
+ms:
+  plugin_openproject_openid_connect:
+    name: "Sambungkan OpenID OpenProject"
+    description: "Tambah penyedia strategi OmniAuth OpenID Connect ke OpenProject."
+  logout_warning: >
+    Anda telah log keluar. Sebarang bentuk kandungan yang anda hantar mungkin hilang. Sila [log masuk].
+  activemodel:
+    attributes:
+      openid_connect/provider:
+        name: Nama
+        slug: Pengecam unik
+        display_name: Nama paparan
+        client_id: ID Pelanggan
+        client_secret: Rahsia pelanggan
+        secret: "Rahsia\n"
+        scope: Skop
+        grant_types_supported: Jenis geran yang disokong
+        limit_self_registration: Hadkan pendaftaran sendiri
+        authorization_endpoint: Titik akhir kebenaran
+        userinfo_endpoint: Titik akhir maklumat pengguna
+        token_endpoint: Titik akhir token
+        end_session_endpoint: Titik tamat sesi
+        post_logout_redirect_uri: Post log keluar ubah hala URI
+        jwks_uri: JWKS URI
+        issuer: Pengeluar
+        tenant: Penyewa
+        metadata_url: URL metadata
+        icon: Ikon tersuai
+        claims: Tuntutan
+        acr_values: Nila ACR
+        redirect_url: Ubah hala URL
+  activerecord:
+    errors:
+      models:
+        openid_connect/provider:
+          attributes:
+            metadata_url:
+              format: "URL titik akhir penemuan %{message}"
+              response_is_not_successful: "membalas dengan %{status}."
+              response_is_not_json: "tidak mengembalikan badan JSON."
+              response_misses_required_attributes: "tidak mengembalikan atribut yang diperlukan. Atribut yang tiada ialah: %{missing_attributes}."
+  provider:
+    delete_warning:
+      input_delete_confirmation: Masukkan nama pembekal %{name} untuk mengesahkan pemadaman.
+      irreversible_notice: Memadamkan pembekal SSO ialah tindakan yang tidak boleh diubah.
+      provider: 'Adakah anda pasti mahu memadamkan pembekal SSO %{name}? Untuk mengesahkan tindakan ini sila masukkan nama pembekal dalam medan di bawah, ini akan:'
+      delete_result_1: Alih keluar pembekal daripada senarai pembekal yang tersedia.
+      delete_result_user_count:
+        zero: Tiada pengguna yang menggunakan penyedia ini pada masa ini. Tiada tindakan lanjut diperlukan.
+        one: "Seorang pengguna masih menggunakan penyedia ini pada masa ini. Mereka perlu dijemput semula atau log masuk dengan penyedia lain."
+        other: "%{count} pengguna pada masa ini masih menggunakan penyedia ini. Mereka perlu dijemput semula atau log masuk dengan penyedia lain."
+      delete_result_direct: Pembekal ini ditandakan sebagai pembekal log masuk langsung. Tetapan akan dialih keluar dan pengguna tidak lagi akan diubah hala ke pembekal untuk log masuk.
+  openid_connect:
+    menu_title: Penyedia OpenID
+    delete_title: "Padam pembekal OpenID Connect"
+    instructions:
+      redirect_url: Ini ialah URL ubah hala yang harus digunakan oleh pembekal OpenID Connect untuk mengubah hala semula ke OpenProject selepas log masuk berjaya.
+      endpoint_url: URL titik akhir yang diberikan kepada anda oleh pembekal OpenID Connect
+      metadata_none: Saya tidak mempunyai maklumat ini
+      metadata_url: Saya mempunyai URL titik akhir penemuan
+      client_id: Ini ialah ID klien yang diberikan kepada anda oleh pembekal OpenID Connect anda
+      client_secret: Ini ialah rahsia pelanggan yang diberikan kepada anda oleh pembekal OpenID Connect anda
+      limit_self_registration: Jika didayakan, pengguna hanya boleh mendaftar menggunakan pembekal ini jika konfigurasi di hujung pembekal membenarkannya.
+      display_name: Nama pembekal. Ini akan dipaparkan sebagai butang log masuk dan dalam senarai pembekal.
+      tenant: 'Sila gantikan penyewa lalai dengan penyewa anda sendiri jika berkenaan. Lihat <a href=" https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols-oidc#find-your-apps-openid-configuration-document-uri">ini</ a>.'
+      scope: Jika anda ingin meminta skop tersuai, anda boleh menambah satu atau berbilang nilai skop yang dipisahkan oleh ruang di sini. Untuk mendapatkan maklumat lanjut, lihat [dokumentasi OpenID Connect](docs_url).
+      post_logout_redirect_uri: URL penyedia OpenID Connect harus mengubah hala selepas permintaan log keluar.
+      claims: >
+        Anda boleh meminta tuntutan tambahan untuk maklumat pengguna dan titik akhir token id. Sila lihat [dokumentasi sambungan OpenID kami](docs_url) untuk mendapatkan maklumat lanjut.
+      acr_values: >
+        Minta tuntutan yang tidak penting dalam format yang lebih mudah. Lihat [dokumentasi kami tentang acr_values](docs_url) untuk mendapatkan maklumat lanjut.
+      mapping_login: >
+        Sediakan pemetaan tersuai dalam respons info pengguna untuk digunakan untuk atribut log masuk.
+      mapping_email: >
+        Sediakan pemetaan tersuai dalam respons info pengguna untuk digunakan untuk atribut e-mel.
+      mapping_first_name: >
+        Sediakan pemetaan tersuai dalam respons info pengguna untuk digunakan untuk nama pertama.
+      mapping_last_name: >
+        Sediakan pemetaan tersuai dalam respons info pengguna untuk digunakan untuk nama akhir.
+      mapping_admin: >
+        Sediakan pemetaan tersuai dalam respons info pengguna untuk digunakan untuk status pentadbir. Ia menjangkakan atribut boolean akan dikembalikan.
+    settings:
+      metadata_none: Saya tidak mempunyai maklumat ini
+      metadata_url: Saya mempunyai URL titik akhir penemuan
+      endpoint_url: URL titik akhir
+    providers:
+      label_providers: "Pembekal"
+      seeded_from_env: "Pembekal ini telah dipilih daripada konfigurasi persekitaran. Ia tidak boleh disunting."
+      google:
+        name: Google
+      microsoft_entra:
+        name: Microsoft Entra
+      custom:
+        name: Adat
+      upsale:
+        description: Sambungkan OpenProject kepada pembekal identiti sambungan OpenID
+      label_add_new: Tambah penyedia OpenID baharu
+      label_edit: Edit penyedia OpenID %{name}
+      label_empty_title: Tiada pembekal OpenID dikonfigurasikan lagi.
+      label_empty_description: Tambah pembekal untuk melihat mereka di sini.
+      label_metadata: OpenID Connect Discovery Endpoint
+      label_automatic_configuration: Konfigurasi automatik
+      label_optional_configuration: Konfigurasi pilihan
+      label_advanced_configuration: Konfigurasi lanjutan
+      label_configuration_details: Metadata
+      label_client_details: Butiran pelanggan
+      label_attribute_mapping: Pemetaan atribut
+      client_details_description: Butiran konfigurasi OpenProject sebagai pelanggan OIDC
+      no_results_table: Belum ada penyedia yang ditetapkan lagi.
+      plural: Penyedia OpenID
+      singular: Penyedia OpenID
+      section_texts:
+        metadata: Konfigurasi praisi menggunakan URL titik akhir penemuan OpenID Connect
+        metadata_form_banner: Mengedit titik akhir penemuan mungkin mengatasi nilai metadata pra-isi sedia ada.
+        metadata_form_title: Titik akhir OpenID Connect Discovery
+        metadata_form_description: Jika pembekal identiti anda mempunyai URL titik akhir penemuan. Gunakannya di bawah untuk praisi konfigurasi.
+        configuration_metadata: Maklumat telah diisi terlebih dahulu menggunakan titik akhir penemuan yang dibekalkan. Dalam kebanyakan kes, mereka tidak memerlukan penyuntingan.
+        configuration: Butiran konfigurasi pembekal OpenID Connect
+        display_name: Nama paparan boleh dilihat oleh pengguna.
+        attribute_mapping: Konfigurasikan pemetaan atribut antara OpenProject dan pembekal OpenID Connect.
+        claims: Minta tuntutan tambahan untuk token ID atau respons maklumat pengguna.
+    setting_instructions:
+      limit_self_registration: >
+        Jika pengguna yang dibenarkan hanya boleh mendaftar menggunakan penyediaan ini jika tetapan pendaftaran sendiri dibenarkan.

@@ -1,0 +1,7 @@
+<%= turbo_stream.dialog do
+  render(TimeEntries::EntryDialogComponent.new(
+    time_entry: @time_entry,
+    show_user: @show_user,
+    show_work_package: @show_work_package
+  ))
+end %>

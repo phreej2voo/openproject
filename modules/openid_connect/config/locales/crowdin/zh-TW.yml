@@ -1,0 +1,124 @@
+zh-TW:
+  plugin_openproject_openid_connect:
+    name: "OpenProject OpenID 連接"
+    description: "新增 OmniAuth OpenID 連線部署提供商至 OpenProject。"
+  logout_warning: >
+    你已被登出，你嘗試送出的內容可能都會遺失。請登入。
+  activemodel:
+    attributes:
+      openid_connect/provider:
+        name: 名稱
+        slug: 唯一識別碼
+        display_name: 顯示名稱
+        client_id: 客戶端 ID
+        client_secret: 用戶端密鑰
+        secret: 金鑰
+        scope: 範圍
+        grant_types_supported: 支援授權類型
+        limit_self_registration: 限制自行註冊
+        authorization_endpoint: 授權端點
+        userinfo_endpoint: 使用者資訊端點
+        token_endpoint: 權杖(token) 端點
+        end_session_endpoint: 結束會話端點
+        post_logout_redirect_uri: 登出後重定向 URI
+        jwks_uri: JWKS URI
+        issuer: 簽發者
+        tenant: 租用戶
+        metadata_url: 後設資料 URL
+        icon: 自訂圖示
+        claims: 要求
+        acr_values: ACR 值
+        redirect_url: 重新導向網址
+  activerecord:
+    errors:
+      models:
+        openid_connect/provider:
+          attributes:
+            metadata_url:
+              format: "發現端點 URL %{message}"
+              response_is_not_successful: " 回應 %{status}。"
+              response_is_not_json: " 沒有回傳JSON正文"
+              response_misses_required_attributes: " 未返回所需的屬性。缺少的屬性有： %{missing_attributes}."
+  provider:
+    delete_warning:
+      input_delete_confirmation: 輸入提供者名稱 %{name} 確認刪除。
+      irreversible_notice: 刪除 SSO 提供者是不可逆轉的動作。
+      provider: '您確定要刪除 SSO 提供者 %{name}? 要確認此動作，請在下面的欄位中輸入提供者的名稱，這將：'
+      delete_result_1: 從可用提供者清單中移除提供者。
+      delete_result_user_count:
+        zero: 目前沒有使用者使用此供應商。不需要採取進一步的行動。
+        one: "目前有一位使用者仍在使用此供應商。他們需要重新邀請或使用其他提供者登入。"
+        other: "%{count} 使用者目前仍在使用此供應商。他們需要重新邀請或使用其他提供者登入。"
+      delete_result_direct: 此提供商標記為直接登入提供商。該設定將被移除，使用者將不再被重定向到提供者進行登入。
+  openid_connect:
+    menu_title: OpenID 提供商
+    delete_title: "刪除 OpenID Connect 提供者"
+    instructions:
+      redirect_url: 這是 OpenID Connect 提供者應使用的重新導向網址，以便在登入成功後導回 OpenProject。
+      endpoint_url: OpenID Connect 提供者給予您的端點 URL
+      metadata_none: 我沒有這些資訊
+      metadata_url: 我有一個發現端點 URL
+      client_id: 這是 OpenID Connect 提供者給予您的用戶端 ID
+      client_secret: 這是 OpenID Connect 提供者給予您的用戶端密鑰
+      limit_self_registration: 如果啟用，只有在提供商端的設定允許的情況下，使用者才能使用此提供商註冊。
+      display_name: 提供商的名稱。這將會顯示在登入按鈕及提供商清單中。
+      tenant: '如果適用，請用您自己的租戶取代預設租戶。請參閱<a href=" https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols-oidc#find-your-apps-openid-configuration-document-uri">此內容</a>。'
+      scope: 如果您想要要求自訂範圍，您可以在此新增一個或多個範圍值，並以空格分隔。如需詳細資訊，請參閱 [OpenID Connect 文件](docs_url)。
+      post_logout_redirect_uri: OpenID Connect 提供者應在登出請求後重定向至的 URL。
+      claims: >
+        您可以針對 使用者資訊 和 id token(權杖) 端點要求額外的資料。請參閱 [我們的 OpenID connect 文件](docs_url) 以取得更多資訊。
+      acr_values: >
+        以更簡易的格式要求非必要的資料。更多資訊請參閱 [我們的 acr_values 文件](docs_url)。
+      mapping_login: >
+        在使用者資料回應中，提供用於登入屬性的自訂對應。
+      mapping_email: >
+        在使用者資料回應中，提供用於email屬性的自訂對應。
+      mapping_first_name: >
+        在使用者資料回應中，提供用於名字屬性的自訂對應。
+      mapping_last_name: >
+        在使用者資料回應中，提供用於姓氏屬性的自訂對應。
+      mapping_admin: >
+        在使用者資料回應中，提供用於管理狀態的自訂對應。它預期會傳回一個布林屬性。
+    settings:
+      metadata_none: 我沒有這些資訊
+      metadata_url: 我有發現一個端點 URL
+      endpoint_url: 端點 URL
+    providers:
+      label_providers: "提供商"
+      seeded_from_env: "此提供者是從環境組態根植的。無法編輯。"
+      google:
+        name: Google
+      microsoft_entra:
+        name: 微軟 Entra
+      custom:
+        name: 自訂
+      upsale:
+        description: 將 OpenProject 連接到 OpenID connect 身分提供者
+      label_add_new: 新增 OpenID 提供商
+      label_edit: 編輯 OpenID 提供商：%{name}
+      label_empty_title: 尚未設定 Saml 提供商。
+      label_empty_description: 增加可供查詢之提供商名稱
+      label_metadata: OpenID 連接搜尋端點
+      label_automatic_configuration: 自動設定
+      label_optional_configuration: 可選配置
+      label_advanced_configuration: 進階設定
+      label_configuration_details: 後設資料
+      label_client_details: 客戶端詳細資訊
+      label_attribute_mapping: 屬性對應
+      client_details_description: OpenProject 作為 OIDC 用戶端的細節設定
+      no_results_table: 尚未定義任何提供商。
+      plural: OpenID 提供商
+      singular: OpenID 提供商
+      section_texts:
+        metadata: 使用 OpenID Connect 發現端點 URL 預先填寫設定
+        metadata_form_banner: 編輯發現端點可能會覆寫現有預先填入的後置資料值。
+        metadata_form_title: OpenID Connect 發現端點
+        metadata_form_description: 如果您的身分提供者有發現端點 URL。請在下面使用它來預先填寫設定。
+        configuration_metadata: 資訊已使用提供的發現端點預先填入。在大多數情況下，它們不需要編輯。
+        configuration: OpenID Connect 提供者的組態詳細資訊
+        display_name: 使用者可見的顯示名稱。
+        attribute_mapping: 設定 OpenProject 與 OpenID Connect 提供者之間的屬性對應。
+        claims: 要求 「ID token(權杖)」 或 「使用者資訊」回應額外聲明。
+    setting_instructions:
+      limit_self_registration: >
+        如果啟用，使用者只能在允許自行註冊情況下，使用此提供者進行註冊。

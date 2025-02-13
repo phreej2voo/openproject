@@ -1,0 +1,43 @@
+#-- copyright
+#OpenProject is an open source project management software.
+#Copyright (C) the OpenProject GmbH
+#This program is free software; you can redistribute it and/or
+#modify it under the terms of the GNU General Public License version 3.
+#OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+#Copyright (C) 2006-2013 Jean-Philippe Lang
+#Copyright (C) 2010-2013 the ChiliProject Team
+#This program is free software; you can redistribute it and/or
+#modify it under the terms of the GNU General Public License
+#as published by the Free Software Foundation; either version 2
+#of the License, or (at your option) any later version.
+#This program is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+#You should have received a copy of the GNU General Public License
+#along with this program; if not, write to the Free Software
+#Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#See COPYRIGHT and LICENSE files for more details.
+#++
+mn:
+  plugin_openproject_documents:
+    name: "OpenProject баримт бичиг"
+    description: "An OpenProject plugin to allow creation of documents in projects."
+  activerecord:
+    models:
+      document: "Баримт бичиг"
+  activity:
+    filter:
+      document: "Баримт бичгүүд"
+  default_doc_category_tech: "Техникийн баримт бичиг"
+  default_doc_category_user: "Хэрэглэгчийн баримт бичиг"
+  enumeration_doc_categories: "Баримт бичгийн ангилал"
+  documents:
+    label_attachment_author: "Хавсралтын зохиогч"
+  label_document_added: "Баримт бичиг нэмэгдсэн"
+  label_document_new: "New document"
+  label_document_plural: "Баримт бичгүүд"
+  label_documents: "Баримт бичгүүд"
+  permission_manage_documents: "Баримт бичгүүдийг удирдах"
+  permission_view_documents: "Баримт бичгүүдийг харах"
+  project_module_documents: "Баримт бичгүүд"

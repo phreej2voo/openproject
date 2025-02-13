@@ -1,0 +1,67 @@
+zh-TW:
+  js:
+    grid:
+      add_widget: '新增小工具'
+      remove: '移除小工具'
+      configure: '設定小工具'
+      upsale:
+        text: "某些組件，如工作包圖組件，只在企業版提供。"
+        link: '企業版。'
+      widgets:
+        missing_permission: "您沒有必要的權限來檢視小工具。"
+        custom_text:
+          title: '自訂文字'
+        documents:
+          title: '文件'
+          no_results: '尚未有文檔。'
+        members:
+          title: '成員'
+          no_results: '無可見成員。'
+          view_all_members: '查看所有成員'
+          add: '成員'
+          too_many: '顯示 %{count} 名成員，共 %{total} 名。'
+        news:
+          title: '最新消息'
+          at: '在'
+          no_results: '沒有新消息可報告'
+        project_description:
+          title: '專案描述'
+          no_results: "尚未寫入任何描述。可以在「項目設置」中新增。"
+        project_status:
+          title: '專案狀態'
+          not_started: '未開始'
+          on_track: '如期進行'
+          off_track: '進度落後'
+          at_risk: '存在風險'
+          not_set: '未設定'
+          finished: '已完成'
+          discontinued: '已中止'
+        subprojects:
+          title: '子專案'
+          no_results: '無子專案'
+        project_favorites:
+          title: '收藏的專案'
+          no_results: '您目前沒有收藏的專案。點擊項目儀表板中的星形圖示將其新增到您的收藏夾中。'
+        time_entries_current_user:
+          title: '我的耗時'
+          displayed_days: '小工具顯示天數'
+        time_entries_list:
+          title: '耗時（最近7天）'
+          no_results: '過去7天沒有時間記錄。'
+        work_packages_accountable:
+          title: "我負責的工作項目"
+        work_packages_assigned:
+          title: '分配給我的工作項目'
+        work_packages_created:
+          title: '我所建立的工作項目'
+        work_packages_watched:
+          title: '我所關注的工作項目'
+        work_packages_table:
+          title: '工作項目表單'
+        work_packages_graph:
+          title: '工作項目圖'
+        work_packages_calendar:
+          title: '行事曆'
+        work_packages_overview:
+          title: '工作項目總覽'
+          placeholder: '點擊編輯'

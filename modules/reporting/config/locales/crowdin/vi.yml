@@ -1,0 +1,104 @@
+#-- copyright
+#OpenProject is an open source project management software.
+#Copyright (C) the OpenProject GmbH
+#This program is free software; you can redistribute it and/or
+#modify it under the terms of the GNU General Public License version 3.
+#OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+#Copyright (C) 2006-2013 Jean-Philippe Lang
+#Copyright (C) 2010-2013 the ChiliProject Team
+#This program is free software; you can redistribute it and/or
+#modify it under the terms of the GNU General Public License
+#as published by the Free Software Foundation; either version 2
+#of the License, or (at your option) any later version.
+#This program is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+#You should have received a copy of the GNU General Public License
+#along with this program; if not, write to the Free Software
+#Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#See COPYRIGHT and LICENSE files for more details.
+#++
+vi:
+  plugin_openproject_reporting:
+    name: "OpenProject Reporting"
+    description: "Mô-đun này cho phép tạo các báo cáo chi phí tùy chỉnh với việc lọc và nhóm dữ liệu do mô-đun Thời gian và chi phí của OpenProject tạo ra."
+  button_save_report_as: "Lưu báo cáo như..."
+  comments: "Nhận xét"
+  cost_reports_title: "Thời gian và chi phí"
+  label_cost_report: "Báo cáo chi phí"
+  label_cost_report_plural: "Các báo cáo chi phí"
+  description_drill_down: "Hiển thị chi tiết"
+  description_filter_selection: "Lựa chọn"
+  description_multi_select: "Hiển thị đa lựa chọn"
+  description_remove_filter: "Gỡ bỏ bộ lọc"
+  information_restricted_depending_on_permission: "Tùy thuộc vào quyền của bạn, trang này có thể chứa thông tin bị hạn chế."
+  label_click_to_edit: "Nhấp để chỉnh sửa."
+  label_closed: "đã đóng"
+  label_columns: "Cột"
+  label_cost_entry_attributes: "Các thuộc tính mục chi phí"
+  label_days_ago: "trong những ngày gần đây"
+  label_entry: "Mục chi phí"
+  label_filter_text: "Văn bản bộ lọc"
+  label_filter_value: "Giá trị"
+  label_filters: "Bộ lọc"
+  label_greater: ">"
+  label_is_not_project_with_subprojects: "không phải (bao gồm các dự án con)"
+  label_is_project_with_subprojects: "là (bao gồm các dự án con)"
+  label_is_work_package_with_descendants: "là (bao gồm tập con)"
+  label_is_not_work_package_with_descendants: "không phải (kể cả tập con)"
+  label_work_package_attributes: "Các thuộc tính gói công việc"
+  label_less: "<"
+  label_logged_by_reporting: "Đã ghi bởi"
+  label_money: "Giá trị tiền tệ"
+  label_month_reporting: "Tháng (Chi tiêu)"
+  label_new_report: "Báo cáo chi phí mới"
+  label_open: "mở"
+  label_operator: "Toán tử"
+  label_private_report_plural: "Các báo cáo chi phí cá nhân"
+  label_progress_bar_explanation: "Đang tạo báo cáo..."
+  label_public_report_plural: "Các báo cáo chi phí công khai"
+  label_really_delete_question: "Bạn có chắc chắn muốn xóa báo cáo này không?"
+  label_rows: "Hàng"
+  label_saving: "Đang lưu ..."
+  label_spent_on_reporting: "Ngày (Chi tiêu)"
+  label_sum: "Tổng cộng"
+  label_units: "Đơn vị"
+  label_week_reporting: "Tuần (Chi tiêu)"
+  label_year_reporting: "Năm (Chi tiêu)"
+  label_count: "Số lượng"
+  label_filter: "Bộ lọc"
+  label_filter_add: "Thêm Bộ lọc"
+  label_filter_plural: "Các bộ lọc"
+  label_group_by: "Nhóm theo"
+  label_group_by_add: "Thêm thuộc tính nhóm theo"
+  label_inactive: "«không hoạt động»"
+  label_no: "Không"
+  label_none: "(không có dữ liệu)"
+  label_no_reports: "Chưa có báo cáo chi phí nào."
+  label_report: "Báo cáo"
+  label_yes: "Có"
+  load_query_question: "Báo cáo sẽ có %{size} ô bảng và có thể mất một chút thời gian để tạo ra. Bạn có muốn thử tạo báo cáo không?"
+  permission_save_cost_reports: "Lưu các báo cáo chi phí công khai"
+  permission_save_private_cost_reports: "Lưu các báo cáo chi phí cá nhân"
+  project_module_reporting_module: "Báo cáo chi phí"
+  text_costs_are_rounded_note: "Các giá trị hiển thị được làm tròn. Tất cả các phép tính dựa trên các giá trị chưa được làm tròn."
+  toggle_multiselect: "kích hoạt/tắt đa lựa chọn"
+  units: "Đơn vị"
+  validation_failure_date: "không phải là một ngày hợp lệ"
+  validation_failure_integer: "không phải là một số nguyên hợp lệ"
+  export:
+    timesheet:
+      title: "Xuất bảng thời gian của bạn bằng PDF"
+      button: "Xuất bảng thời gian bằng PDF"
+      timesheet: "Bảng thời gian"
+      time: "Thời gian"
+      sum_hours: Sum
+    cost_reports:
+      title: "Xuất báo cáo chi phí của bạn sang XLS"
+      start_time: "Thời gian bắt đầu"
+      end_time: "Thời gian kết thúc"
+  reporting:
+    group_by:
+      selected_columns: "Các cột đã chọn"
+      selected_rows: "Các hàng đã chọn"

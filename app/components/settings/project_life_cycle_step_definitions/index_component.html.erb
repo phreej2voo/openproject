@@ -1,0 +1,128 @@
+<%#-- copyright
+OpenProject is an open source project management software.
+Copyright (C) the OpenProject GmbH
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License version 3.
+
+OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+Copyright (C) 2006-2013 Jean-Philippe Lang
+Copyright (C) 2010-2013 the ChiliProject Team
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+See COPYRIGHT and LICENSE files for more details.
+
+++#%>
+
+<%=
+  component_wrapper do
+    flex_layout(data: wrapper_data_attributes) do |flex|
+      flex.with_row do
+        if allowed_to_customize_life_cycle?
+          render(Primer::OpenProject::SubHeader.new) do |subheader|
+            subheader.with_filter_input(
+              name: "border-box-filter",
+              label: t("settings.project_life_cycle_step_definitions.filter.label"),
+              visually_hide_label: true,
+              placeholder: t("settings.project_life_cycle_step_definitions.filter.label"),
+              leading_visual: {
+                icon: :search,
+                size: :small
+              },
+              show_clear_button: true,
+              data: {
+                action: "input->projects--settings--border-box-filter#filterLists",
+                "projects--settings--border-box-filter-target": "filter"
+              }
+            )
+            subheader.with_action_component do
+              render(Primer::Alpha::ActionMenu.new(
+                anchor_align: :end)
+              ) do |menu|
+                menu.with_show_button(
+                  scheme: :primary,
+                  aria: { label: I18n.t("settings.project_life_cycle_step_definitions.label_add_description") },
+                ) do |button|
+                  button.with_leading_visual_icon(icon: :plus)
+                  button.with_trailing_action_icon(icon: :"triangle-down")
+                  I18n.t("settings.project_life_cycle_step_definitions.label_add")
+                end
+
+                menu.with_item(
+                  label: I18n.t("settings.project_life_cycle_step_definitions.label_add_stage"),
+                  href: new_stage_admin_settings_project_life_cycle_step_definitions_path
+                ) do |item|
+                  item.with_leading_visual_icon(icon: "git-commit")
+                end
+
+                menu.with_item(
+                  label: I18n.t("settings.project_life_cycle_step_definitions.label_add_gate"),
+                  href: new_gate_admin_settings_project_life_cycle_step_definitions_path
+                ) do |item|
+                  item.with_leading_visual_icon(icon: "diamond")
+                end
+              end
+            end
+          end
+        else
+          render EnterpriseEdition::BannerComponent.new(:customize_life_cycle, mb: 3)
+        end
+      end
+
+      flex.with_row do
+        render(border_box_container(mb: 3, data: drop_target_config)) do |component|
+          component.with_header(font_weight: :bold, py: 2) do
+            flex_layout(justify_content: :space_between, align_items: :center) do |header_container|
+              header_container.with_column do
+                render(Primer::Beta::Text.new(font_weight: :bold)) do
+                  I18n.t("settings.project_life_cycle_step_definitions.section_header")
+                end
+              end
+            end
+          end
+          if definitions.empty?
+            component.with_row do
+              render(Primer::Beta::Text.new(color: :subtle)) do
+                t("settings.project_life_cycle_step_definitions.non_defined")
+              end
+            end
+          else
+            definitions.each do |definition|
+              component.with_row(
+                data: {
+                  "projects--settings--border-box-filter-target": "searchItem",
+                  test_selector: "project-life-cycle-step-definition",
+                  **draggable_item_config(definition)
+                }
+              ) do
+                render(Settings::ProjectLifeCycleStepDefinitions::RowComponent.new(
+                  definition,
+                  first?: definition == definitions.first,
+                  last?: definition == definitions.last,
+                ))
+              end
+            end
+          end
+        end
+      end
+      flex.with_row(display: :none, data: { "projects--settings--border-box-filter-target": "noResultsText" }) do
+        render Primer::Beta::Text.new do
+          I18n.t("js.autocompleter.notFoundText")
+        end
+      end
+    end
+  end
+%>

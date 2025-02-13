@@ -1,0 +1,21 @@
+<%=
+  component_wrapper do
+    if journal.notes.present?
+      flex_layout do |journal_container|
+        journal_container.with_row do
+          render(Primer::Box.new(mt: 1, classes: "op-uc-container")) do
+            format_text(journal, :notes)
+          end
+        end
+        journal_container.with_row(flex_layout: true) do |reactions_container|
+          reactions_container.with_column do
+            render(WorkPackages::ActivitiesTab::Journals::ItemComponent::AddReactions.new(journal:, grouped_emoji_reactions:))
+          end
+          reactions_container.with_column do
+            render(WorkPackages::ActivitiesTab::Journals::ItemComponent::Reactions.new(journal:, grouped_emoji_reactions:))
+          end
+        end
+      end
+    end
+  end
+%>

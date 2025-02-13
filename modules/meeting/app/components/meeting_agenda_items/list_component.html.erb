@@ -1,0 +1,42 @@
+<%=
+  component_wrapper(data: wrapper_data_attributes) do
+    flex_layout(mb: 3) do |flex|
+      if @meeting.template? && !empty?
+        flex.with_row(mb: 3) do
+          render Primer::Alpha::Banner.new(scheme: :default,
+                                           icon: :info,
+                                           dismiss_scheme: :none) do
+            t("recurring_meeting.template.banner_html",
+                   link: link_to(@meeting.recurring_meeting.title,
+                                 recurring_meeting_path(@meeting.recurring_meeting)))
+          end
+        end
+      end
+      flex.with_row(classes: 'dragula-container', id: insert_target_modifier_id, data: { 'allowed-drop-type': 'section' }.merge(drop_target_config) ) do
+        first_and_last = [@meeting.sections.first, @meeting.sections.last]
+        render(
+          MeetingSections::ShowComponent.with_collection(
+            @meeting.sections,
+            first_and_last:
+          )
+        )
+      end
+      if empty?
+        flex.with_row do
+          render(border_box_container) do |border_box|
+            if @form_hidden
+              border_box.with_body(
+                scheme: :default
+              ) do
+                render(MeetingAgendaItems::BlankSlateComponent.new(meeting: @meeting))
+              end
+            end
+            border_box.with_row(p: 0, border_top: 0) do
+              render(MeetingAgendaItems::NewComponent.new(meeting: @meeting, hidden: @form_hidden, type: @form_type))
+            end
+          end
+        end
+      end
+    end
+  end
+%>

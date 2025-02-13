@@ -1,0 +1,67 @@
+vi:
+  js:
+    grid:
+      add_widget: 'Thêm widget'
+      remove: 'Xóa widget'
+      configure: 'Cấu hình widget'
+      upsale:
+        text: "Một số tiện ích, như tiện ích biểu đồ gói công việc, chỉ khả dụng trong phiên bản Enterprise."
+        link: 'Phiên bản doanh nghiệp.'
+      widgets:
+        missing_permission: "Bạn không có quyền cần thiết để xem widget này."
+        custom_text:
+          title: 'Văn bản tùy chỉnh'
+        documents:
+          title: 'Tài liệu'
+          no_results: 'Chưa có tài liệu.'
+        members:
+          title: 'Thành viên'
+          no_results: 'Không có thành viên nào được hiển thị.'
+          view_all_members: 'Xem tất cả thành viên'
+          add: 'Thành viên'
+          too_many: 'Hiển thị %{count} trong tổng số %{total} thành viên.'
+        news:
+          title: 'Tin tức'
+          at: 'tại'
+          no_results: 'Không có tin tức mới để báo cáo.'
+        project_description:
+          title: 'Mô tả dự án'
+          no_results: "Chưa có mô tả nào được viết. Có thể cung cấp trong 'Cài đặt dự án'."
+        project_status:
+          title: 'Tình trạng dự án'
+          not_started: 'Chưa bắt đầu'
+          on_track: 'Đang tiến triển'
+          off_track: 'Bị lệch'
+          at_risk: 'Có nguy cơ'
+          not_set: 'Không được thiết lập'
+          finished: 'Hoàn thành'
+          discontinued: 'Ngừng hoạt động'
+        subprojects:
+          title: 'Các dự án con'
+          no_results: 'Không có dự án con.'
+        project_favorites:
+          title: 'Dự án yêu thích'
+          no_results: 'Hiện tại bạn không có dự án yêu thích nào. Nhấp vào biểu tượng sao trên bảng điều khiển dự án để thêm một dự án vào danh sách yêu thích của bạn.'
+        time_entries_current_user:
+          title: 'Thời gian hiện tại (My spent time)'
+          displayed_days: 'Số ngày được hiển thị trong widget:'
+        time_entries_list:
+          title: 'Thời gian đã chi (7 ngày qua)'
+          no_results: 'Không có mục thời gian nào trong 7 ngày qua.'
+        work_packages_accountable:
+          title: "Gói công việc tôi chịu trách nhiệm"
+        work_packages_assigned:
+          title: 'Gói công việc được giao cho tôi'
+        work_packages_created:
+          title: 'Công việc tạo bởi tôi'
+        work_packages_watched:
+          title: 'Công việc có liên quan tới tôi'
+        work_packages_table:
+          title: 'Bảng gói công việc'
+        work_packages_graph:
+          title: 'Đồ thị gói công việc'
+        work_packages_calendar:
+          title: 'Lịch'
+        work_packages_overview:
+          title: 'Tổng quan về gói công việc'
+          placeholder: 'Nhấp để chỉnh sửa ...'

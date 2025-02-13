@@ -1,0 +1,10 @@
+<%=
+  component_wrapper do
+    render(Primer::OpenProject::SidePanel.new(
+      spacious: true,
+      test_selector: "project-life-cycles-sidebar-async-content"
+    )) do |panel|
+      panel.with_section(ProjectLifeCycles::Sections::ShowComponent.new(project: @project))
+    end
+  end
+%>

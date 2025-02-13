@@ -1,0 +1,140 @@
+<%#-- copyright
+OpenProject is an open source project management software.
+Copyright (C) the OpenProject GmbH
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License version 3.
+
+OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+Copyright (C) 2006-2013 Jean-Philippe Lang
+Copyright (C) 2010-2013 the ChiliProject Team
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+See COPYRIGHT and LICENSE files for more details.
+
+++#%>
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { @version.name }
+    header.with_breadcrumbs( [{ href: project_overview_path(@project.id), text: @project.name  },
+                              { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
+                              { href: project_settings_versions_path(@project.id), text: I18n.t("label_version_plural") },
+                              @version.name
+                             ])
+    if authorize_for(:versions, :edit)
+      header.with_action_button(tag: :a,
+                                mobile_icon: :pencil,
+                                mobile_label: t(:button_edit),
+                                size: :medium,
+                                href: edit_version_path(@version),
+                                aria: { label: I18n.t(:button_edit) },
+                                data: { test_selector: "version-edit-button" },
+                                title: I18n.t(:button_edit)) do |button|
+        button.with_leading_visual_icon(icon: :pencil)
+        t(:button_edit)
+      end
+    end
+    if authorize_for(:versions, :destroy)
+      header.with_action_button(tag: :a,
+                                scheme: :danger,
+                                mobile_icon: :trash,
+                                mobile_label: t(:button_delete),
+                                size: :medium,
+                                href: version_path(@version),
+                                aria: { label: I18n.t(:button_delete) },
+                                data: {
+                                  confirm: I18n.t(:text_are_you_sure),
+                                  method: :delete,
+                                  test_selector: "version-delete-button"
+                                },
+                                title: I18n.t(:button_delete)) do |button|
+        button.with_leading_visual_icon(icon: :trash)
+        t(:button_delete)
+      end
+    end
+    if authorize_for(:wiki, :edit) && !(@version.wiki_page_title.blank? || @version.project.wiki.nil?)
+      header.with_action_button(tag: :a,
+                                mobile_icon: :pencil,
+                                mobile_label: t(:button_edit_associated_wikipage, page_title: truncate(@version.wiki_page_title, length: 50, separator: ' ')),
+                                size: :medium,
+                                href: url_for({ controller: '/wiki', action: 'edit', project_id: @version.project, id: @version.wiki_page_title }),
+                                aria: { label: t(:button_edit_associated_wikipage, page_title: truncate(@version.wiki_page_title, length: 50, separator: ' ')) },
+                                title: t(:button_edit_associated_wikipage, page_title: truncate(@version.wiki_page_title, length: 50, separator: ' '))) do |button|
+        button.with_leading_visual_icon(icon: :pencil)
+        t(:button_edit_associated_wikipage, page_title: truncate(@version.wiki_page_title, length: 50, separator: ' '))
+      end
+    end
+    call_hook(:view_versions_show_contextual, { version: @version, project: @project })
+  end %>
+
+<div class="widget-boxes -grid">
+  <div class="widget-box -thin">
+    <%= render partial: 'versions/overview', locals: { version: @version } %>
+  </div>
+
+  <% if @version.estimated_hours > 0 || User.current.allowed_in_project?(:view_time_entries, @project) %>
+    <div class="widget-box -thin">
+      <fieldset class="form--fieldset">
+        <legend class="form--fieldset-legend"><%= t(:label_estimates_and_progress) %></legend>
+        <table>
+          <tr>
+            <td width="130px" align="right"><%= Version.human_attribute_name(:estimated_hours) %></td>
+            <td width="240px" class="total-hours" align="right"><%= l_hours(@version.estimated_hours) %></td>
+          </tr>
+          <% if User.current.allowed_in_project?(:view_time_entries, @project) %>
+            <tr>
+              <td width="130px" align="right"><%= t(:label_spent_time) %></td>
+              <td width="240px" class="total-hours" align="right"><%= l_hours(@version.spent_hours) %></td>
+            </tr>
+          <% end %>
+        </table>
+      </fieldset>
+    </div>
+  <% end %>
+
+  <% if @version.wiki_page %>
+    <div class="widget-box -thin -wider">
+      <%= render(partial: "wiki/text", locals: { page: @version.wiki_page }) if @version.wiki_page %>
+    </div>
+  <% end %>
+
+  <% if @issues.present? %>
+    <div class="widget-box -thin -wider">
+      <% if @issues.present? %>
+        <fieldset class="form--fieldset related_issues">
+          <legend class="form--fieldset-legend"><%= t(:label_related_work_packages) %></legend>
+          <ul>
+            <% @issues.each do |issue| -%>
+              <li><%= link_to_work_package(issue, project: issue.project != @version.project) %></li>
+            <% end -%>
+          </ul>
+        </fieldset>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if @version.work_packages.count > 0 %>
+    <div class="widget-box -thin -wider">
+      <opce-wp-overview-graph
+        global-scope='<%= @version.systemwide? %>'
+        initial-filters='<%= version_wp_overview_graph_initial_filters(@version) %>'>
+      </opce-wp-overview-graph>
+    </div>
+  <% end %>
+</div>
+<%= call_hook :view_versions_show_bottom, version: @version %>
+
+<% html_title h(@version.name) %>

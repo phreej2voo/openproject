@@ -1,0 +1,19 @@
+<% html_title t(:label_administration), t("admin.enterprise.upgrade_to_ee") %>
+
+<%=
+  render(Primer::OpenProject::PageHeader.new) do |header|
+    header.with_title { t(:label_enterprise_edition) }
+    header.with_breadcrumbs([{ href: admin_index_path, text: t(:label_administration) },
+                             t(:label_enterprise_edition)])
+  end
+%>
+
+<%= error_messages_for 'token' %>
+
+<% if @current_token.present? %>
+  <%= render partial: "current" %>
+<% else %>
+  <%= render partial: "info" %>
+<% end %>
+
+<%= render partial: "form" %>

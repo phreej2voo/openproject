@@ -1,0 +1,28 @@
+#English strings go here
+vi:
+  js:
+    team_planner:
+      add_existing: 'Thêm hiện có'
+      add_existing_title: 'Thêm các gói công việc hiện có'
+      create_label: 'Kế hoạch nhóm'
+      create_title: 'Tạo kế hoạch nhóm mới'
+      unsaved_title: 'Kế hoạch nhóm chưa đặt tên'
+      no_data: 'Thêm người được phân công để thiết lập kế hoạch nhóm của bạn.'
+      add_assignee: 'Assignee'
+      remove_assignee: 'Xóa người được phân công'
+      two_weeks: '2 tuần'
+      one_week: '1 tuần'
+      four_weeks: '4 tuần'
+      eight_weeks: '8 tuần'
+      work_week: 'Tuần làm việc'
+      today: 'Hôm nay'
+      drag_here_to_remove: 'Kéo vào đây để xóa người được phân công và ngày bắt đầu và kết thúc.'
+      cannot_drag_here: 'Không thể xóa gói công việc do quyền hoặc hạn chế chỉnh sửa.'
+      cannot_drag_to_non_working_day: 'Gói công việc này không thể bắt đầu/kết thúc vào ngày không làm việc.'
+      quick_add:
+        empty_state: 'Sử dụng trường tìm kiếm để tìm các gói công việc và kéo chúng vào kế hoạch để phân công cho ai đó và xác định ngày bắt đầu và kết thúc.'
+        search_placeholder: 'Tìm kiếm...'
+      modify:
+        errors:
+          permission_denied: 'Bạn không có quyền cần thiết để sửa đổi điều này.'
+          fallback: 'Gói công việc này không thể được chỉnh sửa.'

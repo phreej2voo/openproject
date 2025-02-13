@@ -1,0 +1,100 @@
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { t(:label_information_plural) }
+    header.with_breadcrumbs( [
+                               { href: project_overview_path(@project.id), text: @project.name  },
+                               { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
+                               t(:label_information_plural)
+                             ])
+
+    if User.current.allowed_in_project?(:add_subprojects, @project)
+      header.with_action_button(scheme: :primary,
+                                mobile_icon: :plus,
+                                mobile_label: t(:label_subproject_new),
+                                aria: { label: t(:label_subproject_new) },
+                                title: t(:label_subproject_new),
+                                tag: :a,
+                                href: new_project_path(parent_id: @project.id)) do |button|
+        button.with_leading_visual_icon(icon: :plus)
+        t(:label_subproject)
+      end
+    end
+
+    header.with_action_button(tag: :a,
+                              mobile_icon: :pencil,
+                              mobile_label: t('projects.settings.change_identifier'),
+                              size: :medium,
+                              href: project_identifier_path(@project),
+                              aria: { label: t('projects.settings.change_identifier') },
+                              title: t('projects.settings.change_identifier')) do |button|
+      button.with_leading_visual_icon(icon: :pencil)
+      t('projects.settings.change_identifier')
+    end
+
+    header.with_action_menu(
+      menu_arguments: {
+        anchor_align: :end
+      },
+      button_arguments: {
+        icon: "op-kebab-vertical",
+        "aria-label": t(:label_more),
+        test_selector: "project-settings-more-menu"
+      }
+    ) do |menu|
+      if @project.copy_allowed?
+        menu.with_item(
+          label:t(:button_copy),
+          href: copy_project_path(@project),
+          content_arguments: {
+            data: { turbo: false },
+            test_selector: "project-settings--copy"
+          },
+          accesskey: helpers.accesskey(:copy),
+          ) do |item|
+          item.with_leading_visual_icon(icon: :copy)
+        end
+      end
+
+      if User.current.allowed_in_project?(:archive_project, @project)
+        menu.with_item(
+          tag: :a,
+          label: t(:button_archive),
+          href: project_archive_path(@project, status: '', name: @project.name),
+          content_arguments: {
+            data: { confirm: t('project.archive.are_you_sure', name: @project.name), method: :post, },
+            test_selector: "project-settings--archive"
+          }
+        ) do |item|
+          item.with_leading_visual_icon(icon: 'lock')
+        end
+      end
+      if User.current.admin?
+        label = @project.templated ? 'remove_from_templates' : 'make_template'
+        menu.with_item(
+          tag: :a,
+          label: t("project.template.#{label}"),
+          href: project_templated_path(@project),
+          content_arguments: {
+            data: { method: @project.templated ? :delete : :post },
+            test_selector: "project-settings--mark-template"
+          }
+        ) do |item|
+          item.with_leading_visual_icon(icon: @project.templated ? :"file-removed" : :"file-added")
+        end
+
+        menu.with_item(
+          tag: :a,
+          scheme: :danger,
+          label: t(:button_delete),
+          href: confirm_destroy_project_path(@project),
+          content_arguments: {
+            data: { turbo: false },
+            test_selector: "project-settings--delete"
+          }
+        ) do |item|
+          item.with_leading_visual_icon(icon: :trash)
+        end
+      end
+    end
+  end
+%>

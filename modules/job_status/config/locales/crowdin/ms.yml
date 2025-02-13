@@ -1,0 +1,21 @@
+ms:
+  label_job_status_plural: "Status pekerjaan"
+  plugin_openproject_job_status:
+    name: "Status Pekerjaan OpenProject"
+    description: "Senarai dan status latar belakang pekerjaan."
+  job_status_dialog:
+    download_starts: 'Muat turun harus bermula secara automatik.'
+    link_to_download: 'Atau, %{link} untuk memuat turun.'
+    click_here: 'klik sini'
+    title: 'Status pekerjaan latar belakang'
+    redirect: 'Anda sedang dilencongkan.'
+    redirect_link: 'Sila klik di sini untuk teruskan.'
+    redirect_errors: 'Disebabkan ralat ini, anda tidak akan diubah hala secara automatik.'
+    errors: 'Sesuatu telah berlaku'
+    generic_messages:
+      not_found: 'Pekerjaan ini tidak ditemui.'
+      in_queue: 'Kerja telah beratur dan akan diproses sebentar lagi.'
+      in_process: 'Kerja sedang diproses.'
+      error: 'Kerja itu gagal diselesaikan.'
+      cancelled: 'Kerja telah dibatalkan kerana ralat.'
+      success: 'Kerja selesai dengan jayanya.'

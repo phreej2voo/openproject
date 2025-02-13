@@ -1,0 +1,17 @@
+#English strings go here
+ro:
+  plugin_openproject_team_planner:
+    name: "Planificare echipă OpenProject"
+    description: "Provides team planner views."
+  permission_view_team_planner: "Vezi planificatorul echipei"
+  permission_manage_team_planner: "Gestionează planificatorul de echipe"
+  project_module_team_planner_view: "Planificare echipă"
+  team_planner:
+    label_team_planner: "Planificator echipă"
+    label_new_team_planner: "Planificator echipă nou"
+    label_create_new_team_planner: "Creează planificator echipă nou"
+    label_team_planner_plural: "Planificare echipă"
+    label_assignees: "Responsabili"
+    upsale:
+      title: "Planificator echipă"
+      description: "Obțineți o imagine de ansamblu completă a planificării echipei dumneavoastră cu Team Planner. Întindeți, scurtați și glisați pachetele de lucru pentru a modifica datele, pentru a le muta sau pentru a schimba destinatarii."

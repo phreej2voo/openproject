@@ -1,0 +1,5 @@
+tr:
+  js:
+    work_packages:
+      default_queries:
+        milestones: 'Aşamalar'

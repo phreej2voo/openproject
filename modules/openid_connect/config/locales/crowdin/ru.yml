@@ -1,0 +1,124 @@
+ru:
+  plugin_openproject_openid_connect:
+    name: "OpenProject OpenID Подключение"
+    description: "Добавлена стратегия OmniAuth OpenID Connect для OpenProject."
+  logout_warning: >
+    Вы вышли из системы. Содержимое любой формы, которую вы можете отправить, может быть потеряно. Пожалуйста [войдите в систему].
+  activemodel:
+    attributes:
+      openid_connect/provider:
+        name: Имя
+        slug: Уникальный идентификатор
+        display_name: Отображаемое имя
+        client_id: ID клиента
+        client_secret: Закрытый ключ клиента
+        secret: Секретный ключ
+        scope: Область
+        grant_types_supported: Поддерживаемые типы разрешений
+        limit_self_registration: Ограничить саморегистрацию
+        authorization_endpoint: Конечная точка авторизации
+        userinfo_endpoint: Конечная точка получения информации о пользователе
+        token_endpoint: Конечная точка токена
+        end_session_endpoint: Конечная точка завершения сеанса
+        post_logout_redirect_uri: URI перенаправления после выхода из системы
+        jwks_uri: JWKS URI
+        issuer: Издатель
+        tenant: Владелец
+        metadata_url: URL метаданных
+        icon: Пользовательская иконка
+        claims: Претензии
+        acr_values: Значения ACR
+        redirect_url: URL переадресации
+  activerecord:
+    errors:
+      models:
+        openid_connect/provider:
+          attributes:
+            metadata_url:
+              format: "URL конечной точки обнаружения %{message}"
+              response_is_not_successful: " отвечает %{status}."
+              response_is_not_json: " не возвращает тело JSON."
+              response_misses_required_attributes: " не возвращает необходимые атрибуты. Недостающими атрибутами являются: %{missing_attributes}."
+  provider:
+    delete_warning:
+      input_delete_confirmation: Введите имя провайдера %{name} для подтверждения удаления.
+      irreversible_notice: Удаление SSO провайдера является необратимым действием.
+      provider: 'Вы уверены, что хотите удалить провайдера SSO %{name}? Чтобы подтвердить это действие, пожалуйста, введите имя провайдера в поле ниже, это позволит:'
+      delete_result_1: Удалить провайдера из списка доступных провайдеров.
+      delete_result_user_count:
+        zero: Нет пользователей в настоящее время с этим провайдером. Никаких дальнейших действий не требуется.
+        one: "Один пользователь в настоящее время все еще использует этого провайдера. Его нужно будет заново пригласить или войти в систему с другим провайдером."
+        other: "%{count} пользователей все еще используют этого провайдера. Они должны быть повторно приглашены или авторизованы через другого провайдера."
+      delete_result_direct: Этот провайдер отмечен как провайдер прямого входа в систему. Эта настройка будет удалена, и пользователи больше не будут перенаправляться к этому провайдеру для входа в систему.
+  openid_connect:
+    menu_title: Провайдеры OpenID
+    delete_title: "Удалить провайдера OpenID Connect"
+    instructions:
+      redirect_url: Это URL, который провайдер OpenID Connect должен использовать для перенаправления обратно на OpenProject после успешного входа в систему.
+      endpoint_url: URL-адрес конечной точки, указанный поставщиком OpenID Connect
+      metadata_none: У меня нет этой информации
+      metadata_url: У меня есть URL конечной точки обнаружения
+      client_id: Это идентификатор клиента, присвоенный вам провайдером OpenID Connect
+      client_secret: Это ключ клиента, предоставленный вам провайдером OpenID Connect
+      limit_self_registration: Если эта опция включена, пользователи смогут регистрироваться у этого провайдера только в том случае, если конфигурация провайдера позволяет это делать.
+      display_name: Это имя провайдера. Оно будет отображаться как кнопка входа и в списке провайдеров.
+      tenant: 'Пожалуйста, замените владельца по умолчанию на своего собственного, если это применимо. См. <a href=" https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols-oidc#find-your-apps-openid-configuration-document-uri">это</a>.'
+      scope: Если Вы хотите запросить пользовательские области видимости, Вы можете добавить здесь одно или несколько значений диапазона, разделенных пробелами. Более подробную информацию Вы найдете в [документации OpenID Connect](docs_url).
+      post_logout_redirect_uri: URL-адрес, на который провайдер OpenID Connect должен перенаправить Вас после запроса на выход из системы.
+      claims: >
+        Вы можете запросить дополнительные требования к конечным точкам пользовательской информации и id токена. Пожалуйста, обратитесь к [нашей документации для OpenID подключения](docs_url) для получения дополнительной информации.
+      acr_values: >
+        Запрос несущественных требований в более удобном формате. Смотрите [нашу документацию по acr_values](docs_url) для получения дополнительной информации.
+      mapping_login: >
+        Предоставьте пользовательское отображение в ответе userinfo, которое будет использоваться для атрибута логина.
+      mapping_email: >
+        Предоставьте пользовательское отображение в ответе userinfo, которое будет использоваться для атрибута электронной почты.
+      mapping_first_name: >
+        Предоставьте пользовательское отображение в ответе userinfo, которое будет использоваться для атрибута имени.
+      mapping_last_name: >
+        Предоставьте пользовательское отображение в ответе userinfo, которое будет использоваться для атрибута фамилии.
+      mapping_admin: >
+        Предоставьте пользовательское отображение в ответе userinfo, которое будет использоваться для определения статуса администратора. Ожидается, что будет возвращен атрибут boolean.
+    settings:
+      metadata_none: У меня нет этой информации
+      metadata_url: У меня есть URL конечной точки обнаружения
+      endpoint_url: URL конечной точки
+    providers:
+      label_providers: "Провайдеры"
+      seeded_from_env: "Этот провайдер был инициализирован из конфигурации среды. Он не может быть отредактирован."
+      google:
+        name: Google
+      microsoft_entra:
+        name: Microsoft Entra
+      custom:
+        name: Пользовательский
+      upsale:
+        description: Подключить OpenProject к провайдеру идентификации OpenID connect
+      label_add_new: Добавить нового провайдера OpenID
+      label_edit: Редактировать провайдера OpenID %{name}
+      label_empty_title: Провайдеры OpenID еще не настроены.
+      label_empty_description: Добавьте провайдера, чтобы увидеть его здесь.
+      label_metadata: Конечная точка обнаружения OpenID Connect
+      label_automatic_configuration: Автоматическая настройка
+      label_optional_configuration: Необязательные настройки
+      label_advanced_configuration: Расширенные настройки
+      label_configuration_details: Метаданные
+      label_client_details: Информация о клиенте
+      label_attribute_mapping: Привязки атрибутов
+      client_details_description: Информация о настройке OpenProject в качестве клиента OIDC
+      no_results_table: Ни один провайдер еще не был определен.
+      plural: Провайдеры OpenID
+      singular: Провайдер OpenID
+      section_texts:
+        metadata: Предварительно заполните конфигурацию, используя URL обнаружения OpenID Connect
+        metadata_form_banner: Редактирование URL может перезаписать ранее заполненные значения метаданных.
+        metadata_form_title: Конечная точка обнаружения OpenID Connect
+        metadata_form_description: Если ваш поставщик идентификации имеет URL обнаружения. Используйте его ниже для предварительного заполнения.
+        configuration_metadata: Эта информация была предварительно заполнена с использованием URL обнаружения. В большинстве случаев она не требует редактирования.
+        configuration: Подробности конфигурации провайдера OpenID Connect
+        display_name: Отображаемое имя, видимое пользователям.
+        attribute_mapping: Настройте сопоставление атрибутов между OpenProject и провайдером OpenID Connect.
+        claims: Запросите дополнительные требования к ID-токену или ответу userinfo.
+    setting_instructions:
+      limit_self_registration: >
+        Если включено, пользователи могут зарегистрироваться только с помощью данного провайдера, если это позволяет сама регистрация.

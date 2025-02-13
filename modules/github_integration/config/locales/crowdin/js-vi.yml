@@ -1,0 +1,54 @@
+#-- copyright
+#OpenProject is an open source project management software.
+#Copyright (C) the OpenProject GmbH
+#This program is free software; you can redistribute it and/or
+#modify it under the terms of the GNU General Public License version 3.
+#OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+#Copyright (C) 2006-2013 Jean-Philippe Lang
+#Copyright (C) 2010-2013 the ChiliProject Team
+#This program is free software; you can redistribute it and/or
+#modify it under the terms of the GNU General Public License
+#as published by the Free Software Foundation; either version 2
+#of the License, or (at your option) any later version.
+#This program is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+#You should have received a copy of the GNU General Public License
+#along with this program; if not, write to the Free Software
+#Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#See COPYRIGHT and LICENSE files for more details.
+#++
+vi:
+  js:
+    github_integration:
+      work_packages:
+        tab_name: "GitHub"
+      tab_header:
+        title: "Yêu cầu kéo"
+        copy_menu:
+          label: Mã git
+          description: Sao chép mã git vào clipboard
+        git_actions:
+          branch_name: Tên nhánh
+          commit_message: Tin nhắn commit
+          cmd: Tạo nhánh với commit trống
+          title: Mã nhanh cho Git
+          copy_success: '✅ Đã sao chép!'
+          copy_error: '❌ Sao chép thất bại!'
+      tab_prs:
+        empty: 'Chưa có yêu cầu kéo nào được liên kết. Liên kết một PR hiện có bằng cách sử dụng mã <code>OP#%{wp_id}</code> trong mô tả PR hoặc tạo một PR mới.'
+      github_actions: Hành động
+      pull_requests:
+        message: "Yêu cầu kéo #%{pr_number} %{pr_link} cho %{repository_link} do %{github_user_link} viết đã được %{pr_state}."
+        merged_message: "Yêu cầu kéo #%{pr_number} %{pr_link} cho %{repository_link} đã được %{pr_state} bởi %{github_user_link}."
+        referenced_message: "Yêu cầu kéo #%{pr_number} %{pr_link} cho %{repository_link} do %{github_user_link} viết đã tham chiếu đến gói công việc này."
+        states:
+          opened: 'mở'
+          closed: 'đóng'
+          draft: 'dự thảo'
+          merged: 'gộp'
+          ready_for_review: 'đánh dấu sẵn sàng để xem xét'
+    work_packages:
+      tabs:
+        github: "GitHub"

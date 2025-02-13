@@ -1,0 +1,61 @@
+# /api/v3/work_packages/{id}/reminders
+---
+get:
+  parameters:
+  - description: Work package id
+    example: '1'
+    in: path
+    name: id
+    required: true
+    schema:
+      type: integer
+  responses:
+    '200':
+      description: OK
+      content:
+        application/hal+json:
+          schema:
+            $ref: '../components/schemas/reminder_model.yml'
+      headers: {}
+    '403':
+      content:
+        application/hal+json:
+          schema:
+            $ref: "../components/schemas/error_response.yml"
+          examples:
+            response:
+              value:
+                _type: Error
+                errorIdentifier: urn:openproject-org:api:v3:errors:MissingPermission
+                message: You are not allowed to see linked reminders for this work
+                  package.
+      description: |-
+        Returned if the client does not have sufficient permissions.
+
+        **Required permission:** view work packages for the project the work package is contained in.
+        **Required permission:** manage own reminders for the work package.
+
+        *Note that you will only receive this error, if you are at least allowed to see the corresponding work package.*
+      headers: {}
+    '404':
+      content:
+        application/hal+json:
+          schema:
+            $ref: "../components/schemas/error_response.yml"
+          examples:
+            response:
+              value:
+                _type: Error
+                errorIdentifier: urn:openproject-org:api:v3:errors:NotFound
+                message: The specified work package does not exist.
+      description: |-
+        Returned if the work package does not exist or the client does not have sufficient permissions to see it.
+
+        **Required permission:** view work package
+      headers: {}
+  tags:
+  - Work Packages
+  description: |-
+    Gets a list of your upcoming reminders for this work package.
+  operationId: Reminders
+  summary: Reminders

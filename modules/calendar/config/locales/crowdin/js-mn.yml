@@ -1,0 +1,8 @@
+#English strings go here
+mn:
+  js:
+    calendar:
+      create_new: 'Шинэ хуанли үүсгэх'
+      title: 'Хуанли'
+      too_many: 'Нийт %{count} ажлын багц байгаа ч зөвхөн %{max}-г харуулах боломжтой.'
+      unsaved_title: 'Нэрлэгдээгүй хуанли'

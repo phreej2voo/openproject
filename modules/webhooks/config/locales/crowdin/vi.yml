@@ -1,0 +1,67 @@
+vi:
+  plugin_openproject_webhooks:
+    name: "OpenProject Webhooks"
+    description: "Cung cấp API plug-in để hỗ trợ các webhook của OpenProject cho tích hợp bên thứ ba tốt hơn."
+  activerecord:
+    attributes:
+      webhooks/webhook:
+        url: 'URL Payload'
+        secret: 'Chữ ký bí mật'
+        events: 'Sự kiện'
+        enabled: 'Đã kích hoạt'
+        projects: 'Dự án được kích hoạt'
+      webhooks/log:
+        event_name: 'Tên sự kiện'
+        url: 'URL Payload'
+        response_code: 'Thông điệp phản hồi'
+        response_body: 'Phản hồi'
+    models:
+      webhooks/outgoing_webhook: "Webhook ra"
+  webhooks:
+    singular: Webhook
+    plural: Webhooks
+    resources:
+      time_entry:
+        name: "Thời gian nhập"
+    outgoing:
+      no_results_table: Chưa có webhook nào được định nghĩa.
+      label_add_new: Thêm webhook mới
+      label_edit: Chỉnh sửa webhook
+      label_event_resources: Tài nguyên sự kiện
+      events:
+        created: "Đã tạo"
+        updated: "Đã cập nhật"
+      explanation:
+        text: >
+          Khi xảy ra một sự kiện như tạo gói công việc hoặc cập nhật dự án, OpenProject sẽ gửi một yêu cầu POST đến các điểm cuối web đã cấu hình. Thông thường, sự kiện được gửi sau khi %{link} đã trôi qua.
+        link: khoảng thời gian tổng hợp đã cấu hình
+      status:
+        enabled: 'Webhook đã được kích hoạt'
+        disabled: 'Webhook đã bị vô hiệu hóa'
+        enabled_text: 'Webhook sẽ phát ra dữ liệu cho các sự kiện đã định nghĩa dưới đây.'
+        disabled_text: 'Nhấp vào nút chỉnh sửa để kích hoạt webhook.'
+      deliveries:
+        no_results_table: Không có lần gửi nào được thực hiện cho webhook này trong những ngày qua.
+        title: 'Các lần gửi gần đây'
+        time: 'Thời gian gửi'
+      form:
+        introduction: >
+          Gửi một yêu cầu POST đến URL payload bên dưới cho bất kỳ sự kiện nào trong dự án mà bạn đã đăng ký. Payload sẽ tương ứng với đại diện APIv3 của đối tượng đang được sửa đổi.
+        apiv3_doc_url: Để biết thêm thông tin, vui lòng truy cập tài liệu API
+        description:
+          placeholder: 'Mô tả tùy chọn cho webhook.'
+        enabled:
+          description: >
+            Khi được chọn, webhook sẽ kích hoạt cho các sự kiện đã chọn. Bỏ chọn để vô hiệu hóa webhook.
+        events:
+          title: 'Các sự kiện được kích hoạt'
+        project_ids:
+          title: 'Các dự án được kích hoạt'
+          description: 'Chọn dự án mà webhook này sẽ được thực thi.'
+          all: 'Tất cả dự án'
+          selected: 'Chỉ các dự án đã chọn'
+        selected_project_ids:
+          title: 'Các dự án đã chọn'
+        secret:
+          description: >
+            Nếu được đặt, giá trị bí mật này sẽ được OpenProject sử dụng để ký dữ liệu webhook.

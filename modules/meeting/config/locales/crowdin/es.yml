@@ -1,0 +1,384 @@
+#-- copyright
+#OpenProject is an open source project management software.
+#Copyright (C) the OpenProject GmbH
+#This program is free software; you can redistribute it and/or
+#modify it under the terms of the GNU General Public License version 3.
+#OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+#Copyright (C) 2006-2013 Jean-Philippe Lang
+#Copyright (C) 2010-2013 the ChiliProject Team
+#This program is free software; you can redistribute it and/or
+#modify it under the terms of the GNU General Public License
+#as published by the Free Software Foundation; either version 2
+#of the License, or (at your option) any later version.
+#This program is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+#You should have received a copy of the GNU General Public License
+#along with this program; if not, write to the Free Software
+#Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#See COPYRIGHT and LICENSE files for more details.
+#++
+#English strings go here for Rails i18n
+es:
+  plugin_openproject_meeting:
+    name: "Reuniones de OpenProject"
+    description: >-
+      Este módulo añade funciones para soportar reuniones de proyecto a OpenProject. Se pueden programar reuniones seleccionando invitados del mismo proyecto para participar en la reunión. Una agenda puede ser creada y enviada a los invitados. Después de la reunión, los asistentes pueden ser seleccionados y las actas pueden ser creadas en base a la agenda. Por último, las actas pueden ser enviadas a todos los asistentes y invitados.
+  activerecord:
+    attributes:
+      meeting:
+        type: "Tipo de reunión"
+        location: "Ubicación"
+        duration: "Duración"
+        notes: "Notas"
+        participants: "Participantes"
+        participant:
+          one: "1 Participante"
+          other: "%{count} Participantes"
+        participants_attended: "Asistentes"
+        participants_invited: "Invitados"
+        project: "Proyecto"
+        start_date: "Fecha"
+        start_time: "Hora de inicio"
+        start_time_hour: "Hora de inicio"
+      meeting_agenda_item:
+        title: "Título"
+        author: "Autor"
+        duration_in_minutes: "min"
+        description: "Notas"
+        presenter: "Responsable"
+      meeting_section:
+        title: "Título"
+      recurring_meeting:
+        frequency: "Frecuencia"
+        interval: "Intervalo"
+        start_date: "Empieza el"
+        end_after: "Meeting series ends"
+        iterations: "Repeticiones"
+    errors:
+      messages:
+        invalid_time_format: "no es una hora válida. Formato requerido: HH:MM"
+    models:
+      recurring_meeting: "Reunión periódica"
+      structured_meeting: "Reunión única"
+      meeting_agenda_item: "Puntos de Agenda"
+      meeting_agenda: "Agenda"
+      meeting_minutes: "Minutas"
+      meeting_section: "Sección"
+  activity:
+    filter:
+      meeting: "Reuniones"
+    item:
+      meeting_agenda_item:
+        duration:
+          added: "fijado en %{value}"
+          added_html: "fijado en <i>%{value}</i>"
+          removed: "eliminado"
+          updated: "cambiado de %{old_value} a %{value}"
+          updated_html: "cambiado de <i>%{old_value}</i> a <i>%{value}</i>"
+        position:
+          updated: "reordenado"
+        work_package:
+          updated: "cambiado de %{old_value} a %{value}"
+          updated_html: "cambiado de <i>%{old_value}</i> a <i>%{value}</i>"
+  description_attended: "ha asistido"
+  description_invite: "invitado"
+  events:
+    meeting: Reunión editada
+    meeting_agenda: Agenda de reuniones editada
+    meeting_agenda_closed: Agenda de reuniones cerrada
+    meeting_agenda_opened: Agenda de reuniones abierta
+    meeting_minutes: Minuta de reunión editada
+    meeting_minutes_created: Minuta de reuniones creada
+  error_notification_with_errors: "Error al enviar la notificación. Los siguientes destinatarios no han sido notificados: %{recipients}"
+  label_meeting: "Reunión"
+  label_meeting_plural: "Reuniones"
+  label_meeting_new: "Nueva reunión"
+  label_meeting_new_dynamic: "Nueva reunión única"
+  label_meeting_new_recurring: "Nueva reunión periódica"
+  label_meeting_create: "Crear reunión"
+  label_meeting_copy: "Copiar reunión"
+  label_meeting_edit: "Editar reunión"
+  label_meeting_agenda: "Agenda"
+  label_meeting_minutes: "Minutas"
+  label_meeting_close: "Cerrar"
+  label_meeting_open: "Abrir"
+  label_meeting_index_delete: "Eliminar"
+  label_meeting_open_this_meeting: "Abrir esta reunión"
+  label_meeting_agenda_close: "Cerrar la agenda para comenzar la minuta"
+  label_meeting_date_time: "Fecha/hora"
+  label_meeting_date_and_time: "Fecha y hora"
+  label_meeting_diff: "Diferencia"
+  label_recurring_meeting: "Reunión periódica"
+  label_recurring_meeting_part_of: "Parte de una serie de reuniones"
+  label_recurring_meeting_new: "Nueva reunión periódica"
+  label_recurring_meeting_plural: "Reuniones periódicas"
+  label_template: "Plantilla"
+  label_recurring_meeting_view: "Ver serie de reuniones"
+  label_recurring_meeting_create: "Open"
+  label_recurring_meeting_copy: "Copiar como única"
+  label_recurring_meeting_cancel: "Cancelar esta repetición"
+  label_recurring_meeting_delete: "Eliminar repetición"
+  label_recurring_meeting_restore: "Restaurar esta repetición"
+  label_recurring_meeting_schedule: "Schedule"
+  label_recurring_meeting_next_occurrence: "Next occurrence"
+  label_recurring_meeting_more: "Hay %{count} reuniones más programadas (%{schedule})."
+  label_recurring_meeting_no_end_date: "There are more scheduled meetings (%{schedule})."
+  label_recurring_meeting_more_singular: "Hay %{count} reuniones más programadas (%{schedule})."
+  label_recurring_meeting_more_past: "Hay %{count} reuniones más pasadas."
+  label_recurring_meeting_more_past_singular: "Hay %{count} reuniones más pasadas."
+  label_recurring_meeting_show_more: "Mostrar más"
+  label_recurring_meeting_series_create: "Create meeting series"
+  label_recurring_meeting_series_edit: "Editar serie de reuniones"
+  label_recurring_meeting_series_delete: "Eliminar serie de reuniones"
+  label_recurring_meeting_series_end: "End meeting series"
+  label_recurring_meeting_series_end_now: "End series now"
+  label_meeting_more:
+    one: "There is one more meeting."
+    other: "There are %{count} more meetings."
+  label_my_meetings: "Mis reuniones"
+  label_all_meetings: "Todas las reuniones"
+  label_upcoming_meetings: "Próximas reuniones"
+  label_past_meetings: "Reuniones anteriores"
+  label_upcoming_meetings_short: "Próximamente"
+  label_past_meetings_short: "Pasado"
+  label_involvement: "Implicación"
+  label_invitations: "Invitaciones"
+  label_invited_user: "Usuario invitado"
+  label_past_invitations: "Invitaciones pasadas"
+  label_attended: "Ha asistido"
+  label_attended_user: "Usuario asistente"
+  label_created_by_me: "Creado por mí"
+  label_notify: "Enviar para revisión"
+  label_icalendar: "Enviar iCalendar"
+  label_icalendar_download: "Descargar evento iCalendar"
+  label_view_meeting_series: "Ver serie de reuniones"
+  label_meeting_series: "Serie de reuniones"
+  label_version: "Versión"
+  label_time_zone: "Zona horaria"
+  label_start_date: "Fecha de inicio"
+  meeting:
+    participants:
+      template: "Estos participantes serán invitados automáticamente a todas las reuniones futuras a medida que se vayan creando."
+    attachments:
+      template: "Estos archivos adjuntos se incluirán en todas las reuniones futuras de la serie."
+      text: "Los archivos adjuntos están a disposición de todos los participantes en la reunión. También puede arrastrarlos y soltarlos en las notas de los puntos del orden del día."
+    copy:
+      title: "Copiar reunión %{title}"
+      attachments: "Copiar adjuntos"
+      attachments_text: "Copie todos los archivos adjuntos a la nueva reunión"
+      agenda: "Copiar agenda"
+      agenda_items: "Copiar elementos de agenda"
+      agenda_text: "Copiar la agenda de la reunión anterior"
+      participants: "Copie la lista de participantes"
+    email:
+      send_emails: "Envíe un correo electrónico a los participantes"
+      send_invitation_emails: >
+        Envíe inmediatamente una invitación por correo electrónico a los participantes seleccionados anteriormente. También puede hacerlo manualmente en cualquier momento posterior.
+      send_invitation_emails_structured: "Envíe inmediatamente una invitación por correo electrónico a todos los participantes. También puede hacerlo manualmente en cualquier momento posterior."
+      open_meeting_link: "Abrir reunión"
+      series:
+        title: "[%{project_name}] Meeting series %{title}"
+        summary: "%{actor} has set up a new meeting series %{title}"
+      invited:
+        summary: "%{actor} te ha enviado una invitación para la reunión %{title}"
+      rescheduled:
+        header: "La reunión %{title} ha sido reprogramada"
+        summary: "La reunión %{title} ha sido reprogramada por %{actor}"
+        body: "La reunión %{title} ha sido reprogramada por %{actor}"
+        old_date_time: "Fecha y hora anteriores"
+        new_date_time: "Fecha y hora nuevas"
+    label_mail_all_participants: "Enviar email a todos los participantes"
+    types:
+      classic: "Clásico"
+      classic_text: "Organice su reunión como una única agenda y protocolo de texto formateable."
+      structured: "Estructurada"
+      one_time: "Única"
+      recurring: "Periódico"
+      recurring_text: "Cree series de reuniones con una plantilla dinámica para cada repetición."
+      structured_text: "Organice su reunión como una lista dinámica de temas del orden del día, enlazándolos opcionalmente a un paquete de trabajo."
+      structured_text_copy: "Copiar una reunión no copiará actualmente los elementos asociados de la agenda de la reunión, solo los detalles"
+    copied: "Copiado de la reunión %{id}"
+    delete_dialog:
+      one_time:
+        title: "Delete meeting"
+        heading: "Delete this meeting?"
+        confirmation_message_html: >
+          This action is not reversible. Please proceed with caution.
+      occurrence:
+        title: "Delete meeting occurrence"
+        heading: "Delete this meeting occurrence?"
+        confirmation_message_html: >
+          This meeting is part of a series called <strong>%{title}</strong>. This will only delete this particular occurrence and not the entire series. Do you want to continue?
+    blankslate:
+      title: "No meetings to display"
+      desc: "There are no meetings that meet the active filter criteria."
+  meeting_section:
+    untitled_title: "Sección sin título"
+    delete_confirmation: "Al eliminar esta sección también se eliminarán todos sus puntos de agenda. ¿Seguro que desea hacerlo?"
+    placeholder_title: "Nueva sección"
+    empty_text: "Arrastre los elementos aquí o cree uno nuevo"
+  recurring_meeting:
+    ended_blankslate:
+      title: "Meeting series ended"
+      message: "This meeting series has come to an end. There are no upcoming meetings. "
+      action: "You can still view past occurrences or edit the meeting series to extend it."
+    occurrence:
+      infoline: "Esta reunión forma parte de una serie de reuniones periódicas."
+      error_no_next: "No hay próxima repetición para esta reunión."
+      first_already_exists: "La primera repetición de esta serie de reuniones ya está instanciada."
+      first_created: >
+        La primera reunión se ha creado correctamente a partir de la plantilla. Todas las reuniones futuras se crearán automáticamente al mismo tiempo que la anterior.
+    template:
+      button_finalize: "Finalizar plantilla"
+      blank_title: "La plantilla de la serie de reuniones está vacía"
+      description: >
+        Esta plantilla se usará siempre que se creen nuevas reuniones de la serie. Puede añadir elementos de agenda, participantes y archivos adjuntos a esta plantilla.
+      blankslate_finalize: >
+        Cuando haya terminado de preparar esta plantilla, haga clic en el botón '%{button_title}' de arriba para finalizar la configuración y programar la primera reunión de la serie.
+      label_view_template: "Ver plantilla"
+      label_edit_template: "Editar plantilla"
+      banner_html: >
+        En este momento está editando una plantilla de una serie de reuniones: %{link}. Cada nueva repetición de una reunión en la serie utilizará esta plantilla. Los cambios no afectarán a las reuniones pasadas o ya creadas.
+    frequency:
+      every_weekday: "Cada %{day_of_the_week}"
+      daily: "Diariamente"
+      working_days: "Todos los dias hábiles"
+      weekly: "Semanalmente"
+    end_after:
+      never: "never"
+      specific_date: "after a specific date"
+      iterations: "after a number of occurrences"
+    starts: "Empieza"
+    in_words:
+      daily_interval: "Cada %{interval} días"
+      working_days: "Todos los dias hábiles"
+      weekly: "Cada semana en %{weekday}"
+      weekly_interval: "Cada %{interval} semanas el %{weekday}"
+      frequency: "%{base} a las %{time}"
+      full: "%{base} a las %{time}, finaliza el %{end_date}"
+      full_past: "%{base} at %{time}, ended on %{end_date}"
+      never_ending: "%{base} at %{time}"
+    open:
+      title: "Open"
+      subtitle: >
+        Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
+      blankslate:
+        title: "No open meetings at the moment"
+        desc: "You can manually open a planned meeting by clicking on the 'Open' button below"
+    planned:
+      title: "Planned"
+      subtitle: >
+        The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
+      blankslate:
+        title: "No more planned meetings"
+        desc: >
+          There are no additional meetings planned in this series. To schedule additional meetings or extend the series, go to the template and edit meeting details to change the end date, frequency or interval.
+    delete_dialog:
+      title: "Delete meeting series"
+      heading: "Permanently delete this meeting series?"
+      confirmation_message_html:
+        zero: >
+          Deleting <strong>%{title}</strong> will delete any meetings in this series. This action is not reversible. Please proceed with caution.
+        one: >
+          Deleting <strong>%{title}</strong> will also delete one meeting in this series. This action is not reversible. Please proceed with caution.
+        other: >
+          Deleting <strong>%{title}</strong> will delete all %{count} meetings in this series. This action is not reversible. Please proceed with caution.
+    scheduled_delete_dialog:
+      title: "Cancel meeting occurrence"
+      heading: "Cancel this meeting occurrence?"
+      confirmation_message_html: >
+        Any meeting information not in the template will be lost. Do you want to continue?
+      confirm_button: "Cancel occurrence"
+    end_series_dialog:
+      title: "End meeting series"
+  notice_successful_notification: "Notificación enviada correctamente"
+  notice_timezone_missing: No se ha establecido zona horaria y se asume %{zone}. Para elegir su zona horaria, por favor, haga clic aquí.
+  notice_meeting_updated: "Esta página ha sido actualizada por otra persona. Recárguela para ver los cambios."
+  permission_create_meetings: "Crear reuniones"
+  permission_edit_meetings: "Editar reuniones"
+  permission_delete_meetings: "Eliminar reuniones"
+  permission_view_meetings: "Ver reuniones"
+  permission_create_meeting_agendas: "Crear agendas de reuniones"
+  permission_create_meeting_agendas_explanation: "Permite editar el contenido de la agenda de la reunión clásica."
+  permission_manage_agendas: "Gestionar agendas"
+  permission_manage_agendas_explanation: "Permite editar el contenido de la agenda de la reunión dinámica."
+  permission_close_meeting_agendas: "Cerrar agendas"
+  permission_send_meeting_agendas_notification: "Enviar notificaciones de revisión para las agendas"
+  permission_create_meeting_minutes: "Gestionar minutas"
+  permission_send_meeting_minutes_notification: "Enviar notificaciones de revisión para los minutas"
+  permission_meetings_send_invite: "Invitar a usuarios a reuniones"
+  permission_send_meeting_agendas_icalendar: "Enviar agenda de reunión como entrada del calendario"
+  project_module_meetings: "Reuniones"
+  text_duration_in_hours: "Duración en horas"
+  text_in_hours: "en horas"
+  text_meeting_agenda_for_meeting: 'agenda para la reunión "%{meeting}"'
+  text_meeting_series_end_early_heading: "Delete future occurrences?"
+  text_meeting_series_end_early: "Ending the series will delete any future open or scheduled meeting occurrences"
+  text_meeting_closing_are_you_sure: "¿Seguro que quiere cerrar el orden del día de la reunión?"
+  text_meeting_agenda_open_are_you_sure: "Se sobrescribirán todos los cambios en las minutas. ¿Quiere continuar?"
+  text_meeting_minutes_for_meeting: 'minutas para la reunión "%{meeting}"'
+  text_notificiation_invited: "El correo electrónico contiene una entrada ics para la reunión siguiente:"
+  text_meeting_empty_heading: "Su reunión está vacía"
+  text_meeting_empty_description_1: "Comience añadiendo elementos de la agenda a continuación. Cada elemento puede ser tan simple como un título, pero también puede agregar detalles adicionales como duración, notas y una persona responsable."
+  text_meeting_empty_description_2: 'También puede añadir referencias a los paquetes de trabajo existentes. Cuando lo haga, las notas relacionadas serán automáticamente visibles en la pestaña "Reuniones" del paquete de trabajo.'
+  label_meeting_empty_action: "Añadir punto a la agenda"
+  label_meeting_actions: "Acciones de reunión"
+  label_meeting_edit_title: "Editar título de la reunión"
+  label_meeting_delete: "Eliminar reunión"
+  label_meeting_created_by: "Creado por"
+  label_meeting_last_updated: "Última actualización"
+  label_meeting_reload: "Recargar"
+  label_meeting_index_today: "Today"
+  label_meeting_index_tomorrow: "Tomorrow"
+  label_meeting_index_this_week: "Later this week"
+  label_meeting_index_later: "Next week and later"
+  label_agenda_items: "Puntos del orden del día"
+  label_agenda_items_reordered: "reordenados"
+  label_agenda_item_remove: "Quitar del orden del día"
+  label_agenda_item_undisclosed_wp: "Paquete de trabajo #%{id} no visible"
+  label_agenda_item_deleted_wp: "Referencia de paquete de trabajo eliminada"
+  label_agenda_item_actions: "Acciones de elementos de la agenda"
+  label_agenda_item_move_to_top: "Arriba de todo"
+  label_agenda_item_move_to_bottom: "Mover al final"
+  label_agenda_item_move_up: "Mover hacia arriba"
+  label_agenda_item_move_down: "Mover hacia abajo"
+  label_agenda_item_add_notes: "Añadir notas"
+  label_agenda_item_work_package: "Paquete de trabajo del punto del orden del día"
+  text_agenda_item_title: 'Punto del orden del día «%{title}»'
+  text_agenda_work_package_deleted: 'Punto del orden del día relativo al paquete de trabajo eliminado'
+  text_deleted_agenda_item: 'Punto del orden del día eliminado'
+  label_initial_meeting_details: "Reunión"
+  label_meeting_details: "Detalles de la reunión"
+  label_meeting_series_details: "Detalles de la serie de reuniones"
+  label_meeting_details_edit: "Editar detalles de la reunión"
+  label_meeting_state: "Estado de la reunión"
+  label_meeting_state_open: "Abrir"
+  label_meeting_state_open_html: "<i>Abierta</i>"
+  label_meeting_state_closed: "Cerrado"
+  label_meeting_state_closed_html: "<i>Cerrada</i>"
+  label_meeting_state_agenda_created: "Agenda creada"
+  label_meeting_state_planned: "Planned"
+  label_meeting_state_cancelled: "Cancelada"
+  label_meeting_state_skipped: "Omitida"
+  label_meeting_reopen_action: "Reabrir reunión"
+  label_meeting_close_action: "Cerrar reunión"
+  text_meeting_open_description: "Esta reunión está abierta. Puede añadir/eliminar elementos de la agenda y editarlos a su gusto. Una vez terminada la reunión, ciérrela para bloquearla."
+  text_meeting_closed_description: "Esta reunión está cerrada. Ya no puede añadir/eliminar elementos de la agenda."
+  label_meeting_manage_participants: "Gestionar participantes"
+  label_meeting_no_participants: "Sin participantes"
+  label_meeting_show_hide_participants: "Mostrar/ocultar %{count} más"
+  label_meeting_show_all_participants: "Mostrar todo"
+  label_meeting_add_participants: "Añadir participantes"
+  text_meeting_not_editable_anymore: "Esta reunión ya no es editable."
+  text_meeting_not_present_anymore: "Esta reunión ha sido eliminada. Por favor, seleccione otra reunión."
+  label_add_work_package_to_meeting_dialog_title: "Añadir paquete de trabajo a la reunión"
+  label_add_work_package_to_meeting_dialog_button: "Añadir a la reunión"
+  label_meeting_selection_caption: "Solo es posible añadir este paquete de trabajo a reuniones abiertas o futuras."
+  text_add_work_package_to_meeting_description: "Un paquete de trabajo puede ser añadido a una o varias reuniones para su discusión."
+  text_agenda_item_no_notes: "No se han proporcionado notas"
+  text_agenda_item_not_editable_anymore: "Este punto de la agenda ya no es editable."
+  text_work_package_has_no_upcoming_meeting_agenda_items: "Este paquete de trabajo no está todavía programado en ninguna agenda de próximas reuniones."
+  text_work_package_add_to_meeting_hint: 'Utilice el botón "Añadir a la reunión" para añadir este paquete de trabajo a una próxima reunión.'
+  text_work_package_has_no_past_meeting_agenda_items: "Este paquete de trabajo no se mencionó en ninguna reunión anterior."

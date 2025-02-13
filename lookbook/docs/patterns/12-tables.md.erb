@@ -1,0 +1,108 @@
+## Overview
+
+### Border Box Table
+
+<%= embed OpPrimer::BorderBoxTableComponentPreview, :default %>
+
+### Sortable table
+
+<%= embed OpenProject::Deprecated::TablePreview, :default %>
+
+## Usage
+
+To use either table implementation, you need to subclass into your own namespace:
+
+- **Regular table:** `TableComponent` and `RowComponent`
+- **BorderBox table:** `OpPrimer::BorderBoxTableComponent` and `OpPrimer::BorderBoxRowComponent`
+
+**Columns:** Define the columns of the table as class method `columns :a, :b, :c`
+
+**Headers:** Define the headers of the component like so
+
+```ruby
+def headers
+  [
+    [:a, { caption: 'Column A' }],
+    [:b, { caption: 'Column B' }],
+    [:c, { caption: 'Column C' }]
+  ]
+end
+```
+
+**Actions:** Define the actions in the row component as `button_links`. See the example code
+
+<%= embed OpPrimer::BorderBoxTableComponentPreview, :default, panels: %i[source] %>
+
+
+
+### Border Box Table specifics
+
+#### Mobile behavior
+
+On mobile, the BorderBoxTable does not scroll, but collapse into two columns (content columns and actions). You can control which columns are shown using the `mobile_columns` method.
+
+As the columns are collapsed, some information might need an additional label, which you can prepend with `mobile_labels`.
+
+```ruby
+# On desktop, show these columns
+columns :title, :users, :created_at
+
+# On mobile, only two columns are visible
+mobile_columns :title, :users
+
+# For users, show the label using the header caption
+mobile_labels :users
+```
+
+
+
+#### Mobile headers
+
+On mobile, the usual table headers are replaced with a single `mobile_title` property that you have to set on the table.
+
+#### Text wrapping behaviour
+
+By default, text longer than the column width will truncate with ellipsis. Only the main column has text that wraps around to display the full string.
+
+#### Main column
+
+Use the `main_column` helper to make a column 2 times as wide as the others and also display the full text:
+
+```ruby
+# On desktop, show these columns
+columns :title, :users, :created_at
+
+# Make title column wider than the others (factor 2 using grid span)
+main_column :title
+```
+Note: Ideally, one one main column will be present for each table.
+
+#### Footer
+
+Set `has_footer?` to true to add a footer to the table, defining the component/content to be rendered with the `footer` method.
+
+```ruby
+def has_footer?
+  true
+end
+
+def footer
+  render CustomFooterComponent.new(...)
+end
+```
+
+## Best practices
+
+**Do**
+
+- Use a BorderBox table if you have a *few* entries of unsorted data, that does not require pagination
+- Use up to two actions using the `:secondary` scheme of `Primer::Beta::Button` and `Primer::Beta::IconButton`.
+- OR: Use an action menu with `:invisible` scheme
+
+**Don't**
+
+- Use the BorderBox table for a lot of items that require sorting or pagination
+
+## Examples
+
+For detailed examples have a look at the other [preview examples](/lookbook/inspect/OpenProject/Primer/border_box_table/default) of the component.

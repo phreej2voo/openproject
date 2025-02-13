@@ -1,0 +1,168 @@
+#-- copyright
+#OpenProject is an open source project management software.
+#Copyright (C) the OpenProject GmbH
+#This program is free software; you can redistribute it and/or
+#modify it under the terms of the GNU General Public License version 3.
+#OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+#Copyright (C) 2006-2013 Jean-Philippe Lang
+#Copyright (C) 2010-2013 the ChiliProject Team
+#This program is free software; you can redistribute it and/or
+#modify it under the terms of the GNU General Public License
+#as published by the Free Software Foundation; either version 2
+#of the License, or (at your option) any later version.
+#This program is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+#You should have received a copy of the GNU General Public License
+#along with this program; if not, write to the Free Software
+#Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#See COPYRIGHT and LICENSE files for more details.
+#++
+vi:
+  plugin_costs:
+    name: "Thời gian và chi phí"
+    description: "Mô-đun này thêm các tính năng để lập kế hoạch và theo dõi chi phí của các dự án."
+  activerecord:
+    attributes:
+      cost_entry:
+        work_package: "Gói công việc"
+        overridden_costs: "Chi phí ghi đè"
+        spent: "Đã chi"
+        spent_on: "Ngày"
+      cost_type:
+        unit: "Tên đơn vị"
+        unit_plural: "Tên đơn vị đa năng"
+        default: "Loại chi phí theo mặc định"
+      work_package:
+        costs_by_type: "Các đơn vị đã chi"
+        labor_costs: "Chi phí nhân công"
+        material_costs: "Chi phí đơn vị"
+        overall_costs: "Tổng chi phí"
+        spent_costs: "Chi phí"
+        spent_units: "Đơn vị đã chi"
+      rate:
+        rate: "Tỷ giá"
+      user:
+        default_rates: "Tỷ lệ mặc định"
+      time_entry:
+        project: Dự án
+        user: Người dùng
+        work_package: Gói công việc
+        hours: Giờ
+        comments: Bình luận
+        activity: Hoạt động
+        spent_on: Ngày
+        start_time: Thời gian bắt đầu
+        end_time: Thời gian hoàn thành
+    models:
+      cost_type:
+        other: "Loại chi phí"
+      rate: "Tỉ giá"
+    errors:
+      models:
+        time_entry:
+          invalid_time: "phải ở giữa khoảng 00:00 đến 23:59."
+        work_package:
+          is_not_a_valid_target_for_cost_entries: "Gói công việc #%{id} không phải là mục tiêu hợp lệ để phân bổ lại các mục chi phí."
+          nullify_is_not_valid_for_cost_entries: "Các mục chi phí không thể được phân bổ cho một dự án."
+  attributes:
+    comment: "Nhận xét"
+    cost_type: "Loại chi phí"
+    costs: "Chi phí"
+    current_rate: "Tỷ giá hiện tại"
+    hours: "Giờ"
+    units: "Đơn vị"
+    valid_from: "Có hiệu lực từ"
+    fixed_date: "Ngày cố định"
+  button_add_rate: "Thêm tỷ lệ"
+  button_log_costs: "Ghi lại chi phí đơn vị"
+  button_log_time: "Nhật ký"
+  caption_booked_on_project: "Đã ghi trên dự án"
+  caption_default: "Mặc định"
+  caption_default_rate_history_for: "Lịch sử tỷ lệ mặc định cho %{user}"
+  caption_locked_on: "Đã khóa vào"
+  caption_materials: "Đơn vị"
+  caption_rate_history: "Lịch sử tỷ lệ"
+  caption_rate_history_for: "Lịch sử tỷ lệ cho %{user}"
+  caption_rate_history_for_project: "Lịch sử tỷ lệ cho %{user} trong dự án %{project}"
+  caption_save_rate: "Lưu tỷ lệ"
+  caption_set_rate: "Đặt tỷ lệ hiện tại"
+  caption_show_locked: "Hiển thị các loại đã khóa"
+  caption_log_time_dialog: "Thời gian nhật ký"
+  description_date_for_new_rate: "Ngày cho tỷ lệ mới"
+  group_by_others: "không thuộc nhóm nào"
+  label_between: "giữa"
+  label_cost_filter_add: "Thêm bộ lọc mục chi phí"
+  label_costlog: "Chi phí đơn vị đã ghi"
+  label_cost_plural: "Chi phí"
+  label_cost_type_plural: "Các loại chi phí"
+  label_cost_type_specific: "Loại chi phí #%{id}: %{name}"
+  label_costs_per_page: "Chi phí trên mỗi trang"
+  label_current_default_rate: "Tỷ lệ mặc định hiện tại"
+  label_date_on: "vào"
+  label_deleted_cost_types: "Các loại chi phí đã xóa"
+  label_locked_cost_types: "Các loại chi phí đã khóa"
+  label_display_cost_entries: "Hiển thị chi phí đơn vị"
+  label_display_time_entries: "Hiển thị giờ đã báo cáo"
+  label_display_types: "Hiển thị loại"
+  label_edit: "Chỉnh sửa"
+  label_generic_user: "Người dùng chung"
+  label_greater_or_equal: ">="
+  label_group_by: "Nhóm theo"
+  label_group_by_add: "Thêm trường nhóm"
+  label_hourly_rate: "Tỷ lệ theo giờ"
+  label_include_deleted: "Bao gồm các mục đã xóa"
+  label_work_package_filter_add: "Thêm bộ lọc gói công việc"
+  label_kind: "Loại"
+  label_less_or_equal: "<="
+  label_log_costs: "Ghi lại chi phí đơn vị"
+  label_no: "Không"
+  label_option_plural: "Tùy chọn"
+  label_overall_costs: "Chi phí tổng cộng"
+  label_rate: "Tỷ lệ"
+  label_rate_plural: "Các tỷ lệ"
+  label_status_finished: "Hoàn thành"
+  label_show: "Hiện"
+  label_units: "Đơn vị chi phí"
+  label_user: "Người dùng"
+  label_until: "đến"
+  label_valid_from: "Có hiệu lực từ"
+  label_yes: "Có"
+  placeholder_activity_select_work_package_first: Phải chọn gói công việc trước đã
+  notice_something_wrong: "Đã xảy ra lỗi. Vui lòng thử lại."
+  notice_successful_restore: "Khôi phục thành công."
+  notice_successful_lock: "Khóa thành công."
+  notice_cost_logged_successfully: "Chi phí đơn vị đã được ghi lại thành công."
+  notice_different_time_zones: "Người dùng này có múi giờ khác (%{tz}). Nhật ký sẽ được ghi lại theo múi giờ của họ."
+  permission_edit_cost_entries: "Chỉnh sửa chi phí đơn vị đã ghi"
+  permission_edit_own_cost_entries: "Chỉnh sửa chi phí đơn vị đã ghi của chính mình"
+  permission_edit_hourly_rates: "Chỉnh sửa tỷ lệ theo giờ"
+  permission_edit_own_hourly_rate: "Chỉnh sửa tỷ lệ theo giờ của chính mình"
+  permission_edit_rates: "Chỉnh sửa các tỷ lệ"
+  permission_log_costs: "Ghi lại chi phí đơn vị"
+  permission_log_own_costs: "Ghi lại chi phí đơn vị cho chính mình"
+  permission_view_cost_entries: "Xem chi phí đã ghi"
+  permission_view_cost_rates: "Xem các tỷ lệ chi phí"
+  permission_view_hourly_rates: "Xem tất cả các tỷ lệ theo giờ"
+  permission_view_own_cost_entries: "Xem chi phí đã ghi của chính mình"
+  permission_view_own_hourly_rate: "Xem tỷ lệ theo giờ của chính mình"
+  permission_view_own_time_entries: "Xem thời gian đã tiêu của chính mình"
+  project_module_costs: "Thời gian và chi phí"
+  setting_allow_tracking_start_and_end_times: "Cho phép người dùng theo dõi thời gian bắt đầu và kết thúc trong bản ghi thời gian"
+  setting_costs_currency: "Đơn vị tiền tệ"
+  setting_costs_currency_format: "Định dạng tiền tệ"
+  setting_enforce_tracking_start_and_end_times: "Buộc người dùng đặt thời gian bắt đầu và kết thúc trên bản ghi thời gian"
+  text_assign_time_and_cost_entries_to_project: "Gán giờ và chi phí đã báo cáo cho dự án"
+  text_destroy_cost_entries_question: "%{cost_entries} đã được báo cáo trên các gói công việc bạn sắp xóa. Bạn muốn làm gì?"
+  text_destroy_time_and_cost_entries: "Xóa giờ và chi phí đã báo cáo"
+  text_destroy_time_and_cost_entries_question: "%{hours} giờ, %{cost_entries} đã được báo cáo trên các gói công việc bạn sắp xóa. Bạn muốn làm gì?"
+  text_reassign_time_and_cost_entries: "Gán lại giờ và chi phí đã báo cáo cho gói công việc này:"
+  text_warning_hidden_elements: "Một số mục có thể đã bị loại trừ khỏi tổng hợp."
+  week: "tuần"
+  js:
+    text_are_you_sure: "Bạn có chắc không?"
+  api_v3:
+    errors:
+      validation:
+        start_time_different_date: "Phần ngày của thời gian bắt đầu (%{start_time}) phải giống với ngày tiêu phí (%{spent_on})."

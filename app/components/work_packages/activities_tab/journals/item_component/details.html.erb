@@ -1,0 +1,35 @@
+<%= 
+  component_wrapper(class: "work-packages-activities-tab-journals-item-component-details") do
+    flex_layout(
+      my: 0,
+      border: :left,
+      classes: "work-packages-activities-tab-journals-item-component-details--journal-details-container",
+      data: {
+        "journal-with-changeset-updated-at": journal.updated_at.to_i, # used by the stimulus controller to maintain state
+        "journal-with-changeset-user-id": journal.user_id, # used by the stimulus controller to maintain state
+        initial: journal.initial? # used by the stimulus controller to render correctly
+      }
+    ) do |details_container|
+      case filter
+      when :only_comments
+        render_empty_line(details_container) unless journal.notes.blank? && !journal.noop?
+      when :only_changes
+        if has_details?
+          render_details_header(details_container)
+          render_details(details_container)
+        end
+      else
+        if has_details?
+          if journal.notes.present?
+            render_details(details_container)
+          else
+            render_details_header(details_container)
+            render_details(details_container)
+          end
+        else
+          render_details(details_container)
+        end
+      end
+    end
+  end 
+%>

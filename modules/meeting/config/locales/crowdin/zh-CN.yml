@@ -1,0 +1,382 @@
+#-- copyright
+#OpenProject is an open source project management software.
+#Copyright (C) the OpenProject GmbH
+#This program is free software; you can redistribute it and/or
+#modify it under the terms of the GNU General Public License version 3.
+#OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+#Copyright (C) 2006-2013 Jean-Philippe Lang
+#Copyright (C) 2010-2013 the ChiliProject Team
+#This program is free software; you can redistribute it and/or
+#modify it under the terms of the GNU General Public License
+#as published by the Free Software Foundation; either version 2
+#of the License, or (at your option) any later version.
+#This program is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+#You should have received a copy of the GNU General Public License
+#along with this program; if not, write to the Free Software
+#Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#See COPYRIGHT and LICENSE files for more details.
+#++
+#English strings go here for Rails i18n
+zh-CN:
+  plugin_openproject_meeting:
+    name: "OpenProject 会议"
+    description: >-
+      该模块为 OpenProject 添加了发起项目会议的功能。可以从同一项目中选择受邀者参加会议并进行安排。可以创建议程并发送给受邀者。会议结束后，可以选择与会者并根据议程创建会议纪要。最后，可以将会议纪要发送给所有与会者和受邀者。
+  activerecord:
+    attributes:
+      meeting:
+        type: "会议类型"
+        location: "地点"
+        duration: "时长"
+        notes: "备注"
+        participants: "参加者"
+        participant:
+          other: "%{count}位参与者"
+        participants_attended: "与会者"
+        participants_invited: "受邀者"
+        project: "项目"
+        start_date: "日期"
+        start_time: "开始时间"
+        start_time_hour: "开始时间"
+      meeting_agenda_item:
+        title: "标题"
+        author: "作者"
+        duration_in_minutes: "分钟"
+        description: "备注"
+        presenter: "演讲者"
+      meeting_section:
+        title: "标题"
+      recurring_meeting:
+        frequency: "周期"
+        interval: "间隔"
+        start_date: "开始日期："
+        end_after: "会议系列结束"
+        iterations: "事件"
+    errors:
+      messages:
+        invalid_time_format: "不是有效时间。所需格式：HH:MM"
+    models:
+      recurring_meeting: "定期会议"
+      structured_meeting: "动态会议"
+      meeting_agenda_item: "议程项目"
+      meeting_agenda: "议程"
+      meeting_minutes: "会议记录"
+      meeting_section: "节"
+  activity:
+    filter:
+      meeting: "会议"
+    item:
+      meeting_agenda_item:
+        duration:
+          added: "设为 %{value}"
+          added_html: "设为 <i>%{value}</i>"
+          removed: "已删除"
+          updated: "从 %{old_value} 更改为 %{value}"
+          updated_html: "从 <i>%{old_value}</i>改为 <i>%{value}</i>"
+        position:
+          updated: "重新排序"
+        work_package:
+          updated: "从 %{old_value} 更改为 %{value}"
+          updated_html: "从 <i>%{old_value}</i>改为 <i>%{value}</i>"
+  description_attended: "已出席"
+  description_invite: "已邀请"
+  events:
+    meeting: 会议已编辑
+    meeting_agenda: 会议议程已编辑
+    meeting_agenda_closed: 会议议程已确定
+    meeting_agenda_opened: 会议议程已开启
+    meeting_minutes: 会议记录已编辑
+    meeting_minutes_created: 会议记录已建立
+  error_notification_with_errors: "发送通知失败。无法通知下列收件人：%{recipients}"
+  label_meeting: "会议"
+  label_meeting_plural: "会议"
+  label_meeting_new: "新增会议"
+  label_meeting_new_dynamic: "新的动态会议"
+  label_meeting_new_recurring: "新的定期会议"
+  label_meeting_create: "创建会议"
+  label_meeting_copy: "复制会议"
+  label_meeting_edit: "编辑会议"
+  label_meeting_agenda: "议程"
+  label_meeting_minutes: "会议记录"
+  label_meeting_close: "结束"
+  label_meeting_open: "开始"
+  label_meeting_index_delete: "删除"
+  label_meeting_open_this_meeting: "打开本场会议"
+  label_meeting_agenda_close: "确定议程以开始会议记录"
+  label_meeting_date_time: "日期/时间"
+  label_meeting_date_and_time: "日期和时间"
+  label_meeting_diff: "比较"
+  label_recurring_meeting: "定期会议"
+  label_recurring_meeting_part_of: "会议系列的一部分"
+  label_recurring_meeting_new: "新的定期会议"
+  label_recurring_meeting_plural: "定期会议"
+  label_template: "模板"
+  label_recurring_meeting_view: "查看会议系列"
+  label_recurring_meeting_create: "打开"
+  label_recurring_meeting_copy: "一次性复制"
+  label_recurring_meeting_cancel: "取消此事件"
+  label_recurring_meeting_delete: "删除事件"
+  label_recurring_meeting_restore: "恢复此事件"
+  label_recurring_meeting_schedule: "日程"
+  label_recurring_meeting_next_occurrence: "下一个事件"
+  label_recurring_meeting_more: "还有至少 %{count} 个预定会议 (%{schedule})。"
+  label_recurring_meeting_no_end_date: "还有更多预定会议 (%{schedule})。"
+  label_recurring_meeting_more_singular: "还有至少 %{count} 个预定会议 (%{schedule})。"
+  label_recurring_meeting_more_past: "有至少 %{count} 个过往会议。"
+  label_recurring_meeting_more_past_singular: "有至少 %{count} 个过往会议。"
+  label_recurring_meeting_show_more: "显示更多"
+  label_recurring_meeting_series_create: "创建会议系列"
+  label_recurring_meeting_series_edit: "编辑会议系列"
+  label_recurring_meeting_series_delete: "删除会议系列"
+  label_recurring_meeting_series_end: "结束会议系列"
+  label_recurring_meeting_series_end_now: "立即结束系列"
+  label_meeting_more:
+    other: "还有至少 %{count} 个会议。"
+  label_my_meetings: "我的会议"
+  label_all_meetings: "所有会议"
+  label_upcoming_meetings: "即将进行的会议"
+  label_past_meetings: "过去的会议"
+  label_upcoming_meetings_short: "即将到来"
+  label_past_meetings_short: "过往"
+  label_involvement: "参与"
+  label_invitations: "邀请函"
+  label_invited_user: "受邀用户"
+  label_past_invitations: "过去的邀请"
+  label_attended: "已出席"
+  label_attended_user: "出席用户"
+  label_created_by_me: "我创建的"
+  label_notify: "发送待审阅"
+  label_icalendar: "发送 iCalendar"
+  label_icalendar_download: "下载 iCalendar 事件"
+  label_view_meeting_series: "查看会议系列"
+  label_meeting_series: "会议系列"
+  label_version: "版本"
+  label_time_zone: "时区"
+  label_start_date: "开始日期"
+  meeting:
+    participants:
+      template: "这些与会者将被自动邀请参加之后创建的所有会议。"
+    attachments:
+      template: "这些文件将被自动添加到之后创建的所有系列会议中。"
+      text: "所有与会者都可以查看附件。您还可以将这些文件拖放到议程项目注释中。"
+    copy:
+      title: "复制会议： %{title}"
+      attachments: "复制附件"
+      attachments_text: "将所有附件复制到新会议"
+      agenda: "复制议程"
+      agenda_items: "复制议程项目"
+      agenda_text: "复制之前会议的议程"
+      participants: "复制与会者列表"
+    email:
+      send_emails: "电子邮件参与者"
+      send_invitation_emails: >
+        立即向上面选定的参加者发送电子邮件邀请。您也可以在之后随时手动发送。
+      send_invitation_emails_structured: "立即向所有与会者发送电子邮件邀请。您也可以在之后随时手动发送。"
+      open_meeting_link: "打开会议"
+      series:
+        title: "[%{project_name}] 会议系列 %{title}"
+        summary: "%{actor} 设立了一个新的系列会议 %{title}"
+      invited:
+        summary: "%{actor} 已经向您发送了一个 %{title} 会议邀请"
+      rescheduled:
+        header: " %{title} 会议已经被重新安排"
+        summary: "会议 %{title} 已经被 %{actor} 重新安排"
+        body: "此会议 %{title} 已经被 %{actor} 重新安排。"
+        old_date_time: "旧日期/时间"
+        new_date_time: "新日期/时间"
+    label_mail_all_participants: "发送电子邮件给所有参与者"
+    types:
+      classic: "经典"
+      classic_text: "将您的会议组织成一个单一格式的文本议程和协议。"
+      structured: "结构化"
+      one_time: "动态"
+      recurring: "定期"
+      recurring_text: "为每次事件创建带有动态模板的会议系列。"
+      structured_text: "将您的会议组织成一个动态的议程项目列表，并可选地将它们链接到一个工作包。"
+      structured_text_copy: "目前复制会议不会复制相关会议的议程项目，只会复制会议的详细信息。"
+    copied: "从会议 #%{id} 复制"
+    delete_dialog:
+      one_time:
+        title: "删除会议"
+        heading: "删除这个会议？"
+        confirmation_message_html: >
+          此操作不可逆。请谨慎处理。
+      occurrence:
+        title: "删除会议事件"
+        heading: "删除此会议事件？"
+        confirmation_message_html: >
+          该会议是名为 <strong>%{title}</strong> 的会议系列的一部分。这只会删除该会议，而不会删除整个会议系列。要继续吗？
+    blankslate:
+      title: "无会议显示"
+      desc: "没有符合主动筛选条件的会议。"
+  meeting_section:
+    untitled_title: "无标题章节"
+    delete_confirmation: "删除该属性也会删除其在所有项目中的值。您确定要这样做吗？"
+    placeholder_title: "新建章节"
+    empty_text: "拖动项目到此处或创建一个新项目"
+  recurring_meeting:
+    ended_blankslate:
+      title: "结束"
+      message: "本系列会议已经结束，没有即将举行的会议。 "
+      action: "您仍可以查看过去的事件或编辑会议系列来扩展它。"
+    occurrence:
+      infoline: "本次会议是定期会议系列的一部分。"
+      error_no_next: "此会议没有下一个发生时间。"
+      first_already_exists: "此会议系列的第一次发生已经被实例化。"
+      first_created: >
+        第一次会议已成功从模板创建。所有未来的会议将会在上一次发生的时间自动创建。
+    template:
+      button_finalize: "完成模板"
+      blank_title: "您的会议系列模板为空"
+      description: >
+        此模板将在系列中创建新会议时使用。您可以在此模板中添加议程项目、参与者和附件。
+      blankslate_finalize: >
+        准备好模板后，单击上方的 "%{button_title}"按钮完成设置并安排系列会议的第一次会议。
+      label_view_template: "查看模板"
+      label_edit_template: "编辑模板"
+      banner_html: >
+        您正在编辑会议系列的模板： %{link}。系列会议中的每个新会议都将使用此模板。更改不会影响过往或已创建的会议。
+    frequency:
+      every_weekday: "每个 %{day_of_the_week}"
+      daily: "每日"
+      working_days: "每个工作日"
+      weekly: "每周"
+    end_after:
+      never: "从不"
+      specific_date: "在指定日期之后"
+      iterations: "在数次事件之后"
+    starts: "开始"
+    in_words:
+      daily_interval: "每 %{interval} 天"
+      working_days: "每个工作日"
+      weekly: "每 %{weekday}"
+      weekly_interval: "每 %{interval} 周在 %{weekday}"
+      frequency: "%{base} 在 %{time}"
+      full: "%{base} 在 %{time}，在 %{end_date} 结束"
+      full_past: "%{base} 在 %{time}，于 %{end_date}结束"
+      never_ending: "%{base} 在 %{time}"
+    open:
+      title: "打开"
+      subtitle: >
+        公开会议的议程可以编辑，并显示在个人用户的 "我的会议 "部分。更改会议系列模板不会影响已经发生的会议事件。
+      blankslate:
+        title: "目前没有召开的会议"
+        desc: "您可以点击下面的 \"打开 \"按钮，手动召开计划中的会议"
+    planned:
+      title: "已计划"
+      subtitle: >
+        以下会议按经常性会议时间表安排，但尚未开放。 每次计划的会议开始时，下一次会议将自动为您打开。 您也可以手动打开计划的会议来导入模板并开始编辑议程。
+      blankslate:
+        title: "没有更多的会议计划"
+        desc: >
+          本系列没有其他会议计划。 如需添加更多会议或延长会议系列，请转至模板并编辑会议详细信息以更改结束日期、频率或间隔。
+    delete_dialog:
+      title: "删除会议系列"
+      heading: "永久删除此会议系列？"
+      confirmation_message_html:
+        zero: >
+          删除 <strong>%{title}</strong>将删除该系列中的任何会议。此操作不可逆转。请谨慎操作。
+        one: >
+          删除 <strong>%{title}</strong>也会删除该系列中的一次会议。此操作不可逆转。请谨慎操作。
+        other: >
+          删除 <strong>%{title}</strong>将删除该系列中的所有 %{count} 个会议。此操作不可逆转。请谨慎操作。
+    scheduled_delete_dialog:
+      title: "取消会议事件"
+      heading: "取消此会议事件？"
+      confirmation_message_html: >
+        任何不在模板中的会议信息都将丢失。 您想要继续吗？
+      confirm_button: "取消事件"
+    end_series_dialog:
+      title: "结束会议系列"
+  notice_successful_notification: "通知发送成功"
+  notice_timezone_missing: 没有设定时区，预设时区为 %{zone}。要选择您的时区，请单击此处。
+  notice_meeting_updated: "此页面已被其他人更新。重新加载以查看更改。"
+  permission_create_meetings: "创建会议"
+  permission_edit_meetings: "编辑会议"
+  permission_delete_meetings: "删除会议"
+  permission_view_meetings: "查看会议"
+  permission_create_meeting_agendas: "创建会议议程"
+  permission_create_meeting_agendas_explanation: "允许编辑经典会议的议程。"
+  permission_manage_agendas: "管理议程"
+  permission_manage_agendas_explanation: "允许管理动态会议的议程项目。"
+  permission_close_meeting_agendas: "确定议程"
+  permission_send_meeting_agendas_notification: "发送议程审阅通知"
+  permission_create_meeting_minutes: "管理会议记录"
+  permission_send_meeting_minutes_notification: "发送会议记录审阅通知"
+  permission_meetings_send_invite: "邀请用户参加会议"
+  permission_send_meeting_agendas_icalendar: "将会议议程作为日历条目发送"
+  project_module_meetings: "会议"
+  text_duration_in_hours: "持续时间（单位：小时）"
+  text_in_hours: "小时"
+  text_meeting_agenda_for_meeting: '“%{meeting}”会议议程'
+  text_meeting_series_end_early_heading: "删除未来发生的事件？"
+  text_meeting_series_end_early: "结束系列将删除任何将来的公开会议或预定会议的事件"
+  text_meeting_closing_are_you_sure: "确定要关闭该会议议程吗？"
+  text_meeting_agenda_open_are_you_sure: "这将在几分钟内覆盖所有更改！要继续吗？"
+  text_meeting_minutes_for_meeting: '“%{meeting}“会议记录'
+  text_notificiation_invited: "此邮件包含以下会议的 ics 条目："
+  text_meeting_empty_heading: "您的会议为空"
+  text_meeting_empty_description_1: "首先在下方添加议程条目。 每个条目都可以简单到只包含一个标题，但您也可以添加更多详细信息，例如持续时间和备注。"
+  text_meeting_empty_description_2: '您也可以添加引用到现有工作包。当您这样做时，相关的注释将自动可见于工作包的“会议”选项卡。'
+  label_meeting_empty_action: "添加议程项目"
+  label_meeting_actions: "会议行动"
+  label_meeting_edit_title: "编辑会议标题"
+  label_meeting_delete: "删除会议"
+  label_meeting_created_by: "创建者:"
+  label_meeting_last_updated: "最后更新"
+  label_meeting_reload: "重新加载"
+  label_meeting_index_today: "今天"
+  label_meeting_index_tomorrow: "明天"
+  label_meeting_index_this_week: "本周晚些时候"
+  label_meeting_index_later: "下周及以后"
+  label_agenda_items: "议程项目"
+  label_agenda_items_reordered: "重新排序"
+  label_agenda_item_remove: "从议程中移除"
+  label_agenda_item_undisclosed_wp: "工作包 #%{id} 不可见"
+  label_agenda_item_deleted_wp: "已删除工作包引用"
+  label_agenda_item_actions: "议程项目行动"
+  label_agenda_item_move_to_top: "移至顶部"
+  label_agenda_item_move_to_bottom: "移至底部"
+  label_agenda_item_move_up: "向上移动"
+  label_agenda_item_move_down: "向下移动"
+  label_agenda_item_add_notes: "添加备注"
+  label_agenda_item_work_package: "议程项目工作包"
+  text_agenda_item_title: '议程项目 "%{title}"'
+  text_agenda_work_package_deleted: '删除工作包的议程项目'
+  text_deleted_agenda_item: '删除的议程项目'
+  label_initial_meeting_details: "会议"
+  label_meeting_details: "会议详情"
+  label_meeting_series_details: "会议系列详情"
+  label_meeting_details_edit: "编辑会议详情"
+  label_meeting_state: "会议状态"
+  label_meeting_state_open: "开放"
+  label_meeting_state_open_html: "<i>开放</i>"
+  label_meeting_state_closed: "已关闭"
+  label_meeting_state_closed_html: "<i>关闭</i>"
+  label_meeting_state_agenda_created: "议程已创建"
+  label_meeting_state_planned: "已计划"
+  label_meeting_state_cancelled: "已取消"
+  label_meeting_state_skipped: "已跳过"
+  label_meeting_reopen_action: "重新开放会议"
+  label_meeting_close_action: "关闭会议"
+  text_meeting_open_description: "本次会议已开放。您可以添加/移除议程项目并随时编辑它们。会议结束后，关闭它以锁定它。"
+  text_meeting_closed_description: "此会议已关闭。您不能再添加/移除议程项目。"
+  label_meeting_manage_participants: "管理与会者"
+  label_meeting_no_participants: "沒有与会者"
+  label_meeting_show_hide_participants: "显示/隐藏 %{count} 更多"
+  label_meeting_show_all_participants: "显示全部"
+  label_meeting_add_participants: "添加与会者"
+  text_meeting_not_editable_anymore: "本次会议已不可编辑。"
+  text_meeting_not_present_anymore: "此次会议已被删除。请选择另一次会议。"
+  label_add_work_package_to_meeting_dialog_title: "将工作包添加到会议"
+  label_add_work_package_to_meeting_dialog_button: "添加到会议"
+  label_meeting_selection_caption: "只能将此工作包添加到即将举行或正在举行的公开会议。"
+  text_add_work_package_to_meeting_description: "一个工作包可以添加到一个或多个会议供讨论。与此相关的任何说明也可在这里看到。"
+  text_agenda_item_no_notes: "未提供备注"
+  text_agenda_item_not_editable_anymore: "此议程项目已不可编辑。"
+  text_work_package_has_no_upcoming_meeting_agenda_items: "该工作包尚未被安排到即将举行的会议议程中。"
+  text_work_package_add_to_meeting_hint: '使用"添加到会议"按钮将此工作包添加到即将举行的会议。'
+  text_work_package_has_no_past_meeting_agenda_items: "在过往会议中没有提及过该工作包。"

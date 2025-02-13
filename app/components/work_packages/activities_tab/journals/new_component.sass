@@ -1,0 +1,23 @@
+@import "helpers"
+
+.work-packages-activities-tab-journals-new-component
+    &--input-trigger-column
+        width: 100%
+        overflow: hidden
+        button
+            min-width: 0
+            background: var(--bgColor-default)
+            cursor: text
+            span
+                display: block
+                @include text-shortener
+    &--ck-editor-column
+        width: calc(100% - 40px)
+        // specific ck editor adjustments
+        .ck-content
+            &.ck-focused
+                max-height: 30vh
+            &.ck-blurred
+                max-height: 10vh
+        .ck-editor__preview
+            max-height: 30vh

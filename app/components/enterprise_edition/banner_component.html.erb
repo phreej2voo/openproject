@@ -1,0 +1,19 @@
+<%=
+  grid_layout("op-ee-banner", **@system_arguments) do |grid|
+    grid.with_area(:'icon-container') do
+      content_tag :div, class: "op-ee-banner--shield" do
+        render(Primer::Beta::Octicon.new(icon: 'op-enterprise-addons',
+                                         size: :medium,
+                                         classes: "op-ee-banner--icon"))
+      end
+    end
+    grid.with_area(:'title-container') { render(Primer::Beta::Text.new) { title } }
+    grid.with_area(:'description-container') { render(Primer::Beta::Text.new) { description } }
+    grid.with_area(:'link-container') do
+      render(Primer::Beta::Link.new(href: href)) do |link|
+        link.with_trailing_visual_icon(icon: 'link-external')
+        link_title
+      end
+    end
+  end
+%>

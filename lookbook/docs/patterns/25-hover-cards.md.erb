@@ -1,0 +1,83 @@
+The HoverCard is a pattern related to the `Primer::Beta::Popover` and is used to show additional contextual information on certain kinds of resources like work packages and users. The hover card is opened by hovering over a certain trigger. When hovering outside of the card or its trigger, the popover is closed again.
+
+## Overview
+
+![Exemplary work package hover card](<%= image_path("lookbook/hover_card.png") %>)
+
+![Exemplary user hover card](<%= image_path("lookbook/user_hover_card.png") %>)
+
+## Anatomy
+
+The HoverCard always consists of two basic parts:
+
+1. A trigger: That can be anything that is hoverable, like a link or a chip
+2. The actual card: A small popover that is opened directly next to the trigger. The actual content of the card depends on the type of resource it is calling.
+
+## Best practices
+
+**Do**
+
+- Put in a slight delay between hovering and displaying the card to avoid accidental triggering, which can be annoying.
+- Keep the content of the card simple. Only the essentials.
+
+## Used in
+
+- WorkPackage preview when linking via `#ID`
+- User preview on usernames and avatars
+
+## Technical notes
+
+In the past, we could not easily use the `Primer::Beta::Popover` component. With recent changes, this is now possible.
+But it would require us to adjust the DOM of the hover card contents and the styling of the popover, so that it maintains its looks.
+
+Essentially the `HoverCard` is just a div which renders inside a `turboFrame`.
+
+We have a `HoverCardTriggerController` that listens for hover events on elements with the attribute `data-hover-card-trigger-target="trigger"`
+and renders a hover card for that element when the mouse enters the trigger.
+Additionally, the trigger element needs to pass the URL for the `turboFrame` as a data attribute called `data-hover-card-url`.
+
+When the hovering event is received, the `HoverCardTriggerController` will retrieve the data for the turbo frame from
+the URL and sanitize it. Then it will construct a div, create a turbo frame with the sanitized URL within it and
+append it to either the body or an existing dialog element. The final placement depends on the position of the trigger
+in the DOM.
+
+The hover card will close automatically when the mouse leaves the trigger or the card itself.
+
+### Code structure
+
+**Trigger**:
+```html
+  <!-- important: make sure the controller is attached somewhere, preferably the body tag -->
+  <body data-controller="hover-card-trigger">
+
+    <!-- app/views/module_a/index.html.erb -->
+    <a href="work_packages/14/activity"
+       data-hover-card-url="work_packages/14/hover_card"
+       data-hover-card-trigger-target="trigger">
+      #14
+    </a>
+
+    <!-- This is how it would look like to provide a hover card trigger to a picture of a user. In reality, you would
+         probably apply the trigger to an <op-principal> tag. -->
+    <a href="users/14"
+       data-hover-card-url="users/14/hover_card"
+       data-hover-card-trigger-target="trigger">
+      <img src="user_avatar.png" alt="">
+    </a>
+  </body>
+```
+
+Note that the user example is simplified. For actual use in the application, it is recommended to use the `AvatarComponent`, which offers an option for hover cards.
+
+**Actually rendered card content**:
+```html
+  <!-- app/components/work_packages/hover_card/show.html.erb -->
+  <turbo-frame id="op-hover-card-body">
+    &lt;%= render WorkPackages::HoverCardComponent.new(id: 14) %&gt;
+  </turbo-frame>
+
+  <!-- app/components/users/hover_card/show.html.erb -->
+  <turbo-frame id="op-hover-card-body">
+    &lt;%= render Users::HoverCardComponent.new(id: 14) %&gt;
+  </turbo-frame>
+```

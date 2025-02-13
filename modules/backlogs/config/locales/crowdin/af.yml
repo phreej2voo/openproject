@@ -1,0 +1,158 @@
+#-- copyright
+#OpenProject is an open source project management software.
+#Copyright (C) the OpenProject GmbH
+#This program is free software; you can redistribute it and/or
+#modify it under the terms of the GNU General Public License version 3.
+#OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+#Copyright (C) 2006-2013 Jean-Philippe Lang
+#Copyright (C) 2010-2013 the ChiliProject Team
+#This program is free software; you can redistribute it and/or
+#modify it under the terms of the GNU General Public License
+#as published by the Free Software Foundation; either version 2
+#of the License, or (at your option) any later version.
+#This program is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+#You should have received a copy of the GNU General Public License
+#along with this program; if not, write to the Free Software
+#Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#See COPYRIGHT and LICENSE files for more details.
+#++
+af:
+  plugin_openproject_backlogs:
+    name: "OpenProject Backlogs"
+    description: "This module adds features enabling agile teams to work with OpenProject in Scrum projects."
+  activerecord:
+    attributes:
+      work_package:
+        position: "Posisie"
+        story_points: "Storie Punte"
+        backlogs_work_package_type: "Agterstand tipe"
+    errors:
+      models:
+        work_package:
+          attributes:
+            blocks_ids:
+              can_only_contain_work_packages_of_current_sprint: "kan net IDs van werk pakkette in die huidige sprint"
+              must_block_at_least_one_work_package: "moet ten minste die ID van een kaart bevat"
+            version_id:
+              task_version_must_be_the_same_as_story_version: "moet dieselfde wees as die ouer storie se weergawe"
+        sprint:
+          cannot_end_before_it_starts: "sprint kan nie uinding voor dit begin het nie"
+  backlogs:
+    add_new_story: "Nuwe storie"
+    any: "eenige"
+    backlog_settings: "Agterstand instellings"
+    burndown_graph: "Afbrand Grafiek"
+    card_paper_size: "Papier grootte vir kaart drukwerk"
+    chart_options: "Grafiek opsies"
+    close: "Maak toe"
+    column_width: "Kolom breedte:"
+    date: "Dag"
+    definition_of_done: "Definisie van Gedoen"
+    generating_chart: "Genereer Grafiek..."
+    hours: "Ure"
+    impediment: "Belemmering"
+    label_versions_default_fold_state: "Wys weergawe gevou"
+    work_package_is_closed: "Werk pakket is klaar, wanneer"
+    label_is_done_status: "Status %{status_name} beteken klaar"
+    no_burndown_data: "Geen afbrand data beskikbaar nie. Dit is noodig om die sprint begin- end uindig- datum to stel."
+    points: "Punte"
+    positions_could_not_be_rebuilt: "Posisies kon nie herbou word nie."
+    positions_rebuilt_successfully: "Posisies was suksesvol herbou."
+    properties: "Eienskappe"
+    rebuild: "Herbou"
+    rebuild_positions: "Herbou posisies"
+    remaining_hours: "Oorblywende werk"
+    remaining_hours_ideal: "Oorblywende werk (ideale)"
+    show_burndown_chart: "Afbrand Grafiek"
+    story: "Storie"
+    story_points: "Storie Punte"
+    story_points_ideal: "Storie Punte (ideale)"
+    task: "Taak"
+    task_color: "Taak kleure"
+    unassigned: "Ongetekende"
+    x_more: "%{count} meer..."
+  backlogs_active: "aktief"
+  backlogs_any: "eenige"
+  backlogs_inactive: "Projek wys geen aktiwiteit nie"
+  backlogs_points_burn_direction: "Op/Af brand punte"
+  backlogs_product_backlog: "Produk agterstand"
+  backlogs_product_backlog_is_empty: "Produk agterstand is leeg"
+  backlogs_product_backlog_unsized: "Die top van die produk-agterstand het stories wat nie n grote het nie"
+  backlogs_sizing_inconsistent: "Storiegroottes verskil teen hul skattings"
+  backlogs_sprint_notes_missing: "Geslote sprinte sonder retrospektief/hersiening notas"
+  backlogs_sprint_unestimated: "Geslote of aktiewe sprinte met ongeskatte stories"
+  backlogs_sprint_unsized: "Projek het stories op aktiewe of onlangs geslote sprinte wat nie n grootte gehaad het nie"
+  backlogs_sprints: "Sprinte"
+  backlogs_story: "Storie"
+  backlogs_story_type: "Storie tipes"
+  backlogs_task: "Taak"
+  backlogs_task_type: "Taak tipes"
+  backlogs_velocity_missing: "Geen snelheid kon vir hierdie projek bereken word nie"
+  backlogs_velocity_varies: "Snelheid wissel aansienlik oor sprinte"
+  backlogs_wiki_template: "Templaat vir sprint wiki bladsy"
+  backlogs_empty_title: "Geen weergawes is gedefinieer vir gebruik in die agterstande nie"
+  backlogs_empty_action_text: "Om met agterstande te begin, skep 'n nuwe weergawe en ken dit toe aan 'n agterstandkolom."
+  button_edit_wiki: "Wysig wiki-bladsy"
+  error_backlogs_task_cannot_be_story: "Die instellings is ongeldig. Die gekose taaktipe kan nie ook 'n storietipe wees nie."
+  error_intro_plural: "Die volgende foute was teegekom:"
+  error_intro_singular: "Die volgende fout was teegekom:"
+  error_outro: "Korrigeer asseblief die bogenoemde foute voordat u weer indien."
+  event_sprint_description: "%{summary}: %{url}\n%{description}"
+  event_sprint_summary: "%{project}: %{summary}"
+  ideal: "ideale"
+  inclusion: "is nie by die lys ingesluit nie"
+  label_back_to_project: "Terug na projekbladsy"
+  label_backlog: "Agterstand"
+  label_backlogs: "Agterstandes"
+  label_backlogs_unconfigured: "Jy het nog nie Agterstandes opgestel nie. Gaan asseblief na  %{administration} > %{plugins}, klik dan op die %{configure}-skakel vir hierdie plugin. Sodra jy die velde gestel het, kom terug na hierdie bladsy om die instrument te begin gebruik."
+  label_blocks_ids: "ID's van geblokkeerde werkspakkette"
+  label_burndown: "Afbrand"
+  label_column_in_backlog: "Kolom in agterstand"
+  label_hours: "ure"
+  label_work_package_hierarchy: "Werkspakket Hiërargie"
+  label_master_backlog: "Meester Agterstand"
+  label_not_prioritized: "nie geprioritiseer nie"
+  label_points: "Punte"
+  label_points_burn_down: "Af"
+  label_points_burn_up: "Op"
+  label_product_backlog: "Produk agterstand"
+  label_select_all: "Kies almal"
+  label_sprint_backlog: "sprint agterstand"
+  label_sprint_cards: "Voer kaarte uit"
+  label_sprint_impediments: "Sprint belemmerings"
+  label_sprint_name: "Sprint \"%{name}\""
+  label_sprint_velocity: "Snelheid %{velocity}, gebaseer op %{sprints} sprinte met 'n gemiddeld van %{days} dae"
+  label_stories: "Stories"
+  label_stories_tasks: "Stories/Take"
+  label_task_board: "Taak bord"
+  label_version_setting: "Weergawes"
+  label_version: 'Weergawe'
+  label_webcal: "Webkal Voer"
+  label_wiki: "Wiki"
+  permission_view_master_backlog: "Kyk na meester-agterstand"
+  permission_view_taskboards: "Kyk na taakborde"
+  permission_select_done_statuses: "Kies gedoen statusse"
+  permission_update_sprints: "Opdateer sprinte"
+  points_accepted: "punte aanvaar"
+  points_committed: "punte toegewyd"
+  points_resolved: "punte opgelos"
+  points_to_accept: "punte nie aanvaar nie"
+  points_to_resolve: "punte wat nie opgelos is nie"
+  project_module_backlogs: "Agterstand"
+  rb_label_copy_tasks: "Kopieer werkpakkette"
+  rb_label_copy_tasks_all: "Almal"
+  rb_label_copy_tasks_none: "Geen"
+  rb_label_copy_tasks_open: "Oop"
+  rb_label_link_to_original: "Sluit skakel na oorspronklike storie in"
+  remaining_hours: "Oorblywende werk"
+  required_burn_rate_hours: "vereiste brandtempo (ure)"
+  required_burn_rate_points: "vereiste brandtempo (punte)"
+  todo_work_package_description: "%{summary}: %{url}\n%{description}"
+  todo_work_package_summary: "%{type}: %{summary}"
+  version_settings_display_label: "Kolom in agterstand"
+  version_settings_display_option_left: "links"
+  version_settings_display_option_none: "geen"
+  version_settings_display_option_right: "regs"

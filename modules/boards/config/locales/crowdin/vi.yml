@@ -1,0 +1,39 @@
+#English strings go here
+vi:
+  plugin_openproject_boards:
+    name: "Bảng OpenProject"
+    description: "Cung cấp các chế độ xem bảng."
+  permission_show_board_views: "Xem bảng"
+  permission_manage_board_views: "Quản lý bảng"
+  project_module_board_view: "Bảng"
+  boards:
+    label_board: "Bảng"
+    label_boards: "Các bảng"
+    label_create_new_board: "Tạo bảng mới"
+    label_board_type: "Loại bảng"
+    board_types:
+      free: Cơ bản
+      action: "Bảng hành động (%{attribute})"
+    board_type_attributes:
+      assignee: Người được phân công
+      status: Trạng thái
+      version: Phiên bản
+      subproject: Dự án con
+      subtasks: Cha-con
+      basic: Cơ bản
+    board_type_descriptions:
+      basic: >
+        Bắt đầu từ đầu với một bảng trắng. Thêm thẻ và cột vào bảng này một cách thủ công.
+      status: >
+        Bảng kiểu kanban cơ bản với các cột cho trạng thái như To Do, In Progress, Done.
+      assignee: >
+        Bảng với các cột tự động dựa trên người dùng được phân công. Lý tưởng cho việc phân phối gói công việc.
+      version: >
+        Bảng với các cột tự động dựa trên thuộc tính phiên bản. Lý tưởng cho việc lập kế hoạch phát triển sản phẩm.
+      subproject: >
+        Bảng với các cột tự động cho các dự án con. Kéo các gói công việc vào các danh sách khác sẽ cập nhật dự án (con) tương ứng.
+      subtasks: >
+        Bảng với các cột tự động cho các phần tử phụ. Kéo các gói công việc vào các danh sách khác sẽ cập nhật phần tử cha tương ứng.
+    upsale:
+      teaser_text: 'Bạn có muốn tự động hóa quy trình làm việc của mình với các bảng không? Các bảng nâng cao là một tiện ích bổ sung Enterprise. Vui lòng nâng cấp lên gói trả phí.'
+      upgrade: 'Nâng cấp ngay'
